@@ -74,8 +74,8 @@ This is the per-cycle computation the firmware performs **for all 6 voices**:
 
 - **Two ROMs, not one.** The synth has a **32 KB OS ROM** (27C256, the firmware) *and* a
   **64 KB patch ROM** (27C512, the factory sounds). They are separate physical chips. Confirmed
-  by the dumps in `reference/extracted/` — the patch ROM image is 64 KB and self-identifies as
-  *"Original Patch ROM image"* (same image for black- and white-faced units).
+  against the ROM dumps this project was derived from — the patch ROM image is 64 KB and
+  self-identifies as *"Original Patch ROM image"* (same image for black- and white-faced units).
 - **1000 patches** total — approximately **200 user-writable** (battery-backed RAM) plus
   **~800 factory** (patch ROM). *(Exact user/factory bank split: **to confirm**.)*
 - Patch transfer over MIDI **SysEx** (single-patch and bulk dump/load); standard **bank/program
@@ -87,14 +87,14 @@ This is the per-cycle computation the firmware performs **for all 6 voices**:
 
 There are **two independent custom-firmware lineages**. Don't conflate them.
 
-**Lineage A — Nordcore / GliGli bug-fix builds** (these are the OS images in
-`reference/extracted/matrix-1000/os-rom/`):
+**Lineage A — Nordcore / GliGli bug-fix builds** (the OS images this analysis was cross-checked
+against):
 
 | Version | Source | Notes |
 |---|---|---|
 | **v1.03 / v1.11** | Oberheim factory | Original shipping firmware (v1.11 is the last stock OS). |
 | **v1.13** | **Nordcore** (CFW) | 3 bug fixes over stock. |
-| **v1.14** | **Nordcore** (CFW) | 4 bug fixes incl. NRPN. Ships with an exact **byte-patch map** (`os-rom/v1.14/M1000-firmware_fixes.txt`) — offset, orig→fixed value, and description for each fix. A ready-made set of landmarks into the binary. |
+| **v1.14** | **Nordcore** (CFW) | 4 bug fixes incl. NRPN. The Nordcore distribution ships an exact **byte-patch map** (`M1000-firmware_fixes.txt`) — offset, orig→fixed value, and description for each fix. A ready-made set of landmarks into the binary. |
 | **v1.16** | **GliGli** (CFW) | NRPN fix, faster mod-matrix rebuild, and **unison detune** via MIDI CC#94. |
 
 **Lineage B — Tauntek rewrite** (*not* present in our archive):
@@ -149,12 +149,14 @@ the `bit-hack/OberheimMatrix1000` memory map, the CMU Matrix-6 patch tables) —
 
 ---
 
-## Local reference material
+## Reference material
 
-Firmware/patch dumps and schematics live in `reference/` (original zips) and are unzipped,
-deduplicated, and organized under `reference/extracted/` — see
-`reference/extracted/MANIFEST.md` for the full inventory, md5s, and provenance. Highlights:
-OS ROM images v1.03–v1.16, the 64 KB patch ROM, Matrix-6/6R firmware, and XK schematics.
+This documentation was derived by studying third-party firmware/patch ROM dumps, schematics, and
+manuals — OS ROM images v1.03–v1.16, the 64 KB factory patch ROM, Matrix-6/6R firmware, and the
+XK schematics. **Those materials are not redistributed here**: they remain the property of their
+respective owners (Oberheim and the authors of the various custom firmwares) and are included
+solely by reference. See the **References** below and the community sources they point to for
+locating the dumps yourself.
 
 ## References
 
