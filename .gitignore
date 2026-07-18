@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Scratch / build (generated disassembly artifacts; reproducible via tools/)
+*.tmp
+/build/
+
+# Third-party firmware images, schematics, manuals, datasheets — kept locally for
+# study/preservation, NOT redistributed. Not licensed by this project.
+# See reference/extracted/MANIFEST.md for provenance (md5s) so they can be re-sourced.
+/reference/

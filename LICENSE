@@ -1,0 +1,27 @@
+Oberheim Matrix-1000 documentation project
+===========================================
+
+Original work in this repository — the documentation under docs/, the tools under
+tools/, the README, and the issue tracker — is licensed under the
+
+    Creative Commons Attribution 4.0 International License (CC BY 4.0)
+
+You are free to share and adapt this material for any purpose, including
+commercially, provided you give appropriate credit, link to the license, and
+indicate if changes were made.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+Summary:           https://creativecommons.org/licenses/by/4.0/
+
+Attribution: "Oberheim Matrix-1000 documentation project" with a link back to
+this repository.
+
+
+NOT covered by this license
+---------------------------
+
+The contents of reference/ are third-party firmware images, schematics, manuals,
+and related materials, included solely for study and preservation. They remain
+the property of their respective owners (Oberheim and the authors of the various
+custom firmwares and documents) and are not licensed by this project. See
+reference/extracted/MANIFEST.md for provenance.

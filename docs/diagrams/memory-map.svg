@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="720" viewBox="0 0 1180 720" font-family="Helvetica, Arial, sans-serif">
+  <style>
+    .ttl{font-size:22px;font-weight:bold;fill:#222}
+    .sub{font-size:13px;fill:#555}
+    .addr{font-size:13px;font-weight:bold;fill:#111;font-family:Menlo,monospace}
+    .name{font-size:14px;font-weight:bold;fill:#111}
+    .chip{font-size:11px;fill:#555}
+    .note{font-size:12px;fill:#444}
+    .leg{font-size:12px;fill:#333}
+    rect{stroke:#666;stroke-width:1}
+  </style>
+
+  <text x="40" y="36" class="ttl">Oberheim Matrix-1000 — 6809 memory map</text>
+  <text x="40" y="56" class="sub">64 KB space, verified against the v1.11 OS ROM.</text>
+
+  <!-- main proportional map: $0000 (bottom y=660) .. $FFFF (top y=60) -->
+  <!-- OS ROM 32K -->
+  <rect x="90" y="60" width="270" height="300" fill="#cfe2ff"/>
+  <text x="100" y="80" class="addr">$8000–$FFFF</text>
+  <text x="100" y="100" class="name">OS / program ROM</text>
+  <text x="100" y="118" class="chip">27C256 · 32 KB · the firmware</text>
+  <text x="100" y="150" class="chip">vectors $FFF0–$FFFF:</text>
+  <text x="100" y="168" class="chip">RESET→$8003  IRQ→$85E3  FIRQ→$84B4</text>
+
+  <!-- RAM 8K banked -->
+  <rect x="90" y="360" width="270" height="75" fill="#d1f0d8"/>
+  <text x="100" y="380" class="addr">$6000–$7FFF</text>
+  <text x="100" y="398" class="name">Work RAM + user patches</text>
+  <text x="100" y="414" class="chip">43256 32 KB · 8 KB window × 4 banks</text>
+
+  <!-- Expansion ROM -->
+  <rect x="90" y="435" width="270" height="75" fill="#e8e8e8"/>
+  <text x="100" y="455" class="addr">$4000–$5FFF</text>
+  <text x="100" y="473" class="name">Expansion ROM (often empty)</text>
+  <text x="100" y="489" class="chip">optional 27C512 socket</text>
+
+  <!-- Patch ROM banked -->
+  <rect x="90" y="510" width="270" height="75" fill="#cfe2ff"/>
+  <text x="100" y="530" class="addr">$2000–$3FFF</text>
+  <text x="100" y="548" class="name">Patch ROM (factory sounds)</text>
+  <text x="100" y="564" class="chip">27C512 64 KB · 8 KB window × 8 banks</text>
+
+  <!-- I/O block -->
+  <rect x="90" y="585" width="270" height="75" fill="#ffe0b3"/>
+  <text x="100" y="605" class="addr">$0000–$1FFF</text>
+  <text x="100" y="623" class="name">I/O + timers</text>
+  <text x="100" y="639" class="chip">memory-mapped peripherals → expanded right</text>
+
+  <text x="74" y="64" class="addr" text-anchor="end">FFFF</text>
+  <text x="74" y="664" class="addr" text-anchor="end">0000</text>
+
+  <!-- banking note -->
+  <text x="372" y="400" class="note">⟵ banked via $1D80</text>
+  <text x="372" y="550" class="note">⟵ banked via $1D80</text>
+
+  <!-- callout: I/O detail -->
+  <line x1="360" y1="622" x2="560" y2="120" stroke="#bba" stroke-dasharray="4 3"/>
+  <line x1="360" y1="660" x2="560" y2="640" stroke="#bba" stroke-dasharray="4 3"/>
+  <text x="560" y="86" class="name">I/O block detail ($0000–$1FFF)</text>
+
+  <!-- sub regions top($1FFF)->bottom($0000) -->
+  <rect x="560" y="100" width="600" height="80" fill="#ffe0b3"/>
+  <text x="570" y="120" class="addr">$1C00–$1FFF</text>
+  <text x="570" y="138" class="name">Output latches</text>
+  <text x="570" y="154" class="chip">LEDs · 3-digit display · $1D80 bank-select latch (VA13–15)</text>
+
+  <rect x="560" y="182" width="600" height="62" fill="#ffe0b3"/>
+  <text x="570" y="202" class="addr">$1800–$1BFF</text>
+  <text x="570" y="220" class="name">Panel switch inputs</text>
+  <text x="570" y="236" class="chip">read at $1800/$1801</text>
+
+  <rect x="560" y="246" width="600" height="62" fill="#ffe0b3"/>
+  <text x="570" y="266" class="addr">$1600–$17FF</text>
+  <text x="570" y="284" class="name">System tick timer</text>
+  <text x="570" y="300" class="chip">8254-class · reloaded each IRQ → the ~50 Hz heartbeat</text>
+
+  <rect x="560" y="310" width="600" height="62" fill="#ffe0b3"/>
+  <text x="570" y="330" class="addr">$1400–$15FF</text>
+  <text x="570" y="348" class="name">MIDI ACIA</text>
+  <text x="570" y="364" class="chip">MC68B50 · ctrl/status $1406, data $1407 · drives FIRQ</text>
+
+  <rect x="560" y="374" width="600" height="62" fill="#ffe0b3"/>
+  <text x="570" y="394" class="addr">$1000–$13FF</text>
+  <text x="570" y="412" class="name">DAC + CV mux / sample-and-hold</text>
+  <text x="570" y="428" class="chip">AM6012 12-bit · channels $1000+n×$10 → 6 voices</text>
+
+  <rect x="560" y="438" width="600" height="74" fill="#ffe0b3"/>
+  <text x="570" y="458" class="addr">$0000–$0FFF</text>
+  <text x="570" y="476" class="name">DCO clock timers ×4</text>
+  <text x="570" y="492" class="chip">8254-class at $0000/$0400/$0800/$0C00</text>
+  <text x="570" y="506" class="chip">3 counters each = 12 oscillator clocks (boot-set)</text>
+
+  <!-- legend -->
+  <rect x="560" y="556" width="18" height="14" fill="#cfe2ff"/><text x="584" y="568" class="leg">ROM</text>
+  <rect x="640" y="556" width="18" height="14" fill="#d1f0d8"/><text x="664" y="568" class="leg">RAM</text>
+  <rect x="720" y="556" width="18" height="14" fill="#ffe0b3"/><text x="744" y="568" class="leg">memory-mapped I/O</text>
+
+  <text x="560" y="600" class="note">Banking: the $2000 (patch ROM, 8 banks) and $6000 (RAM, 4 banks) 8 KB windows</text>
+  <text x="560" y="616" class="note">are paged by writing the bank number to the $1D80 latch (FIRQ-masked during reads).</text>
+  <text x="560" y="640" class="note">CPU: Motorola 6809 @ 2 MHz (8 MHz crystal). ACIA clocked at 500 kHz (÷16 → 31250 baud).</text>
+</svg>

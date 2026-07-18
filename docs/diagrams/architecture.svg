@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="900" viewBox="0 0 1120 900" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#444"/></marker>
+    <marker id="arrR" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#c0392b"/></marker>
+    <marker id="arrG" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#2e7d32"/></marker>
+  </defs>
+  <style>
+    .ttl{font-size:22px;font-weight:bold;fill:#222}
+    .sub{font-size:13px;fill:#555}
+    .bx{font-size:14px;font-weight:bold;fill:#111}
+    .sm{font-size:11px;fill:#555;font-family:Menlo,monospace}
+    .lbl{font-size:11px;fill:#444}
+    .red{fill:#c0392b;font-size:12px;font-weight:bold}
+    .grn{fill:#2e7d32;font-size:12px;font-weight:bold}
+    .band{font-size:13px;font-weight:bold;fill:#777;letter-spacing:1px}
+    rect{stroke:#555;stroke-width:1.2}
+    line,path.w{stroke:#444;stroke-width:1.4;fill:none}
+  </style>
+
+  <text x="40" y="34" class="ttl">Oberheim Matrix-1000 — system architecture</text>
+  <text x="40" y="54" class="sub">A "dumb" analog voice array steered in real time by a 6809. Black = bus/control, red = interrupts, green = audio.</text>
+
+  <!-- ===================== DIGITAL CORE ===================== -->
+  <text x="40" y="92" class="band">DIGITAL CORE</text>
+
+  <!-- OS ROM -->
+  <rect x="60" y="105" width="175" height="66" rx="5" fill="#cfe2ff"/>
+  <text x="72" y="130" class="bx">OS / program ROM</text>
+  <text x="72" y="150" class="sm">27C256 · 32 KB · $8000+</text>
+  <text x="72" y="164" class="sm">the firmware</text>
+
+  <!-- CPU -->
+  <rect x="465" y="100" width="185" height="78" rx="5" fill="#f3f3f3"/>
+  <text x="498" y="132" class="bx">MC6809E CPU</text>
+  <text x="520" y="152" class="sm">2 MHz (8 MHz xtal)</text>
+  <text x="500" y="167" class="sm">RESET $8003</text>
+
+  <!-- bank latch + banked memory -->
+  <rect x="720" y="108" width="110" height="60" rx="5" fill="#ffe0b3"/>
+  <text x="732" y="132" class="bx" font-size="12">$1D80</text>
+  <text x="732" y="150" class="sm">bank latch</text>
+  <text x="732" y="163" class="sm">VA13–15</text>
+
+  <rect x="885" y="100" width="195" height="40" rx="5" fill="#d1f0d8"/>
+  <text x="897" y="125" class="bx" font-size="13">Work + user-patch RAM</text>
+  <rect x="885" y="148" width="195" height="36" rx="5" fill="#cfe2ff"/>
+  <text x="897" y="171" class="bx" font-size="13">Patch ROM (factory)</text>
+
+  <!-- bus links -->
+  <line x1="235" y1="138" x2="465" y2="138" marker-end="url(#arr)" marker-start="url(#arr)"/>
+  <line x1="650" y1="138" x2="720" y2="138" marker-end="url(#arr)"/>
+  <line x1="830" y1="138" x2="885" y2="120" marker-end="url(#arr)"/>
+  <line x1="830" y1="150" x2="885" y2="162" marker-end="url(#arr)"/>
+  <text x="320" y="130" class="lbl">addr / data bus</text>
+  <text x="838" y="132" class="lbl">pages →</text>
+
+  <!-- ===================== I/O + INTERRUPTS ===================== -->
+  <text x="40" y="232" class="band">I/O  +  INTERRUPTS</text>
+
+  <!-- Panel -->
+  <rect x="60" y="250" width="180" height="70" rx="5" fill="#ffe0b3"/>
+  <text x="72" y="274" class="bx">Front panel</text>
+  <text x="72" y="293" class="sm">switches in $1800/1801</text>
+  <text x="72" y="307" class="sm">LEDs + 3-digit display</text>
+  <line x1="150" y1="250" x2="150" y2="178" marker-end="url(#arr)" marker-start="url(#arr)"/>
+
+  <!-- ACIA -->
+  <rect x="300" y="250" width="170" height="70" rx="5" fill="#ffe0b3"/>
+  <text x="312" y="274" class="bx">MIDI ACIA</text>
+  <text x="312" y="293" class="sm">MC68B50 · $1406/$1407</text>
+  <text x="312" y="307" class="sm">8N1 · 31250 baud</text>
+  <!-- MIDI in/out -->
+  <line x1="300" y1="268" x2="252" y2="268" marker-start="url(#arr)"/>
+  <text x="248" y="264" class="lbl" text-anchor="end">MIDI In</text>
+  <line x1="252" y1="302" x2="300" y2="302" marker-end="url(#arr)"/>
+  <text x="248" y="306" class="lbl" text-anchor="end">MIDI Out</text>
+  <!-- FIRQ -->
+  <path class="w" d="M385,250 L385,200 L465,160" stroke="#c0392b" marker-end="url(#arrR)"/>
+  <text x="392" y="216" class="red">FIRQ — per byte</text>
+
+  <!-- Tick timer -->
+  <rect x="540" y="250" width="150" height="70" rx="5" fill="#ffe0b3"/>
+  <text x="552" y="274" class="bx">Tick timer</text>
+  <text x="552" y="293" class="sm">8254 · $1600</text>
+  <text x="552" y="307" class="sm">reloaded each IRQ</text>
+  <path class="w" d="M600,250 L600,196 L585,178" stroke="#c0392b" marker-end="url(#arrR)"/>
+  <text x="610" y="214" class="red">IRQ — ~50 Hz tick</text>
+
+  <!-- DCO timers -->
+  <rect x="760" y="250" width="210" height="70" rx="5" fill="#ffe0b3"/>
+  <text x="772" y="274" class="bx">4 × DCO timers</text>
+  <text x="772" y="293" class="sm">8254 · $0000/0400/0800/0C00</text>
+  <text x="772" y="307" class="sm">12 fixed clocks (boot-set)</text>
+  <line x1="700" y1="285" x2="650" y2="170" marker-end="url(#arr)" stroke-dasharray="3 3"/>
+
+  <!-- ===================== VOICE / ANALOG ===================== -->
+  <text x="40" y="372" class="band">VOICE  /  ANALOG  PATH</text>
+
+  <!-- DAC -->
+  <rect x="70" y="400" width="140" height="64" rx="5" fill="#e7d6ff"/>
+  <text x="82" y="426" class="bx">AM6012 DAC</text>
+  <text x="82" y="446" class="sm">12-bit · $1000</text>
+  <!-- CPU -> DAC -->
+  <path class="w" d="M520,178 L520,360 L140,360 L140,400" marker-end="url(#arr)"/>
+  <text x="300" y="354" class="lbl">write CV value + mux/S&amp;H strobe (every tick)</text>
+
+  <!-- mux -->
+  <rect x="250" y="400" width="150" height="64" rx="5" fill="#e7d6ff"/>
+  <text x="262" y="426" class="bx">4051/4053 mux</text>
+  <text x="262" y="446" class="sm">steer to channel</text>
+
+  <!-- S&H -->
+  <rect x="440" y="400" width="140" height="64" rx="5" fill="#e7d6ff"/>
+  <text x="452" y="426" class="bx">Sample &amp; Hold</text>
+  <text x="452" y="446" class="sm">~15 CVs / voice</text>
+
+  <!-- CEM voices -->
+  <rect x="620" y="388" width="250" height="92" rx="5" fill="#ffd9d2"/>
+  <text x="632" y="412" class="bx">6 × CEM3396 voices</text>
+  <text x="632" y="432" class="sm">2 DCO + waveshaper</text>
+  <text x="632" y="446" class="sm">+ 4-pole VCF + 2 VCA</text>
+  <text x="632" y="466" class="sm">(one chip = one voice)</text>
+
+  <!-- mixer/out -->
+  <rect x="910" y="400" width="160" height="64" rx="5" fill="#ffd9d2"/>
+  <text x="922" y="426" class="bx">Mixer → Out</text>
+  <text x="922" y="446" class="sm">audio output</text>
+
+  <line x1="210" y1="432" x2="250" y2="432" marker-end="url(#arr)"/>
+  <line x1="400" y1="432" x2="440" y2="432" marker-end="url(#arr)"/>
+  <line x1="580" y1="432" x2="620" y2="432" marker-end="url(#arr)"/>
+  <text x="586" y="426" class="lbl">CV</text>
+  <line x1="870" y1="434" x2="910" y2="434" stroke="#2e7d32" marker-end="url(#arrG)"/>
+  <text x="876" y="428" class="grn">audio</text>
+  <!-- dco clocks into voices -->
+  <path class="w" d="M865,320 L865,360 L744,360 L744,388" marker-end="url(#arr)" stroke-dasharray="3 3"/>
+  <text x="748" y="376" class="lbl">12 osc clocks</text>
+  <!-- voice status feedback -->
+  <path class="w" d="M745,480 L745,510 L540,510 L540,178" stroke="#888" stroke-dasharray="2 3" marker-end="url(#arr)"/>
+  <text x="556" y="500" class="lbl">voice status $2018+n×$300 → foreground poll</text>
+
+  <!-- ===================== SOFTWARE MODEL ===================== -->
+  <rect x="60" y="560" width="1020" height="300" rx="6" fill="#fbfbf7" stroke="#ccc"/>
+  <text x="78" y="586" class="band" fill="#555">SOFTWARE MODEL — three execution contexts converge on the tick engine</text>
+
+  <rect x="80" y="602" width="320" height="150" rx="5" fill="#fff" stroke="#bbb"/>
+  <text x="92" y="624" class="bx" font-size="13">① FIRQ — MIDI byte engine ($84B4)</text>
+  <text x="92" y="646" class="sm">highest priority, one byte at a time</text>
+  <text x="92" y="666" class="sm">RX ring $7593 · TX ring $7793</text>
+  <text x="92" y="686" class="sm">moves bytes only — never parses</text>
+  <text x="92" y="712" class="lbl">Decouples 31250-baud MIDI from the</text>
+  <text x="92" y="728" class="lbl">slower tick work.</text>
+
+  <rect x="412" y="602" width="350" height="150" rx="5" fill="#fff" stroke="#bbb"/>
+  <text x="424" y="624" class="bx" font-size="13">② IRQ tick engine ($85E7)</text>
+  <text x="424" y="646" class="sm">the real-time heartbeat (~50 Hz)</text>
+  <text x="424" y="666" class="sm">• reload $1600 tick timer</text>
+  <text x="424" y="686" class="sm">• drain MIDI RX → parser $C42B</text>
+  <text x="424" y="706" class="sm">• step 6 voices' envelopes/pitch</text>
+  <text x="424" y="726" class="sm">• run each voice's compiled mod program</text>
+  <text x="424" y="744" class="sm">• scan CVs out to the DAC ($875A)</text>
+
+  <rect x="774" y="602" width="288" height="150" rx="5" fill="#fff" stroke="#bbb"/>
+  <text x="786" y="624" class="bx" font-size="13">③ Foreground ($8302)</text>
+  <text x="786" y="646" class="sm">polls 6 voice flags $2018+</text>
+  <text x="786" y="666" class="sm">on a request, synthesizes a</text>
+  <text x="786" y="686" class="sm">fast-IRQ frame → tick engine,</text>
+  <text x="786" y="706" class="sm">which RTIs back to the poll</text>
+  <text x="786" y="730" class="lbl">No slow work here — it only</text>
+  <text x="786" y="746" class="lbl">raises the engine on demand.</text>
+
+  <text x="80" y="784" class="sm" fill="#333">Patch change → load 80-byte record (banked read via $1D80) → unpack → recompile the per-voice modulation</text>
+  <text x="80" y="802" class="sm" fill="#333">program (threaded code). Tuning correction is folded into the pitch primitive each tick (autotune).</text>
+  <text x="80" y="828" class="lbl">The modulation matrix is COMPILED to threaded code per voice, then run cheaply every tick — the architectural</text>
+  <text x="80" y="844" class="lbl">heart of how a 2 MHz 6809 sustains a 20-routing matrix across 6 voices in real time.</text>
+</svg>

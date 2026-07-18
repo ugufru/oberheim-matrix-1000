@@ -1,0 +1,857 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1380" height="860" viewBox="0 0 1380 860" font-family="Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1380" height="860" fill="#fcfcfb"/>
+<text x="40" y="40" font-size="22" font-weight="bold" fill="#222">Oberheim Matrix-1000 — factory patch map (813 patches)</text>
+<text x="40" y="62" font-size="13" fill="#666">Position from decoded parameters: x = mellow → bright, y = low → high register (rank-scaled). Colour = genre from the patch name.</text>
+<rect x="70" y="80" width="1000" height="700" fill="none" stroke="#ddd"/>
+<line x1="570" y1="80" x2="570" y2="780" stroke="#eee"/>
+<line x1="70" y1="430" x2="1070" y2="430" stroke="#eee"/>
+<text x="160" y="804" font-size="13" fill="#999" text-anchor="middle">← mellow</text>
+<text x="980" y="804" font-size="13" fill="#999" text-anchor="middle">bright →</text>
+<text x="42" y="430" font-size="13" fill="#999" transform="rotate(-90 42 430)" text-anchor="middle">low → high register</text>
+<circle cx="840.4" cy="615.2" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#200 obxa-11 (OB-Xa)</title></circle>
+<circle cx="819.7" cy="339.2" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#201 obxa-12 (OB-Xa)</title></circle>
+<circle cx="899.4" cy="674.7" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#202 obxa-a2 (OB-Xa)</title></circle>
+<circle cx="1040.8" cy="611.4" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#203 obxa-a7 (OB-Xa)</title></circle>
+<circle cx="911.3" cy="549.4" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#204 obxa-b7 (OB-Xa)</title></circle>
+<circle cx="1028.4" cy="752.9" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#205 obxa-b8 (OB-Xa)</title></circle>
+<circle cx="934.9" cy="774.5" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#206 obxa-c2 (OB-Xa)</title></circle>
+<circle cx="906.1" cy="635.8" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#207 obxa-c4 (OB-Xa)</title></circle>
+<circle cx="870.0" cy="732.8" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#208 obxa-c6 (OB-Xa)</title></circle>
+<circle cx="972.7" cy="707.0" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#209 obxa-c7 (OB-Xa)</title></circle>
+<circle cx="1020.4" cy="615.7" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#210 obxa-c8 (OB-Xa)</title></circle>
+<circle cx="993.0" cy="521.1" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#211 obxa-d2 (OB-Xa)</title></circle>
+<circle cx="973.6" cy="667.2" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#212 obxa-d3 (OB-Xa)</title></circle>
+<circle cx="914.4" cy="614.0" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#213 obxa-d4 (OB-Xa)</title></circle>
+<circle cx="770.9" cy="564.3" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#214 obxa-d5 (OB-Xa)</title></circle>
+<circle cx="847.7" cy="559.5" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#215 obxa-d6 (OB-Xa)</title></circle>
+<circle cx="1051.6" cy="555.7" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#216 obxa-d7 (OB-Xa)</title></circle>
+<circle cx="995.5" cy="560.1" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#217 obxa-d8 (OB-Xa)</title></circle>
+<circle cx="727.2" cy="630.4" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#218 obxa-9" (OB-Xa)</title></circle>
+<circle cx="963.5" cy="684.1" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#219 obca-re (OB-Xa)</title></circle>
+<circle cx="1050.4" cy="570.6" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#220 obxjmp (OB-Xa)</title></circle>
+<circle cx="741.6" cy="573.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#221 *'angel (Other)</title></circle>
+<circle cx="521.8" cy="741.8" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#222 + zeta + (Vintage synth)</title></circle>
+<circle cx="893.7" cy="702.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#223 1984swp6 (Other)</title></circle>
+<circle cx="993.6" cy="574.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#224 waves (Other)</title></circle>
+<circle cx="714.0" cy="343.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#225 80ms ddl (Other)</title></circle>
+<circle cx="888.3" cy="759.6" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#226 synth (Vintage synth)</title></circle>
+<circle cx="762.8" cy="322.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#227 aerial (Other)</title></circle>
+<circle cx="847.4" cy="688.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#228 alienswp (Other)</title></circle>
+<circle cx="835.6" cy="724.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#229 ambiance (Other)</title></circle>
+<circle cx="952.6" cy="759.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#230 anaftst* (Other)</title></circle>
+<circle cx="1034.0" cy="562.9" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#231 anaharp (Vintage synth)</title></circle>
+<circle cx="804.2" cy="672.3" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#232 analog b (Vintage synth)</title></circle>
+<circle cx="932.8" cy="563.1" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#233 anaxylo* (Bells/mallets)</title></circle>
+<circle cx="861.6" cy="565.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#234 angels (Other)</title></circle>
+<circle cx="976.1" cy="692.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#235 apollo (Other)</title></circle>
+<circle cx="699.1" cy="717.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#236 arcangel (Other)</title></circle>
+<circle cx="709.7" cy="668.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#237 argex-1 (Other)</title></circle>
+<circle cx="841.7" cy="350.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#238 argon7 (Other)</title></circle>
+<circle cx="875.1" cy="570.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#239 atypical (Other)</title></circle>
+<circle cx="1019.1" cy="691.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#240 aw why ? (Other)</title></circle>
+<circle cx="805.0" cy="238.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#241 benshimr (Other)</title></circle>
+<circle cx="843.9" cy="673.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#242 beowcomp (Other)</title></circle>
+<circle cx="753.4" cy="777.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#243 billy (Other)</title></circle>
+<circle cx="982.7" cy="753.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#244 blaszz (Other)</title></circle>
+<circle cx="834.7" cy="588.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#245 blockout (Other)</title></circle>
+<circle cx="910.2" cy="114.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#246 boeptyn* (Other)</title></circle>
+<circle cx="946.9" cy="239.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#247 bottles (Other)</title></circle>
+<circle cx="1003.3" cy="671.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#248 bounce* (Other)</title></circle>
+<circle cx="704.5" cy="682.8" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#249 brassvox (Brass/horns)</title></circle>
+<circle cx="755.7" cy="565.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#250 brillant (Other)</title></circle>
+<circle cx="900.3" cy="559.3" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#251 broadway (E-piano/keys)</title></circle>
+<circle cx="983.3" cy="248.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#252 bs etak* (Other)</title></circle>
+<circle cx="1010.8" cy="757.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#253 burnhous (Other)</title></circle>
+<circle cx="665.4" cy="692.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#254 camera 1 (Other)</title></circle>
+<circle cx="862.3" cy="602.4" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#255 chime 1 (Bells/mallets)</title></circle>
+<circle cx="879.2" cy="597.6" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#256 chime 2 (Bells/mallets)</title></circle>
+<circle cx="894.3" cy="724.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#257 chunk (Other)</title></circle>
+<circle cx="871.3" cy="333.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#258 cmi high (Other)</title></circle>
+<circle cx="848.5" cy="574.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#259 coeaur 1 (Other)</title></circle>
+<circle cx="527.9" cy="755.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#260 colony 9 (Other)</title></circle>
+<circle cx="1032.6" cy="101.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#261 cryslake (Other)</title></circle>
+<circle cx="874.4" cy="765.5" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#262 cs-80 (Vintage synth)</title></circle>
+<circle cx="720.6" cy="760.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#263 deacon (Other)</title></circle>
+<circle cx="925.2" cy="147.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#264 dejavue' (Other)</title></circle>
+<circle cx="589.9" cy="716.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#265 didier (Other)</title></circle>
+<circle cx="885.3" cy="560.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#266 distance (Other)</title></circle>
+<circle cx="921.5" cy="778.9" r="3.6" fill="#566573" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#267 dmachine (Percussion)</title></circle>
+<circle cx="910.3" cy="752.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#268 dreamer (Other)</title></circle>
+<circle cx="713.2" cy="713.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#269 dreemer (Other)</title></circle>
+<circle cx="1007.1" cy="569.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#270 ducktime (Other)</title></circle>
+<circle cx="893.1" cy="546.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#271 dunk it (Other)</title></circle>
+<circle cx="902.8" cy="346.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#272 e n o 1 (Other)</title></circle>
+<circle cx="764.3" cy="693.6" r="3.6" fill="#1abc9c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#273 echosyn (FX/texture)</title></circle>
+<circle cx="916.7" cy="726.4" r="3.6" fill="#1abc9c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#274 echotron (FX/texture)</title></circle>
+<circle cx="957.0" cy="774.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#275 egypt (Other)</title></circle>
+<circle cx="1030.2" cy="258.1" r="3.6" fill="#5dade2" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#276 ep swep* (Pad)</title></circle>
+<circle cx="723.4" cy="197.2" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#277 epch+brz (Brass/horns)</title></circle>
+<circle cx="848.5" cy="597.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#278 epdstrt* (Other)</title></circle>
+<circle cx="1014.4" cy="718.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#279 esq-1 (Other)</title></circle>
+<circle cx="762.9" cy="348.9" r="3.6" fill="#5dade2" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#280 etheree (Pad)</title></circle>
+<circle cx="950.7" cy="572.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#281 fake ddl (Other)</title></circle>
+<circle cx="709.4" cy="651.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#282 fifths (Other)</title></circle>
+<circle cx="671.7" cy="744.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#283 floatong (Other)</title></circle>
+<circle cx="1069.3" cy="754.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#284 flpflop* (Other)</title></circle>
+<circle cx="656.3" cy="569.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#285 fly to (Other)</title></circle>
+<circle cx="1003.7" cy="548.5" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#286 fm bass (Bass)</title></circle>
+<circle cx="974.9" cy="565.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#287 fundo (Other)</title></circle>
+<circle cx="810.9" cy="613.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#288 *funk art (Other)</title></circle>
+<circle cx="822.4" cy="625.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#289 funkay (Other)</title></circle>
+<circle cx="877.0" cy="746.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#290 furyo (Other)</title></circle>
+<circle cx="782.7" cy="342.1" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#291 fweep (Bass)</title></circle>
+<circle cx="766.9" cy="106.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#292 s.1 (Other)</title></circle>
+<circle cx="790.8" cy="246.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#293 galactic (Other)</title></circle>
+<circle cx="999.0" cy="184.1" r="3.6" fill="#566573" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#294 gallop * (Percussion)</title></circle>
+<circle cx="932.0" cy="705.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#295 geniveev (Other)</title></circle>
+<circle cx="882.9" cy="583.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#296 genviv (Other)</title></circle>
+<circle cx="896.6" cy="577.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#297 genviv* (Other)</title></circle>
+<circle cx="984.7" cy="680.1" r="3.6" fill="#5dade2" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#298 girlswep (Pad)</title></circle>
+<circle cx="851.3" cy="746.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#299 good bed (Other)</title></circle>
+<circle cx="94.9" cy="687.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#300 goodtime (Other)</title></circle>
+<circle cx="1070.0" cy="80.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#302 hackett (Other)</title></circle>
+<circle cx="197.0" cy="179.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#303 halo (Other)</title></circle>
+<circle cx="181.3" cy="501.7" r="3.6" fill="#c0399b" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#304 harmovox (Vocal/choir)</title></circle>
+<circle cx="261.9" cy="528.7" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#305 harpoon (Vintage synth)</title></circle>
+<circle cx="291.3" cy="547.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#306 heli-in (Other)</title></circle>
+<circle cx="137.4" cy="485.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#307 hometown (Other)</title></circle>
+<circle cx="238.7" cy="481.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#308 interstl (Other)</title></circle>
+<circle cx="229.1" cy="602.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#309 itsonice (Other)</title></circle>
+<circle cx="349.6" cy="544.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#310 jazzquit (Other)</title></circle>
+<circle cx="340.7" cy="532.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#311 jm jarre (Other)</title></circle>
+<circle cx="358.1" cy="516.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#312 john b's (Other)</title></circle>
+<circle cx="259.6" cy="607.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#313 kcepmax* (Other)</title></circle>
+<circle cx="274.0" cy="769.8" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#314 kcepsaw* (Vintage synth)</title></circle>
+<circle cx="300.4" cy="520.8" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#315 kchsync* (Vintage synth)</title></circle>
+<circle cx="154.9" cy="185.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#316 kirkland (Other)</title></circle>
+<circle cx="391.1" cy="453.5" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#317 ldsubhrm (Lead)</title></circle>
+<circle cx="380.1" cy="545.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#318 likethis (Other)</title></circle>
+<circle cx="325.9" cy="732.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#319 lstlaugh (Other)</title></circle>
+<circle cx="396.1" cy="691.6" r="3.6" fill="#5dade2" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#320 lun'air (Pad)</title></circle>
+<circle cx="232.1" cy="268.8" r="3.6" fill="#c0399b" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#321 m-choir (Vocal/choir)</title></circle>
+<circle cx="301.0" cy="165.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#322 magical (Other)</title></circle>
+<circle cx="161.2" cy="536.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#323 marin (Other)</title></circle>
+<circle cx="281.0" cy="439.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#324 matmodul (Other)</title></circle>
+<circle cx="249.7" cy="433.5" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#325 matrix 1 (Vintage synth)</title></circle>
+<circle cx="164.1" cy="501.2" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#326 matrix 2 (Vintage synth)</title></circle>
+<circle cx="184.5" cy="551.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#327 metaboad (Other)</title></circle>
+<circle cx="176.3" cy="442.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#328 metabrd (Other)</title></circle>
+<circle cx="214.5" cy="185.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#329 mindsear (Other)</title></circle>
+<circle cx="152.5" cy="171.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#330 monster (Other)</title></circle>
+<circle cx="139.2" cy="160.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#331 mr kyrie (Other)</title></circle>
+<circle cx="265.2" cy="451.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#332 musicbox (Other)</title></circle>
+<circle cx="164.5" cy="523.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#333 nautilus (Other)</title></circle>
+<circle cx="231.8" cy="454.5" r="3.6" fill="#c0399b" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#334 new vox (Vocal/choir)</title></circle>
+<circle cx="239.9" cy="514.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#335 newsound (Other)</title></circle>
+<circle cx="581.3" cy="508.0" r="3.6" fill="#5dade2" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#336 nightpad (Pad)</title></circle>
+<circle cx="353.8" cy="193.9" r="3.6" fill="#5dade2" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#337 ob sweep (Pad)</title></circle>
+<circle cx="173.7" cy="166.3" r="3.6" fill="#c0399b" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#338 ob vox* (Vocal/choir)</title></circle>
+<circle cx="200.8" cy="522.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#339 ob-intro (Other)</title></circle>
+<circle cx="229.2" cy="186.5" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#340 obxa-b2 (OB-Xa)</title></circle>
+<circle cx="397.3" cy="178.4" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#341 obxa-b4 (OB-Xa)</title></circle>
+<circle cx="168.9" cy="604.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#342 octavia (Other)</title></circle>
+<circle cx="319.5" cy="186.7" r="3.6" fill="#5dade2" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#343 open air (Pad)</title></circle>
+<circle cx="386.2" cy="430.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#344 ordinary (Other)</title></circle>
+<circle cx="326.5" cy="526.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#345 p chord (Other)</title></circle>
+<circle cx="258.4" cy="464.9" r="3.6" fill="#a04000" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#346 p-pluck (Plucked/guitar)</title></circle>
+<circle cx="160.8" cy="443.3" r="3.6" fill="#5dade2" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#347 pad (Pad)</title></circle>
+<circle cx="256.1" cy="329.1" r="3.6" fill="#566573" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#348 perc s (Percussion)</title></circle>
+<circle cx="225.0" cy="486.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#349 phase 5 (Other)</title></circle>
+<circle cx="201.8" cy="152.2" r="3.6" fill="#1abc9c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#350 phasecho (FX/texture)</title></circle>
+<circle cx="323.9" cy="172.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#351 picky (Other)</title></circle>
+<circle cx="176.2" cy="457.3" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#352 pipestr (Organ)</title></circle>
+<circle cx="240.3" cy="170.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#353 pn/fmswp (Other)</title></circle>
+<circle cx="347.0" cy="480.6" r="3.6" fill="#c0399b" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#354 polchoir (Vocal/choir)</title></circle>
+<circle cx="335.0" cy="487.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#355 power (Other)</title></circle>
+<circle cx="173.6" cy="293.7" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#356 prophet1 (Vintage synth)</title></circle>
+<circle cx="346.1" cy="161.3" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#357 prophet5 (Vintage synth)</title></circle>
+<circle cx="148.9" cy="511.0" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#358 prophetv (Vintage synth)</title></circle>
+<circle cx="263.6" cy="158.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#359 psylitis (Other)</title></circle>
+<circle cx="352.6" cy="179.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#360 rez*puls (Other)</title></circle>
+<circle cx="379.8" cy="475.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#361 reztful (Other)</title></circle>
+<circle cx="284.3" cy="184.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#362 sample (Other)</title></circle>
+<circle cx="410.4" cy="504.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#363 saturn (Other)</title></circle>
+<circle cx="301.9" cy="778.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#364 science (Other)</title></circle>
+<circle cx="267.7" cy="477.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#365 scritti+ (Other)</title></circle>
+<circle cx="300.5" cy="495.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#366 secrets (Other)</title></circle>
+<circle cx="338.3" cy="173.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#367 sensit 2 (Other)</title></circle>
+<circle cx="373.8" cy="177.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#368 sensitiv (Other)</title></circle>
+<circle cx="218.2" cy="459.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#369 sequinox (Other)</title></circle>
+<circle cx="189.1" cy="162.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#370 shankar (Other)</title></circle>
+<circle cx="310.5" cy="175.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#371 shimmer (Other)</title></circle>
+<circle cx="351.6" cy="300.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#372 shimring (Other)</title></circle>
+<circle cx="321.9" cy="540.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#373 shivers (Other)</title></circle>
+<circle cx="307.2" cy="534.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#374 skrchtn* (Other)</title></circle>
+<circle cx="308.8" cy="507.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#375 sktsoky* (Other)</title></circle>
+<circle cx="298.0" cy="181.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#376 sky high (Other)</title></circle>
+<circle cx="195.4" cy="507.2" r="3.6" fill="#c0399b" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#377 skyvoice (Vocal/choir)</title></circle>
+<circle cx="258.2" cy="491.2" r="3.6" fill="#566573" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#378 slapbach (Percussion)</title></circle>
+<circle cx="223.0" cy="173.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#379 slidstg (Other)</title></circle>
+<circle cx="674.2" cy="479.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#380 slow cry (Other)</title></circle>
+<circle cx="246.1" cy="543.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#381 slowater (Other)</title></circle>
+<circle cx="212.6" cy="598.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#382 smthsq2* (Other)</title></circle>
+<circle cx="291.2" cy="141.6" r="3.6" fill="#5dade2" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#383 soft mix (Pad)</title></circle>
+<circle cx="358.6" cy="491.8" r="3.6" fill="#5dade2" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#384 soundpad (Pad)</title></circle>
+<circle cx="343.3" cy="780.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#385 soundtr[ (Other)</title></circle>
+<circle cx="318.6" cy="493.0" r="3.6" fill="#1abc9c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#386 space (FX/texture)</title></circle>
+<circle cx="389.0" cy="516.0" r="3.6" fill="#1abc9c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#387 space/co (FX/texture)</title></circle>
+<circle cx="349.9" cy="437.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#388 sparkles (Other)</title></circle>
+<circle cx="373.3" cy="532.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#389 splash 1 (Other)</title></circle>
+<circle cx="303.7" cy="150.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#390 stellar* (Other)</title></circle>
+<circle cx="188.1" cy="433.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#391 stugrowl (Other)</title></circle>
+<circle cx="189.5" cy="465.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#392 styx (Other)</title></circle>
+<circle cx="696.2" cy="458.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#393 submarin (Other)</title></circle>
+<circle cx="1029.3" cy="525.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#394 sunday (Other)</title></circle>
+<circle cx="353.9" cy="146.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#395 sussudio (Other)</title></circle>
+<circle cx="392.0" cy="489.4" r="3.6" fill="#5dade2" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#396 swepcord (Pad)</title></circle>
+<circle cx="317.6" cy="146.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#397 swrleko* (Other)</title></circle>
+<circle cx="250.8" cy="447.9" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#398 syn box* (Vintage synth)</title></circle>
+<circle cx="291.4" cy="532.6" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#399 syncage* (Vintage synth)</title></circle>
+<circle cx="378.6" cy="460.4" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#400 totohorn (Brass/horns)</title></circle>
+<circle cx="397.5" cy="440.6" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#401 obxa-13 (OB-Xa)</title></circle>
+<circle cx="225.4" cy="200.8" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#402 obxa-a1 (OB-Xa)</title></circle>
+<circle cx="1070.0" cy="93.6" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#403 obxa-b1 (OB-Xa)</title></circle>
+<circle cx="158.0" cy="700.1" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#404 obxa-c1 (OB-Xa)</title></circle>
+<circle cx="319.3" cy="416.8" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#405 obxa-d1 (OB-Xa)</title></circle>
+<circle cx="825.6" cy="98.2" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#406 6r brass (Brass/horns)</title></circle>
+<circle cx="412.4" cy="242.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#407 agresorn (Other)</title></circle>
+<circle cx="637.3" cy="95.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#408 alaska (Other)</title></circle>
+<circle cx="649.9" cy="245.9" r="3.6" fill="#566573" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#409 ana hit* (Percussion)</title></circle>
+<circle cx="691.8" cy="102.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#410 anasutl* (Other)</title></circle>
+<circle cx="868.2" cy="361.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#411 b'ari/s2 (Other)</title></circle>
+<circle cx="471.7" cy="410.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#412 b/d-ana* (Other)</title></circle>
+<circle cx="762.2" cy="133.1" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#413 bagpipes (Organ)</title></circle>
+<circle cx="539.1" cy="120.9" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#414 barisax (Brass/horns)</title></circle>
+<circle cx="538.2" cy="135.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#415 basclrnt (Other)</title></circle>
+<circle cx="693.9" cy="381.6" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#416 bassclar (Bass)</title></circle>
+<circle cx="357.3" cy="415.6" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#417 bassoon (Bass)</title></circle>
+<circle cx="612.1" cy="232.5" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#418 bendhorn (Brass/horns)</title></circle>
+<circle cx="560.6" cy="588.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#419 bigbra$$ (Other)</title></circle>
+<circle cx="637.0" cy="379.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#420 bones (Other)</title></circle>
+<circle cx="948.2" cy="203.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#421 brasramp (Other)</title></circle>
+<circle cx="657.8" cy="231.1" r="3.6" fill="#c0399b" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#422 btrassvox (Vocal/choir)</title></circle>
+<circle cx="647.8" cy="369.8" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#423 brassy (Brass/horns)</title></circle>
+<circle cx="547.8" cy="427.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#424 brazen (Other)</title></circle>
+<circle cx="573.9" cy="219.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#425 brecher (Other)</title></circle>
+<circle cx="885.7" cy="124.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#426 brth flt (Other)</title></circle>
+<circle cx="449.4" cy="594.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#427 brutus (Other)</title></circle>
+<circle cx="579.3" cy="205.9" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#428 brziviv* (Brass/horns)</title></circle>
+<circle cx="936.8" cy="214.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#429 buchann* (Other)</title></circle>
+<circle cx="704.7" cy="391.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#430 buzreed (Other)</title></circle>
+<circle cx="645.5" cy="204.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#431 chroma-s (Other)</title></circle>
+<circle cx="643.6" cy="231.8" r="3.6" fill="#af7ac5" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#432 clarinet (Woodwind)</title></circle>
+<circle cx="437.4" cy="352.0" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#433 crazhorn (Brass/horns)</title></circle>
+<circle cx="692.1" cy="288.5" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#434 cs-80 (Vintage synth)</title></circle>
+<circle cx="649.3" cy="406.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#435 cuivre(( (Other)</title></circle>
+<circle cx="700.6" cy="90.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#436 dblreed* (Other)</title></circle>
+<circle cx="583.2" cy="132.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#437 eastreed (Other)</title></circle>
+<circle cx="233.3" cy="351.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#438 edgy (Other)</title></circle>
+<circle cx="748.7" cy="592.0" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#439 ensembl* (Strings)</title></circle>
+<circle cx="797.8" cy="130.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#440 europe (Other)</title></circle>
+<circle cx="716.1" cy="116.6" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#441 ewf horn (Brass/horns)</title></circle>
+<circle cx="653.5" cy="217.2" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#442 ezybrass (Brass/horns)</title></circle>
+<circle cx="823.8" cy="136.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#443 factory (Other)</title></circle>
+<circle cx="623.6" cy="118.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#444 fifths (Other)</title></circle>
+<circle cx="725.2" cy="430.0" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#445 flglhorn (Brass/horns)</title></circle>
+<circle cx="466.9" cy="363.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#446 floot (Other)</title></circle>
+<circle cx="898.7" cy="227.2" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#447 flugelhn (Brass/horns)</title></circle>
+<circle cx="622.6" cy="376.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#448 flugle (Other)</title></circle>
+<circle cx="886.0" cy="201.5" r="3.6" fill="#af7ac5" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#449 flute (Woodwind)</title></circle>
+<circle cx="811.5" cy="215.4" r="3.6" fill="#af7ac5" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#450 flute tr (Woodwind)</title></circle>
+<circle cx="686.1" cy="211.5" r="3.6" fill="#af7ac5" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#451 flute. (Woodwind)</title></circle>
+<circle cx="762.5" cy="407.1" r="3.6" fill="#af7ac5" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#452 flutes (Woodwind)</title></circle>
+<circle cx="483.8" cy="435.6" r="3.6" fill="#af7ac5" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#453 flutey (Woodwind)</title></circle>
+<circle cx="562.7" cy="432.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#454 flux (Other)</title></circle>
+<circle cx="945.7" cy="137.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#455 fm braz (Other)</title></circle>
+<circle cx="654.3" cy="383.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#456 fm delay (Other)</title></circle>
+<circle cx="946.7" cy="224.8" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#457 fr.horn (Brass/horns)</title></circle>
+<circle cx="957.9" cy="215.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#458 fnrchrn* (Other)</title></circle>
+<circle cx="951.0" cy="110.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#459 fthweel* (Other)</title></circle>
+<circle cx="817.9" cy="231.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#460 fue.japn (Other)</title></circle>
+<circle cx="568.2" cy="258.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#461 fusion (Other)</title></circle>
+<circle cx="678.9" cy="382.8" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#462 fweep (Bass)</title></circle>
+<circle cx="516.2" cy="424.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#463 gabriel (Other)</title></circle>
+<circle cx="1012.8" cy="189.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#464 go bed (Other)</title></circle>
+<circle cx="728.9" cy="240.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#465 goliath (Other)</title></circle>
+<circle cx="743.2" cy="238.7" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#466 horn'em (Brass/horns)</title></circle>
+<circle cx="412.2" cy="403.3" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#467 horn-1 (Brass/horns)</title></circle>
+<circle cx="730.7" cy="119.6" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#468 hornens (Brass/horns)</title></circle>
+<circle cx="590.5" cy="592.2" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#469 hornfall (Brass/horns)</title></circle>
+<circle cx="755.3" cy="230.8" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#470 hornsas (Brass/horns)</title></circle>
+<circle cx="562.7" cy="120.0" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#471 horny (Brass/horns)</title></circle>
+<circle cx="484.6" cy="387.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#472 hrnshake (Other)</title></circle>
+<circle cx="813.2" cy="353.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#473 j hammer (Other)</title></circle>
+<circle cx="877.6" cy="420.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#474 jtullflt (Other)</title></circle>
+<circle cx="516.2" cy="358.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#475 jubilee (Other)</title></circle>
+<circle cx="541.7" cy="412.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#476 klarynet (Other)</title></circle>
+<circle cx="683.7" cy="136.5" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#477 korghorn (Brass/horns)</title></circle>
+<circle cx="711.5" cy="134.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#478 lyricon (Other)</title></circle>
+<circle cx="638.4" cy="218.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#479 matrone (Other)</title></circle>
+<circle cx="657.9" cy="359.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#480 melfaze* (Other)</title></circle>
+<circle cx="757.5" cy="117.8" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#481 melohorn (Brass/horns)</title></circle>
+<circle cx="565.0" cy="403.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#482 metheny5 (Other)</title></circle>
+<circle cx="737.3" cy="224.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#483 mutetrpt (Other)</title></circle>
+<circle cx="416.5" cy="438.1" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#484 ob brass (Brass/horns)</title></circle>
+<circle cx="612.4" cy="386.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#485 ob-8 (Other)</title></circle>
+<circle cx="512.1" cy="390.6" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#486 oberhorn (Brass/horns)</title></circle>
+<circle cx="516.7" cy="244.6" r="3.6" fill="#af7ac5" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#487 oboe (Woodwind)</title></circle>
+<circle cx="823.2" cy="120.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#488 oct.brs (Other)</title></circle>
+<circle cx="632.0" cy="303.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#489 octaflut (Other)</title></circle>
+<circle cx="837.1" cy="203.8" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#490 octahorn (Brass/horns)</title></circle>
+<circle cx="419.8" cy="372.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#491 orient (Other)</title></circle>
+<circle cx="529.9" cy="403.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#492 pedswp* (Other)</title></circle>
+<circle cx="565.0" cy="206.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#493 peg-brs (Other)</title></circle>
+<circle cx="655.5" cy="429.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#494 pyrmflt* (Other)</title></circle>
+<circle cx="574.6" cy="392.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#495 rahoool* (Other)</title></circle>
+<circle cx="1020.6" cy="223.2" r="3.6" fill="#af7ac5" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#496 recorder (Woodwind)</title></circle>
+<circle cx="675.8" cy="595.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#497 relvelho (Other)</title></circle>
+<circle cx="421.5" cy="417.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#498 richcord (Other)</title></circle>
+<circle cx="786.4" cy="116.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#499 roman (Other)</title></circle>
+<circle cx="432.1" cy="251.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#500 sexafoam (Other)</title></circle>
+<circle cx="605.1" cy="398.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#501 slo hrn (Other)</title></circle>
+<circle cx="691.5" cy="357.0" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#502 sopipes (Organ)</title></circle>
+<circle cx="735.2" cy="418.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#503 spatbrs* (Other)</title></circle>
+<circle cx="555.5" cy="414.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#504 squardou (Other)</title></circle>
+<circle cx="182.5" cy="723.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#505 stab (Other)</title></circle>
+<circle cx="1057.8" cy="80.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#506 stab-brs (Other)</title></circle>
+<circle cx="1049.9" cy="105.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#507 steps 2. (Other)</title></circle>
+<circle cx="203.5" cy="585.0" r="3.6" fill="#af7ac5" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#508 stuflute (Woodwind)</title></circle>
+<circle cx="116.7" cy="90.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#509 swrlybrd (Other)</title></circle>
+<circle cx="132.5" cy="636.6" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#510 syn sax* (Vintage synth)</title></circle>
+<circle cx="1070.0" cy="199.0" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#511 synbass (Bass)</title></circle>
+<circle cx="171.1" cy="775.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#512 synbone (Other)</title></circle>
+<circle cx="91.5" cy="194.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#513 synbrss* (Other)</title></circle>
+<circle cx="633.7" cy="624.8" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#514 synhorn (Brass/horns)</title></circle>
+<circle cx="1045.6" cy="343.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#515 tbrazz (Other)</title></circle>
+<circle cx="114.5" cy="435.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#516 tenor (Other)</title></circle>
+<circle cx="437.8" cy="551.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#517 totoal (Other)</title></circle>
+<circle cx="113.1" cy="145.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#518 touch+go (Other)</title></circle>
+<circle cx="147.6" cy="735.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#519 trillflt (Other)</title></circle>
+<circle cx="1029.6" cy="627.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#520 trmbone* (Other)</title></circle>
+<circle cx="894.9" cy="113.1" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#521 trombone (Brass/horns)</title></circle>
+<circle cx="1009.9" cy="646.5" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#522 trumpets (Brass/horns)</title></circle>
+<circle cx="71.4" cy="337.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#523 trupt-eu (Other)</title></circle>
+<circle cx="114.2" cy="549.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#524 * 99 * (Other)</title></circle>
+<circle cx="129.4" cy="677.8" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#525 tuba 2 (Brass/horns)</title></circle>
+<circle cx="126.3" cy="210.7" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#526 obxa-a8 (OB-Xa)</title></circle>
+<circle cx="658.8" cy="341.6" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#527 elead* (Lead)</title></circle>
+<circle cx="1069.0" cy="121.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#528 bdth-2 (Other)</title></circle>
+<circle cx="704.3" cy="147.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#529 birdy (Other)</title></circle>
+<circle cx="567.3" cy="650.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#530 breckerl (Other)</title></circle>
+<circle cx="80.9" cy="584.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#531 castillo (Other)</title></circle>
+<circle cx="103.5" cy="186.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#532 chick (Other)</title></circle>
+<circle cx="73.8" cy="738.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#533 destroy+ (Other)</title></circle>
+<circle cx="769.3" cy="335.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#534 digrunge (Other)</title></circle>
+<circle cx="131.4" cy="663.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#535 dragon-3 (Other)</title></circle>
+<circle cx="91.0" cy="662.0" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#536 dxindian (Vintage synth)</title></circle>
+<circle cx="773.2" cy="635.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#537 feedbak6 (Other)</title></circle>
+<circle cx="933.8" cy="249.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#538 feedbak8 (Other)</title></circle>
+<circle cx="167.4" cy="629.8" r="3.6" fill="#a04000" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#539 feedgit (Plucked/guitar)</title></circle>
+<circle cx="566.0" cy="683.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#540 fifth i% (Other)</title></circle>
+<circle cx="86.9" cy="97.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#541 fifthlix (Other)</title></circle>
+<circle cx="1024.1" cy="574.8" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#542 glasleed (Lead)</title></circle>
+<circle cx="571.4" cy="368.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#543 growlbrs (Other)</title></circle>
+<circle cx="839.1" cy="336.2" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#544 h-lead (Lead)</title></circle>
+<circle cx="79.7" cy="203.3" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#545 hileed 6 (Lead)</title></circle>
+<circle cx="1044.1" cy="281.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#546 j hammer (Other)</title></circle>
+<circle cx="143.1" cy="655.4" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#547 jakoleed (Lead)</title></circle>
+<circle cx="127.8" cy="649.8" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#548 jan lead (Lead)</title></circle>
+<circle cx="1034.2" cy="191.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#549 jazz (Other)</title></circle>
+<circle cx="816.9" cy="199.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#550 jimy'srg (Other)</title></circle>
+<circle cx="1002.2" cy="625.5" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#551 kc lead* (Lead)</title></circle>
+<circle cx="885.5" cy="642.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#552 kidding? (Other)</title></circle>
+<circle cx="77.2" cy="709.5" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#553 lead+prt (Lead)</title></circle>
+<circle cx="175.6" cy="325.3" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#554 lead-1 (Lead)</title></circle>
+<circle cx="75.9" cy="661.4" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#555 lead-3 (Lead)</title></circle>
+<circle cx="552.2" cy="618.0" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#556 leed-1 (Lead)</title></circle>
+<circle cx="592.9" cy="575.4" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#557 leed-2 (Lead)</title></circle>
+<circle cx="869.7" cy="189.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#558 lyle 2 (Other)</title></circle>
+<circle cx="1043.4" cy="652.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#559 lyle 3 m (Other)</title></circle>
+<circle cx="193.2" cy="639.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#560 metheney (Other)</title></circle>
+<circle cx="104.0" cy="577.5" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#561 metlsolo (Lead)</title></circle>
+<circle cx="84.6" cy="161.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#562 milescom (Other)</title></circle>
+<circle cx="742.9" cy="645.3" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#563 minimogg (Vintage synth)</title></circle>
+<circle cx="97.8" cy="765.0" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#564 minimoog (Vintage synth)</title></circle>
+<circle cx="83.4" cy="723.2" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#565 monostrg (Strings)</title></circle>
+<circle cx="93.6" cy="335.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#566 nasty (Other)</title></circle>
+<circle cx="73.8" cy="224.2" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#567 ob lead* (Lead)</title></circle>
+<circle cx="103.8" cy="347.7" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#568 osc sync (Vintage synth)</title></circle>
+<circle cx="103.8" cy="641.3" r="3.6" fill="#af7ac5" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#569 panfloet (Woodwind)</title></circle>
+<circle cx="110.1" cy="627.9" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#570 pinklead (Lead)</title></circle>
+<circle cx="245.6" cy="597.4" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#571 powrsolo (Lead)</title></circle>
+<circle cx="108.0" cy="111.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#572 prsslide (Other)</title></circle>
+<circle cx="897.2" cy="90.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#573 quincy (Other)</title></circle>
+<circle cx="882.2" cy="665.9" r="3.6" fill="#af7ac5" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#574 recorder (Woodwind)</title></circle>
+<circle cx="678.2" cy="93.4" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#575 rezlead* (Lead)</title></circle>
+<circle cx="627.8" cy="550.7" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#576 sawlead* (Vintage synth)</title></circle>
+<circle cx="95.5" cy="629.1" r="3.6" fill="#a04000" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#577 sitar (Plucked/guitar)</title></circle>
+<circle cx="70.3" cy="641.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#578 smooth (Other)</title></circle>
+<circle cx="1050.9" cy="639.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#579 smuthsq* (Other)</title></circle>
+<circle cx="545.0" cy="604.1" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#580 solo (Lead)</title></circle>
+<circle cx="94.8" cy="613.2" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#581 solodarm (Lead)</title></circle>
+<circle cx="444.4" cy="112.5" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#582 soloprof (Lead)</title></circle>
+<circle cx="1053.5" cy="585.0" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#583 solosync (Vintage synth)</title></circle>
+<circle cx="1047.5" cy="515.4" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#584 solow* (Lead)</title></circle>
+<circle cx="909.4" cy="99.0" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#585 sopipes (Organ)</title></circle>
+<circle cx="121.4" cy="771.3" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#586 spitleed (Lead)</title></circle>
+<circle cx="404.4" cy="339.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#587 sqareled (Other)</title></circle>
+<circle cx="957.1" cy="599.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#588 stuvib (Other)</title></circle>
+<circle cx="118.0" cy="639.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#589 susguit (Other)</title></circle>
+<circle cx="126.4" cy="102.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#590 snthe 5 (Other)</title></circle>
+<circle cx="136.3" cy="412.5" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#591 uksolo (Lead)</title></circle>
+<circle cx="780.8" cy="327.5" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#592 unibass (Bass)</title></circle>
+<circle cx="112.3" cy="653.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#593 uniwave (Other)</title></circle>
+<circle cx="170.8" cy="208.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#594 wakemans (Other)</title></circle>
+<circle cx="144.7" cy="670.5" r="3.6" fill="#1abc9c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#595 weirdprc (FX/texture)</title></circle>
+<circle cx="133.0" cy="248.9" r="3.6" fill="#af7ac5" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#596 whistler (Woodwind)</title></circle>
+<circle cx="564.6" cy="608.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#597 winand 1 (Other)</title></circle>
+<circle cx="116.6" cy="667.4" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#598 xa'solo (Lead)</title></circle>
+<circle cx="778.9" cy="602.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#599 zaw'qart (Other)</title></circle>
+<circle cx="85.6" cy="675.2" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#600 obxa-10 (OB-Xa)</title></circle>
+<circle cx="70.8" cy="675.5" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#601 obxa-14 (OB-Xa)</title></circle>
+<circle cx="152.6" cy="577.8" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#602 obxa-a3 (OB-Xa)</title></circle>
+<circle cx="90.0" cy="350.3" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#603 obxa-b3 (OB-Xa)</title></circle>
+<circle cx="722.8" cy="644.6" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#604 obxa-b6 (OB-Xa)</title></circle>
+<circle cx="558.3" cy="92.9" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#605 obxa-c3 (OB-Xa)</title></circle>
+<circle cx="968.8" cy="255.5" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#606 obxa (OB-Xa)</title></circle>
+<circle cx="181.3" cy="196.5" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#607 obxa-6 (OB-Xa)</title></circle>
+<circle cx="132.4" cy="754.7" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#608 (arco)01 (Strings)</title></circle>
+<circle cx="104.8" cy="705.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#609 *'canopy (Other)</title></circle>
+<circle cx="462.6" cy="308.8" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#610 1000strg (Strings)</title></circle>
+<circle cx="425.8" cy="319.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#611 top (Other)</title></circle>
+<circle cx="476.3" cy="259.6" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#612 2000strg (Strings)</title></circle>
+<circle cx="90.5" cy="295.4" r="3.6" fill="#a04000" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#613 agitato* (Plucked/guitar)</title></circle>
+<circle cx="412.1" cy="277.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#614 all love (Other)</title></circle>
+<circle cx="433.9" cy="298.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#615 alt84top (Other)</title></circle>
+<circle cx="391.9" cy="330.7" r="3.6" fill="#566573" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#616 bed trak (Percussion)</title></circle>
+<circle cx="408.9" cy="297.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#617 blacseam (Other)</title></circle>
+<circle cx="900.2" cy="151.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#618 bow it (Other)</title></circle>
+<circle cx="369.3" cy="281.7" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#619 bow viol (Strings)</title></circle>
+<circle cx="524.3" cy="301.0" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#620 cello (Strings)</title></circle>
+<circle cx="479.8" cy="276.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#621 chamber (Other)</title></circle>
+<circle cx="619.9" cy="293.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#622 chillo (Other)</title></circle>
+<circle cx="866.1" cy="157.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#623 classika (Other)</title></circle>
+<circle cx="467.8" cy="142.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#624 concert (Other)</title></circle>
+<circle cx="480.0" cy="342.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#625 deepcave (Other)</title></circle>
+<circle cx="488.9" cy="265.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#626 depths (Other)</title></circle>
+<circle cx="451.5" cy="318.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#627 dlaystr* (Other)</title></circle>
+<circle cx="618.1" cy="99.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#628 donstrig (Other)</title></circle>
+<circle cx="578.5" cy="320.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#629 dou'ciel (Other)</title></circle>
+<circle cx="533.4" cy="249.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#630 dungeon (Other)</title></circle>
+<circle cx="438.6" cy="263.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#631 dynasty (Other)</title></circle>
+<circle cx="541.9" cy="261.5" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#632 e.violin (Strings)</title></circle>
+<circle cx="433.3" cy="285.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#633 famus*ob (Other)</title></circle>
+<circle cx="420.8" cy="305.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#634 forests (Other)</title></circle>
+<circle cx="467.3" cy="271.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#635 granules (Other)</title></circle>
+<circle cx="455.5" cy="345.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#636 great"ob (Other)</title></circle>
+<circle cx="473.8" cy="299.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#637 harmonic (Other)</title></circle>
+<circle cx="486.3" cy="304.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#638 icy-chrd (Other)</title></circle>
+<circle cx="425.8" cy="271.3" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#639 indnstrg (Strings)</title></circle>
+<circle cx="703.0" cy="316.8" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#640 lowstrng (Strings)</title></circle>
+<circle cx="589.8" cy="145.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#641 loyal (Other)</title></circle>
+<circle cx="405.8" cy="325.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#642 lushness (Other)</title></circle>
+<circle cx="464.9" cy="323.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#643 lyle-8va (Other)</title></circle>
+<circle cx="460.6" cy="294.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#644 mello=14 (Other)</title></circle>
+<circle cx="421.0" cy="290.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#645 mksings (Other)</title></circle>
+<circle cx="451.9" cy="331.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#646 money $$ (Other)</title></circle>
+<circle cx="547.8" cy="246.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#647 mutedstr (Other)</title></circle>
+<circle cx="498.2" cy="254.8" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#648 mzstring (Strings)</title></circle>
+<circle cx="678.7" cy="256.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#649 noble (Other)</title></circle>
+<circle cx="586.2" cy="249.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#650 noistgs (Other)</title></circle>
+<circle cx="522.4" cy="285.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#651 ob a3pd* (Other)</title></circle>
+<circle cx="484.2" cy="290.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#652 ob-str1n (Other)</title></circle>
+<circle cx="514.2" cy="311.4" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#653 ob-strgs (Strings)</title></circle>
+<circle cx="510.5" cy="297.2" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#654 obstring (Strings)</title></circle>
+<circle cx="438.5" cy="312.3" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#655 obxa-a6 (OB-Xa)</title></circle>
+<circle cx="584.7" cy="277.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#656 ocarina (Other)</title></circle>
+<circle cx="479.1" cy="328.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#657 ochestry (Other)</title></circle>
+<circle cx="431.9" cy="140.7" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#658 openstrg (Strings)</title></circle>
+<circle cx="504.4" cy="236.3" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#659 orch* (Strings)</title></circle>
+<circle cx="517.5" cy="325.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#660 orient (Other)</title></circle>
+<circle cx="636.8" cy="110.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#661 pitz str (Other)</title></circle>
+<circle cx="182.5" cy="138.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#662 pizz^+p2 (Other)</title></circle>
+<circle cx="497.4" cy="294.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#663 planet p (Other)</title></circle>
+<circle cx="500.4" cy="307.3" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#664 polstrg2 (Strings)</title></circle>
+<circle cx="397.3" cy="273.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#665 prohet-5 (Other)</title></circle>
+<circle cx="661.1" cy="594.4" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#666 prophet5 (Vintage synth)</title></circle>
+<circle cx="449.1" cy="303.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#667 rid zep (Other)</title></circle>
+<circle cx="665.2" cy="580.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#668 royal ph (Other)</title></circle>
+<circle cx="661.5" cy="80.5" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#669 rp strg5 (Strings)</title></circle>
+<circle cx="516.7" cy="272.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#670 secrets' (Other)</title></circle>
+<circle cx="493.9" cy="280.4" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#671 sharpbow (Vintage synth)</title></circle>
+<circle cx="913.8" cy="157.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#672 shift (Other)</title></circle>
+<circle cx="503.5" cy="321.5" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#673 shrtstrg (Strings)</title></circle>
+<circle cx="137.0" cy="768.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#674 sings (Other)</title></circle>
+<circle cx="482.7" cy="144.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#675 slidstg (Other)</title></circle>
+<circle cx="436.6" cy="100.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#676 slow bow (Other)</title></circle>
+<circle cx="506.5" cy="148.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#677 slow cry (Other)</title></circle>
+<circle cx="506.8" cy="335.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#678 smash (Other)</title></circle>
+<circle cx="547.4" cy="581.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#679 solemn (Other)</title></circle>
+<circle cx="128.8" cy="279.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#680 solemnis (Other)</title></circle>
+<circle cx="848.1" cy="89.7" r="3.6" fill="#e84393" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#681 solo (Lead)</title></circle>
+<circle cx="443.5" cy="195.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#682 soundtr (Other)</title></circle>
+<circle cx="685.9" cy="302.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#683 soundtrk (Other)</title></circle>
+<circle cx="454.1" cy="266.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#684 soundtr[ (Other)</title></circle>
+<circle cx="439.2" cy="326.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#685 srtrongs (Other)</title></circle>
+<circle cx="604.6" cy="135.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#686 stand up (Other)</title></circle>
+<circle cx="406.5" cy="310.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#687 str end* (Other)</title></circle>
+<circle cx="446.5" cy="289.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#688 str-8va (Other)</title></circle>
+<circle cx="501.7" cy="105.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#689 stranger (Other)</title></circle>
+<circle cx="513.2" cy="258.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#690 streeng (Other)</title></circle>
+<circle cx="479.8" cy="474.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#691 streengs (Other)</title></circle>
+<circle cx="660.0" cy="94.5" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#692 string 2 (Strings)</title></circle>
+<circle cx="908.3" cy="313.4" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#693 string 6 (Strings)</title></circle>
+<circle cx="507.5" cy="283.4" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#694 string 7 (Strings)</title></circle>
+<circle cx="912.6" cy="139.2" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#695 string 8 (Strings)</title></circle>
+<circle cx="492.8" cy="330.9" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#696 string s (Strings)</title></circle>
+<circle cx="571.7" cy="87.5" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#697 string"8 (Strings)</title></circle>
+<circle cx="448.7" cy="252.6" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#698 string-1 (Strings)</title></circle>
+<circle cx="456.5" cy="280.4" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#699 stringer (Strings)</title></circle>
+<circle cx="466.6" cy="337.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#700 **a!a!** (Other)</title></circle>
+<circle cx="502.6" cy="269.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#701 2600-2 (Other)</title></circle>
+<circle cx="475.2" cy="314.6" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#702 agrebass (Bass)</title></circle>
+<circle cx="489.4" cy="316.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#703 anteater (Other)</title></circle>
+<circle cx="527.7" cy="262.8" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#704 arp-2600 (Vintage synth)</title></circle>
+<circle cx="443.3" cy="275.6" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#705 atypbass (Bass)</title></circle>
+<circle cx="470.3" cy="285.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#706 axxe (Other)</title></circle>
+<circle cx="534.1" cy="311.4" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#707 barisax (Brass/horns)</title></circle>
+<circle cx="496.2" cy="137.8" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#708 bass pad (Bass)</title></circle>
+<circle cx="1064.1" cy="106.4" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#710 bass zzt (Bass)</title></circle>
+<circle cx="1032.5" cy="86.1" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#711 bass-11 (Bass)</title></circle>
+<circle cx="1005.4" cy="247.4" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#712 bassa (Bass)</title></circle>
+<circle cx="807.1" cy="627.9" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#713 bassclar (Bass)</title></circle>
+<circle cx="757.3" cy="638.5" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#714 tubular (Bells/mallets)</title></circle>
+<circle cx="957.9" cy="746.3" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#715 basse oa (Bass)</title></circle>
+<circle cx="971.9" cy="611.5" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#716 bassgtar (Bass)</title></circle>
+<circle cx="873.3" cy="711.4" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#717 basshipo (Bass)</title></circle>
+<circle cx="983.8" cy="550.1" r="3.6" fill="#d4ac0d" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#718 basshorn (Brass/horns)</title></circle>
+<circle cx="965.6" cy="720.4" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#719 bassviol (Strings)</title></circle>
+<circle cx="759.0" cy="735.4" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#720 bassvox (Bass)</title></circle>
+<circle cx="954.0" cy="637.9" r="3.6" fill="#a04000" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#721 big pik (Plucked/guitar)</title></circle>
+<circle cx="1012.1" cy="583.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#722 birdland (Other)</title></circle>
+<circle cx="936.1" cy="747.5" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#723 bolubass (Bass)</title></circle>
+<circle cx="725.0" cy="614.6" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#724 botbass (Bass)</title></circle>
+<circle cx="876.7" cy="679.9" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#725 bowbass (Bass)</title></circle>
+<circle cx="892.1" cy="618.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#726 braas (Other)</title></circle>
+<circle cx="961.2" cy="561.0" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#727 bs/strg* (Strings)</title></circle>
+<circle cx="675.4" cy="702.9" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#728 uni bass (Bass)</title></circle>
+<circle cx="942.5" cy="616.1" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#729 clavbass (E-piano/keys)</title></circle>
+<circle cx="667.3" cy="761.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#730 boublebs (Other)</title></circle>
+<circle cx="916.9" cy="705.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#731 duck 2 (Other)</title></circle>
+<circle cx="987.9" cy="436.8" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#732 duckbass (Bass)</title></circle>
+<circle cx="832.1" cy="644.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#733 earthess (Other)</title></circle>
+<circle cx="856.6" cy="706.9" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#734 elc bass (Bass)</title></circle>
+<circle cx="1031.3" cy="681.1" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#735 elec bs* (E-piano/keys)</title></circle>
+<circle cx="748.3" cy="712.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#736 fanknbaz (Other)</title></circle>
+<circle cx="980.5" cy="719.8" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#737 faz bass (Bass)</title></circle>
+<circle cx="685.3" cy="737.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#738 floorit (Other)</title></circle>
+<circle cx="997.4" cy="751.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#739 fret eko (Other)</title></circle>
+<circle cx="809.3" cy="720.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#740 fret not (Other)</title></circle>
+<circle cx="689.4" cy="632.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#741 funk baz (Other)</title></circle>
+<circle cx="928.9" cy="622.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#742 harmbas5 (Other)</title></circle>
+<circle cx="998.9" cy="692.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#744 hotbodom (Other)</title></circle>
+<circle cx="987.1" cy="702.2" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#745 jan bass (Bass)</title></circle>
+<circle cx="865.6" cy="664.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#746 jocko (Other)</title></circle>
+<circle cx="827.7" cy="673.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#747 jocko 2 (Other)</title></circle>
+<circle cx="950.9" cy="734.3" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#748 leedbass (Bass)</title></circle>
+<circle cx="843.5" cy="655.4" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#749 lumpbass (Bass)</title></circle>
+<circle cx="739.8" cy="616.4" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#750 minibass (Vintage synth)</title></circle>
+<circle cx="857.6" cy="651.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#751 mono bs* (Other)</title></circle>
+<circle cx="872.1" cy="650.5" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#752 mooger (Vintage synth)</title></circle>
+<circle cx="822.1" cy="604.3" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#753 mooog_b (Vintage synth)</title></circle>
+<circle cx="669.3" cy="244.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#754 muffel (Other)</title></circle>
+<circle cx="971.0" cy="240.4" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#755 noisbass (Bass)</title></circle>
+<circle cx="818.9" cy="649.3" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#756 octabass (Bass)</title></circle>
+<circle cx="989.9" cy="617.2" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#757 orbass (Bass)</title></circle>
+<circle cx="780.5" cy="732.8" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#758 ow bass (Bass)</title></circle>
+<circle cx="792.4" cy="681.9" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#759 pabass* (Bass)</title></circle>
+<circle cx="846.0" cy="776.8" r="3.6" fill="#a04000" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#760 pluck-bs (Plucked/guitar)</title></circle>
+<circle cx="801.9" cy="733.3" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#761 polbass1 (Bass)</title></circle>
+<circle cx="964.1" cy="627.2" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#762 polybass (Bass)</title></circle>
+<circle cx="1033.0" cy="695.8" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#763 pukbass (Bass)</title></circle>
+<circle cx="779.8" cy="673.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#764 r + b (Other)</title></circle>
+<circle cx="721.2" cy="659.6" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#765 ragabass (Bass)</title></circle>
+<circle cx="856.8" cy="255.4" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#766 velbass (Bass)</title></circle>
+<circle cx="793.4" cy="721.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#767 rubber (Other)</title></circle>
+<circle cx="682.6" cy="616.6" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#768 sequbass (Bass)</title></circle>
+<circle cx="734.4" cy="603.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#769 velgrowl (Other)</title></circle>
+<circle cx="848.0" cy="732.0" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#770 sincbass (Bass)</title></circle>
+<circle cx="971.5" cy="596.9" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#771 wapbass (Bass)</title></circle>
+<circle cx="861.9" cy="684.8" r="3.6" fill="#566573" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#772 slap 1 (Percussion)</title></circle>
+<circle cx="992.6" cy="729.6" r="3.6" fill="#566573" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#773 slap 2 (Percussion)</title></circle>
+<circle cx="978.6" cy="626.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#774 slider (Other)</title></circle>
+<circle cx="928.3" cy="676.0" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#775 slowbass (Bass)</title></circle>
+<circle cx="813.7" cy="569.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#776 snthbs1* (Other)</title></circle>
+<circle cx="947.4" cy="710.4" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#777 softbass (Bass)</title></circle>
+<circle cx="681.6" cy="662.0" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#778 spitbass (Bass)</title></circle>
+<circle cx="783.4" cy="698.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#779 squisbaz (Other)</title></circle>
+<circle cx="922.8" cy="585.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#780 stand up (Other)</title></circle>
+<circle cx="698.2" cy="554.4" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#781 stbass (Bass)</title></circle>
+<circle cx="798.2" cy="556.5" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#782 str.bass (Bass)</title></circle>
+<circle cx="836.6" cy="630.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#783 strangtk (Other)</title></circle>
+<circle cx="816.0" cy="663.7" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#784 stribass (Bass)</title></circle>
+<circle cx="829.7" cy="659.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#785 wet baz (Other)</title></circle>
+<circle cx="1017.1" cy="779.8" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#786 stringbz (Strings)</title></circle>
+<circle cx="973.4" cy="740.8" r="3.6" fill="#a04000" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#787 sugita" (Plucked/guitar)</title></circle>
+<circle cx="1009.8" cy="741.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#788 support (Other)</title></circle>
+<circle cx="994.4" cy="714.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#789 swellbaz (Other)</title></circle>
+<circle cx="713.1" cy="747.7" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#790 swp.bass (Bass)</title></circle>
+<circle cx="1043.8" cy="596.5" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#791 sybass 2 (Bass)</title></circle>
+<circle cx="664.0" cy="628.0" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#792 syn bs2* (Vintage synth)</title></circle>
+<circle cx="1034.9" cy="709.8" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#793 syn bs3* (Vintage synth)</title></circle>
+<circle cx="1016.9" cy="676.8" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#794 syn bs4* (Vintage synth)</title></circle>
+<circle cx="859.3" cy="722.4" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#795 syncbass (Vintage synth)</title></circle>
+<circle cx="1022.0" cy="766.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#796 taurus (Other)</title></circle>
+<circle cx="805.7" cy="692.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#797 tenu'ob2 (Other)</title></circle>
+<circle cx="942.8" cy="659.7" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#799 tikbass (Bass)</title></circle>
+<circle cx="811.1" cy="764.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#800 ak-48 (Other)</title></circle>
+<circle cx="925.3" cy="764.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#802 ballgame (Other)</title></circle>
+<circle cx="941.7" cy="694.2" r="3.6" fill="#a04000" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#803 banjo (Plucked/guitar)</title></circle>
+<circle cx="915.0" cy="689.7" r="3.6" fill="#7f5539" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#804 bassdrum (Bass)</title></circle>
+<circle cx="939.8" cy="722.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#805 bdth-1 (Other)</title></circle>
+<circle cx="928.8" cy="734.8" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#806 bell 1 (Bells/mallets)</title></circle>
+<circle cx="743.5" cy="552.5" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#807 bellike (Bells/mallets)</title></circle>
+<circle cx="922.3" cy="649.1" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#808 bells (Bells/mallets)</title></circle>
+<circle cx="776.2" cy="550.3" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#809 bells-gs (Bells/mallets)</title></circle>
+<circle cx="765.5" cy="622.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#810 bi-plane (Other)</title></circle>
+<circle cx="991.6" cy="589.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#811 bottles (Other)</title></circle>
+<circle cx="215.7" cy="690.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#812 btmehrdr (Other)</title></circle>
+<circle cx="1044.2" cy="93.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#814 cascad'4 (Other)</title></circle>
+<circle cx="265.2" cy="503.5" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#815 chimes (Bells/mallets)</title></circle>
+<circle cx="129.2" cy="514.9" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#816 chimes* (Bells/mallets)</title></circle>
+<circle cx="162.9" cy="486.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#817 chopperz (Other)</title></circle>
+<circle cx="222.2" cy="537.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#818 coinop 3 (Other)</title></circle>
+<circle cx="157.3" cy="457.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#819 copolips (Other)</title></circle>
+<circle cx="293.7" cy="508.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#820 crazyman (Other)</title></circle>
+<circle cx="204.4" cy="454.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#821 cricket (Other)</title></circle>
+<circle cx="256.0" cy="515.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#822 croztalk (Other)</title></circle>
+<circle cx="381.0" cy="503.5" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#823 db bell (Bells/mallets)</title></circle>
+<circle cx="370.8" cy="192.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#824 didier (Other)</title></circle>
+<circle cx="310.7" cy="739.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#825 dreaming (Other)</title></circle>
+<circle cx="232.3" cy="527.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#826 drifter* (Other)</title></circle>
+<circle cx="194.4" cy="541.2" r="3.6" fill="#566573" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#827 drumpop (Percussion)</title></circle>
+<circle cx="230.2" cy="468.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#828 dunderz (Other)</title></circle>
+<circle cx="410.0" cy="698.3" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#829 dx-pluck (Vintage synth)</title></circle>
+<circle cx="247.7" cy="527.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#830 turbo (Other)</title></circle>
+<circle cx="103.8" cy="226.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#831 fallchym (Other)</title></circle>
+<circle cx="347.3" cy="501.9" r="3.6" fill="#1abc9c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#832 fireball (FX/texture)</title></circle>
+<circle cx="395.6" cy="503.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#833 flame on (Other)</title></circle>
+<circle cx="327.8" cy="475.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#834 flextone (Other)</title></circle>
+<circle cx="281.2" cy="471.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#835 fmpluks (Other)</title></circle>
+<circle cx="322.4" cy="512.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#836 furyo 2 (Other)</title></circle>
+<circle cx="189.6" cy="448.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#837 g.s.2 (Other)</title></circle>
+<circle cx="215.8" cy="155.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#838 g.s.3 (Other)</title></circle>
+<circle cx="201.2" cy="774.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#839 glock (Other)</title></circle>
+<circle cx="234.8" cy="686.7" r="3.6" fill="#1abc9c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#840 winds (FX/texture)</title></circle>
+<circle cx="380.1" cy="444.5" r="3.6" fill="#1abc9c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#841 haunting (FX/texture)</title></circle>
+<circle cx="203.1" cy="469.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#842 heart (Other)</title></circle>
+<circle cx="387.4" cy="531.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#843 zap (Other)</title></circle>
+<circle cx="324.9" cy="461.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#844 horrors (Other)</title></circle>
+<circle cx="150.0" cy="478.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#845 howitzer (Other)</title></circle>
+<circle cx="576.6" cy="173.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#846 hvn+hell (Other)</title></circle>
+<circle cx="365.1" cy="546.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#847 indian (Other)</title></circle>
+<circle cx="331.1" cy="436.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#848 top-gun* (Other)</title></circle>
+<circle cx="248.3" cy="158.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#849 insides (Other)</title></circle>
+<circle cx="272.8" cy="170.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#850 jettz 3 (Other)</title></circle>
+<circle cx="132.4" cy="542.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#851 junkanoo (Other)</title></circle>
+<circle cx="231.2" cy="768.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#852 wetfeet (Other)</title></circle>
+<circle cx="333.2" cy="759.3" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#853 kingong (Bells/mallets)</title></circle>
+<circle cx="375.8" cy="155.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#854 kontakte (Other)</title></circle>
+<circle cx="374.8" cy="517.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#855 lctrcute (Other)</title></circle>
+<circle cx="208.4" cy="535.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#856 whizz (Other)</title></circle>
+<circle cx="201.3" cy="440.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#857 lfo art (Other)</title></circle>
+<circle cx="166.5" cy="468.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#858 lfomalet (Other)</title></circle>
+<circle cx="89.4" cy="528.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#859 liftoff (Other)</title></circle>
+<circle cx="336.8" cy="450.7" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#860 loopbell (Bells/mallets)</title></circle>
+<circle cx="362.7" cy="477.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#861 lyle 3 p (Other)</title></circle>
+<circle cx="340.9" cy="464.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#862 lyles' (Other)</title></circle>
+<circle cx="138.5" cy="469.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#863 thundrus (Other)</title></circle>
+<circle cx="357.2" cy="451.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#864 machinsm (Other)</title></circle>
+<circle cx="364.7" cy="463.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#865 maniac* (Other)</title></circle>
+<circle cx="244.0" cy="461.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#866 marima (Other)</title></circle>
+<circle cx="275.6" cy="531.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#867 mofo (Other)</title></circle>
+<circle cx="123.0" cy="473.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#868 memories (Other)</title></circle>
+<circle cx="308.2" cy="482.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#869 mountain (Other)</title></circle>
+<circle cx="97.2" cy="467.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#870 mrimbah* (Other)</title></circle>
+<circle cx="332.9" cy="502.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#871 nasteez (Other)</title></circle>
+<circle cx="284.2" cy="273.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#872 warnings (Other)</title></circle>
+<circle cx="210.1" cy="487.0" r="3.6" fill="#1abc9c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#873 noise-dn (FX/texture)</title></circle>
+<circle cx="270.5" cy="517.5" r="3.6" fill="#5dade2" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#874 noisswep* (Pad)</title></circle>
+<circle cx="284.9" cy="519.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#875 noizgate (Other)</title></circle>
+<circle cx="361.3" cy="769.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#876 nthenews (Other)</title></circle>
+<circle cx="372.6" cy="490.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#877 nuke em' (Other)</title></circle>
+<circle cx="170.5" cy="547.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#878 ociean (Other)</title></circle>
+<circle cx="150.3" cy="496.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#879 oceanwav (Other)</title></circle>
+<circle cx="261.9" cy="542.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#880 oozes 3 (Other)</title></circle>
+<circle cx="268.8" cy="186.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#881 phases* (Other)</title></circle>
+<circle cx="314.2" cy="161.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#882 pinwheel (Other)</title></circle>
+<circle cx="273.1" cy="491.5" r="3.6" fill="#a04000" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#883 pluck (Plucked/guitar)</title></circle>
+<circle cx="279.7" cy="454.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#884 polbels2 (Other)</title></circle>
+<circle cx="232.4" cy="549.4" r="3.6" fill="#1abc9c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#885 polnoise (FX/texture)</title></circle>
+<circle cx="108.3" cy="454.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#886 portal (Other)</title></circle>
+<circle cx="246.2" cy="499.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#887 psychym (Other)</title></circle>
+<circle cx="724.9" cy="726.9" r="3.6" fill="#1abc9c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#888 rainecho (FX/texture)</title></circle>
+<circle cx="221.7" cy="715.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#889 )rapist( (Other)</title></circle>
+<circle cx="321.6" cy="447.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#890 water (Other)</title></circle>
+<circle cx="251.7" cy="747.4" r="3.6" fill="#566573" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#891 rubrtoms (Percussion)</title></circle>
+<circle cx="203.3" cy="166.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#892 saturday (Other)</title></circle>
+<circle cx="277.9" cy="148.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#893 scratch (Other)</title></circle>
+<circle cx="346.7" cy="765.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#894 seqeunce (Other)</title></circle>
+<circle cx="295.2" cy="475.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#895 sgusting (Other)</title></circle>
+<circle cx="296.7" cy="717.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#896 shrnkray (Other)</title></circle>
+<circle cx="146.6" cy="539.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#897 simonisk (Other)</title></circle>
+<circle cx="253.0" cy="478.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#898 smash* (Other)</title></circle>
+<circle cx="359.9" cy="263.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#899 smplthis (Other)</title></circle>
+<circle cx="312.4" cy="254.0" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#900 papano 4 (E-piano/keys)</title></circle>
+<circle cx="279.9" cy="505.7" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#901 mikpiano (E-piano/keys)</title></circle>
+<circle cx="289.7" cy="156.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#902 honoclab (Other)</title></circle>
+<circle cx="287.2" cy="489.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#903 mr.rogrs (Other)</title></circle>
+<circle cx="196.0" cy="492.9" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#904 mtl pno* (E-piano/keys)</title></circle>
+<circle cx="146.3" cy="447.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#905 musette (Other)</title></circle>
+<circle cx="287.5" cy="170.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#906 mutdclv* (Other)</title></circle>
+<circle cx="315.0" cy="705.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#907 mutrono (Other)</title></circle>
+<circle cx="361.5" cy="159.7" r="3.6" fill="#a04000" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#908 nylnpik* (Plucked/guitar)</title></circle>
+<circle cx="184.5" cy="753.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#909 nylnpk2* (Other)</title></circle>
+<circle cx="255.4" cy="276.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#910 nylon 12 (Other)</title></circle>
+<circle cx="366.2" cy="504.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#911 ob8 jump (Other)</title></circle>
+<circle cx="331.3" cy="160.3" r="3.6" fill="#c0399b" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#912 obnoxvox (Vocal/choir)</title></circle>
+<circle cx="182.3" cy="486.7" r="3.6" fill="#e74c3c" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#913 obxa-b5 (OB-Xa)</title></circle>
+<circle cx="216.3" cy="473.9" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#914 odx 7 (Vintage synth)</title></circle>
+<circle cx="1057.4" cy="93.5" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#915 oorgan (Organ)</title></circle>
+<circle cx="170.4" cy="740.6" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#916 laz harp (Vintage synth)</title></circle>
+<circle cx="426.5" cy="397.0" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#917 organ 9 (Organ)</title></circle>
+<circle cx="767.1" cy="216.0" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#918 organ-1 (Organ)</title></circle>
+<circle cx="543.6" cy="365.2" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#919 organ-1p (Organ)</title></circle>
+<circle cx="568.3" cy="336.1" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#920 organ-2 (Organ)</title></circle>
+<circle cx="403.6" cy="206.6" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#921 organism (Organ)</title></circle>
+<circle cx="714.6" cy="401.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#922 akoustik (Other)</title></circle>
+<circle cx="754.0" cy="394.8" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#923 orgnize* (Organ)</title></circle>
+<circle cx="516.2" cy="407.8" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#924 p.organ (Organ)</title></circle>
+<circle cx="595.9" cy="124.0" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#925 p.organ4 (Organ)</title></circle>
+<circle cx="744.2" cy="111.0" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#926 p.organ5 (Organ)</title></circle>
+<circle cx="771.8" cy="588.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#927 pa ano 5 (Other)</title></circle>
+<circle cx="417.4" cy="212.6" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#928 harpo (Vintage synth)</title></circle>
+<circle cx="732.8" cy="403.1" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#929 papano 7 (E-piano/keys)</title></circle>
+<circle cx="835.0" cy="108.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#930 lullabox (Other)</title></circle>
+<circle cx="212.6" cy="133.6" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#931 percclav (E-piano/keys)</title></circle>
+<circle cx="391.6" cy="215.1" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#932 percpno (E-piano/keys)</title></circle>
+<circle cx="537.1" cy="385.6" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#933 pianitar (E-piano/keys)</title></circle>
+<circle cx="528.9" cy="235.7" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#934 piano (E-piano/keys)</title></circle>
+<circle cx="642.6" cy="393.2" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#935 piano bo (E-piano/keys)</title></circle>
+<circle cx="773.4" cy="373.5" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#936 pianola (E-piano/keys)</title></circle>
+<circle cx="610.4" cy="341.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#937 b-3.1 (Other)</title></circle>
+<circle cx="596.0" cy="348.0" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#938 pinpiano (E-piano/keys)</title></circle>
+<circle cx="917.9" cy="350.2" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#939 pipeorg. (Organ)</title></circle>
+<circle cx="526.0" cy="128.3" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#940 pipeorg: (Organ)</title></circle>
+<circle cx="700.3" cy="188.8" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#941 pipes (Organ)</title></circle>
+<circle cx="750.0" cy="415.4" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#942 pipstrng (Strings)</title></circle>
+<circle cx="674.3" cy="359.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#943 pirates! (Other)</title></circle>
+<circle cx="556.4" cy="386.2" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#944 pno-elec (E-piano/keys)</title></circle>
+<circle cx="666.4" cy="375.2" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#945 polpianp (E-piano/keys)</title></circle>
+<circle cx="434.0" cy="369.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#946 prelude1 (Other)</title></circle>
+<circle cx="482.0" cy="362.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#947 preslez1 (Other)</title></circle>
+<circle cx="388.6" cy="387.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#948 profit (Other)</title></circle>
+<circle cx="1030.4" cy="333.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#949 proph w (Other)</title></circle>
+<circle cx="792.8" cy="384.1" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#950 prophet (Vintage synth)</title></circle>
+<circle cx="472.7" cy="377.1" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#951 respiano (E-piano/keys)</title></circle>
+<circle cx="627.1" cy="390.5" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#952 rmipiano (E-piano/keys)</title></circle>
+<circle cx="609.3" cy="372.0" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#953 roads (E-piano/keys)</title></circle>
+<circle cx="621.0" cy="417.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#954 sal00n 5 (Other)</title></circle>
+<circle cx="741.2" cy="378.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#955 saloon 3 (Other)</title></circle>
+<circle cx="632.7" cy="404.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#956 b-3.2 (Other)</title></circle>
+<circle cx="726.9" cy="369.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#957 saloon 7 (Other)</title></circle>
+<circle cx="582.2" cy="263.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#958 samplorg (Other)</title></circle>
+<circle cx="859.0" cy="415.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#959 samsgrnd (Other)</title></circle>
+<circle cx="591.3" cy="395.6" r="3.6" fill="#a04000" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#960 sitar i (Plucked/guitar)</title></circle>
+<circle cx="628.3" cy="200.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#961 smthsq2* (Other)</title></circle>
+<circle cx="587.4" cy="224.1" r="3.6" fill="#af7ac5" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#962 spaniel (Woodwind)</title></circle>
+<circle cx="582.6" cy="379.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#963 sprprts* (Other)</title></circle>
+<circle cx="594.9" cy="365.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#964 b-3.3 (Other)</title></circle>
+<circle cx="1037.6" cy="365.2" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#965 b3+lslie (Organ)</title></circle>
+<circle cx="1053.9" cy="240.5" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#966 strgtr2* (Strings)</title></circle>
+<circle cx="1044.0" cy="264.0" r="3.6" fill="#e67e22" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#967 syn clav (Vintage synth)</title></circle>
+<circle cx="550.7" cy="400.5" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#968 bells (Bells/mallets)</title></circle>
+<circle cx="618.4" cy="402.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#969 synluth (Other)</title></circle>
+<circle cx="804.9" cy="398.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#970 blabinet (Other)</title></circle>
+<circle cx="554.3" cy="132.0" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#971 synpiano (E-piano/keys)</title></circle>
+<circle cx="429.2" cy="125.9" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#972 celeste (Bells/mallets)</title></circle>
+<circle cx="598.4" cy="382.3" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#973 chimes (Bells/mallets)</title></circle>
+<circle cx="423.5" cy="358.7" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#974 tineout (E-piano/keys)</title></circle>
+<circle cx="597.1" cy="235.7" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#975 tonypian (E-piano/keys)</title></circle>
+<circle cx="690.5" cy="395.3" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#976 toypiano (E-piano/keys)</title></circle>
+<circle cx="615.6" cy="431.4" r="3.6" fill="#16a085" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#977 twinstrg (Strings)</title></circle>
+<circle cx="601.2" cy="426.8" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#978 church (Organ)</title></circle>
+<circle cx="634.2" cy="365.0" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#979 vibechoes (Bells/mallets)</title></circle>
+<circle cx="655.7" cy="125.0" r="3.6" fill="#27ae60" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#980 vibes (Bells/mallets)</title></circle>
+<circle cx="606.7" cy="357.7" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#981 clav b6 (E-piano/keys)</title></circle>
+<circle cx="405.6" cy="354.1" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#982 clavi 2 (E-piano/keys)</title></circle>
+<circle cx="399.4" cy="96.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#983 wa clab* (Other)</title></circle>
+<circle cx="700.2" cy="406.5" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#984 clavinet (E-piano/keys)</title></circle>
+<circle cx="637.2" cy="125.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#985 whaano (Other)</title></circle>
+<circle cx="1003.4" cy="111.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#986 why fm (Other)</title></circle>
+<circle cx="540.4" cy="350.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#987 clickorg (Other)</title></circle>
+<circle cx="1062.8" cy="218.7" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#988 wurli8 (E-piano/keys)</title></circle>
+<circle cx="531.6" cy="594.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#989 clubs (Other)</title></circle>
+<circle cx="1017.8" cy="424.4" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#990 wurly 2 (E-piano/keys)</title></circle>
+<circle cx="550.1" cy="203.2" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#991 wurly 3 (E-piano/keys)</title></circle>
+<circle cx="797.1" cy="411.4" r="3.6" fill="#2980b9" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#992 x-grand (E-piano/keys)</title></circle>
+<circle cx="607.5" cy="413.3" r="3.6" fill="#8e44ad" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#993 xa'organ (Organ)</title></circle>
+<circle cx="782.9" cy="435.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#994 youreyes (Other)</title></circle>
+<circle cx="716.4" cy="184.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#995 zither (Other)</title></circle>
+<circle cx="960.8" cy="230.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#996 cordine1 (Other)</title></circle>
+<circle cx="783.8" cy="420.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#997 d"ammond (Other)</title></circle>
+<circle cx="643.7" cy="353.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#998 greezy1 (Other)</title></circle>
+<circle cx="428.8" cy="429.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#999 grndr 6* (Other)</title></circle>
+<circle cx="336.9" cy="225.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1000  (Other)</title></circle>
+<circle cx="409.6" cy="425.2" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1001  (Other)</title></circle>
+<circle cx="522.7" cy="437.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1002  (Other)</title></circle>
+<circle cx="782.9" cy="212.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1003  (Other)</title></circle>
+<circle cx="737.3" cy="284.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1004  (Other)</title></circle>
+<circle cx="801.9" cy="116.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1005  (Other)</title></circle>
+<circle cx="596.8" cy="260.5" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1006  (Other)</title></circle>
+<circle cx="796.8" cy="429.6" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1007  (Other)</title></circle>
+<circle cx="791.8" cy="199.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1008  (Other)</title></circle>
+<circle cx="620.4" cy="362.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1009  (Other)</title></circle>
+<circle cx="543.6" cy="103.8" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1010  (Other)</title></circle>
+<circle cx="529.7" cy="371.3" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1011  (Other)</title></circle>
+<circle cx="938.9" cy="424.9" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1012  (Other)</title></circle>
+<circle cx="401.0" cy="232.4" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1013  (Other)</title></circle>
+<circle cx="637.0" cy="340.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1014  (Other)</title></circle>
+<circle cx="606.1" cy="218.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1015  (Other)</title></circle>
+<circle cx="594.9" cy="105.7" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1016  (Other)</title></circle>
+<circle cx="73.7" cy="759.1" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1017  (Other)</title></circle>
+<circle cx="1044.5" cy="80.0" r="3.6" fill="#bbbbbb" fill-opacity="0.82" stroke="#fff" stroke-width="0.4"><title>#1018  (Other)</title></circle>
+<text x="1110" y="86" font-size="14" font-weight="bold" fill="#333">Genre</text>
+<circle cx="1116" cy="104" r="5" fill="#e74c3c"/>
+<text x="1128" y="108" font-size="12" fill="#333">OB-Xa</text>
+<circle cx="1116" cy="126" r="5" fill="#e67e22"/>
+<text x="1128" y="130" font-size="12" fill="#333">Vintage synth</text>
+<circle cx="1116" cy="148" r="5" fill="#8e44ad"/>
+<text x="1128" y="152" font-size="12" fill="#333">Organ</text>
+<circle cx="1116" cy="170" r="5" fill="#2980b9"/>
+<text x="1128" y="174" font-size="12" fill="#333">E-piano/keys</text>
+<circle cx="1116" cy="192" r="5" fill="#16a085"/>
+<text x="1128" y="196" font-size="12" fill="#333">Strings</text>
+<circle cx="1116" cy="214" r="5" fill="#d4ac0d"/>
+<text x="1128" y="218" font-size="12" fill="#333">Brass/horns</text>
+<circle cx="1116" cy="236" r="5" fill="#7f5539"/>
+<text x="1128" y="240" font-size="12" fill="#333">Bass</text>
+<circle cx="1116" cy="258" r="5" fill="#c0399b"/>
+<text x="1128" y="262" font-size="12" fill="#333">Vocal/choir</text>
+<circle cx="1116" cy="280" r="5" fill="#27ae60"/>
+<text x="1128" y="284" font-size="12" fill="#333">Bells/mallets</text>
+<circle cx="1116" cy="302" r="5" fill="#5dade2"/>
+<text x="1128" y="306" font-size="12" fill="#333">Pad</text>
+<circle cx="1116" cy="324" r="5" fill="#e84393"/>
+<text x="1128" y="328" font-size="12" fill="#333">Lead</text>
+<circle cx="1116" cy="346" r="5" fill="#566573"/>
+<text x="1128" y="350" font-size="12" fill="#333">Percussion</text>
+<circle cx="1116" cy="368" r="5" fill="#a04000"/>
+<text x="1128" y="372" font-size="12" fill="#333">Plucked/guitar</text>
+<circle cx="1116" cy="390" r="5" fill="#1abc9c"/>
+<text x="1128" y="394" font-size="12" fill="#333">FX/texture</text>
+<circle cx="1116" cy="412" r="5" fill="#af7ac5"/>
+<text x="1128" y="416" font-size="12" fill="#333">Woodwind</text>
+<circle cx="1116" cy="434" r="5" fill="#bbbbbb"/>
+<text x="1128" y="438" font-size="12" fill="#333">Other</text>
+</svg>
