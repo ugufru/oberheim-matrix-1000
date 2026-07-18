@@ -8,8 +8,7 @@ firmware's own unpack code. From the **v1.11** OS ROM + the factory patch ROM.
 ## Where the records are
 
 - 80 bytes per patch (`$BD39`: `×$50`); 100 patches per 8 KB bank.
-- **Factory**: banks 2–9 → the 64 KB patch ROM
-  (`reference/extracted/matrix-1000/patch-rom/…`), 800 patches, file offset
+- **Factory**: banks 2–9 → the 64 KB patch ROM, 800 patches, file offset
   `(patch# − 200) × 80`.
 - **User**: banks 0–1 → battery RAM, 200 patches.
 

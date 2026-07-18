@@ -57,7 +57,7 @@ display — the earlier semi-ASCII bytes in the raw record were parameter data
 coincidentally in the ASCII range, not names).
 
 **Confirmed against external data.** The factory patch *names* exist (the Don
-Solaris patchbook in `reference/` lists all 1000, e.g. #200 = `obxa-11`), but they
+Solaris patchbook lists all 1000, e.g. #200 = `obxa-11`; see [sources.md](../sources.md)), but they
 are **not in the M1000 ROM**: neither ROM contains any name fragment as plain
 ASCII, and a 6-bit decode of a record at every offset/bit-order yields nothing
 resembling its patchbook name. So the names are documentation (inherited from the

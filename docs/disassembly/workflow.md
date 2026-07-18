@@ -16,9 +16,13 @@ dynamic analysis when a routine's control flow is hard to follow statically.
 
 ## Anchor target
 
-Canonical ROM: **v1.11 factory**
-`reference/extracted/matrix-1000/os-rom/v1.11/M1000-CAT27256P-17_v111.BIN`
-(32 KB, md5 `3e0280cefb45ff1035ed378fc6ceba8e`).
+Canonical ROM: **v1.11 factory** (32 KB, md5 `3e0280cefb45ff1035ed378fc6ceba8e`).
+
+> The ROM image is **not shipped with this repo** (third-party firmware — see
+> [sources.md](../sources.md) for where to obtain it). Supply your own dump and
+> point the commands below at it. The paths shown use a git-ignored
+> `reference/extracted/matrix-1000/os-rom/v1.11/M1000-CAT27256P-17_v111.BIN`
+> convention, but any path works.
 
 Confirmed load/runtime facts (cross-checked by hand *and* by Ghidra):
 

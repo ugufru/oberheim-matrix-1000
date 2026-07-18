@@ -18,9 +18,9 @@ generation of every control voltage that drives the analog voices, MIDI handling
 auto-tune calibration routine. The analog hardware is "dumb" — the firmware is the instrument.
 
 > **Accuracy note.** A widely-repeated claim is that the Matrix-1000 uses an Intel 8031. It does
-> **not** — the CPU is a Motorola 6809. Items still to be independently confirmed are flagged
-> **(to confirm)** below; they don't change the overall picture but we'll nail them down as we
-> dig into the actual code.
+> **not** — the CPU is a Motorola 6809. Claims here are grounded in the disassembly and cited by
+> ROM address; the handful of genuinely open questions are tracked in the docs' *Status & open
+> threads* section ([`docs/README.md`](docs/README.md)) rather than asserted.
 
 ---
 
@@ -34,7 +34,7 @@ auto-tune calibration routine. The analog hardware is "dumb" — the firmware is
 | **Patch ROM** | A **separate 64 KB** EPROM (**27C512**) holding the factory patch set | A second physical chip — distinct from the OS ROM. The firmware reads patch data from here (see §4). |
 | **RAM / battery** | User patch RAM kept alive by a soldered **CR2032** | Dead battery ⇒ lost user patches. Firmware owns the RAM patch format. |
 | **DCO clock generation** | **Four** socketed DCO clock-divider counters; voice pitch references derived from the CPU clock chain | Oscillator pitch is generated digitally and steered by firmware. |
-| **MIDI** | Serial **UART/ACIA** (likely a 6850-class ACIA — **to confirm**), MIDI **In / Out / Thru** | The firmware's only real-time I/O. MIDI throughput is a known bottleneck (see §6). |
+| **MIDI** | Serial **Motorola MC68B50 ACIA** (I/O block `$1400–$15FF`, ÷16 clock), MIDI **In / Out / Thru** | The firmware's only real-time I/O. MIDI throughput is a known bottleneck (see §6). |
 | **CV update rate** | Original firmware refreshes voice CVs at **~50 Hz (20 ms)** | Sets the **~20 ms minimum attack** and overall responsiveness — a key limit later firmware pushes on. |
 
 ---
@@ -76,8 +76,9 @@ This is the per-cycle computation the firmware performs **for all 6 voices**:
   **64 KB patch ROM** (27C512, the factory sounds). They are separate physical chips. Confirmed
   against the ROM dumps this project was derived from — the patch ROM image is 64 KB and
   self-identifies as *"Original Patch ROM image"* (same image for black- and white-faced units).
-- **1000 patches** total — approximately **200 user-writable** (battery-backed RAM) plus
-  **~800 factory** (patch ROM). *(Exact user/factory bank split: **to confirm**.)*
+- **1000 patches** total (numbered 0–999, ten banks of 100), split **200 user-writable**
+  (banks 0–1, battery-backed RAM) + **800 factory** (banks 2–9, patch ROM) — confirmed from code
+  (see [`docs/firmware/patch-storage.md`](docs/firmware/patch-storage.md)).
 - Patch transfer over MIDI **SysEx** (single-patch and bulk dump/load); standard **bank/program
   change** for selection.
 
@@ -166,5 +167,5 @@ locating the dumps yourself.
 - Tauntek — Matrix-1000 firmware (Bob Grieb): <https://www.tauntek.com/Matrix1000Firmware.htm>
 - Vintage Synth Explorer — Oberheim Matrix-1000: <https://www.vintagesynth.com/oberheim/matrix-1000>
 
-*Items marked **(to confirm)** are our open questions to verify against the firmware/schematics
-as the discussion proceeds.*
+*Open questions that remain (e.g. items needing the hardware schematic) are tracked in the docs'
+[Status & open threads](docs/README.md) section, flagged in place rather than guessed.*

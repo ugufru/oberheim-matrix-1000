@@ -2,8 +2,9 @@
 
 Reverse-engineered, evidence-grounded documentation of the Matrix-1000's hardware
 and firmware, plus a full decode of its factory patch ROM. Everything here is
-derived from the **v1.11** OS ROM and the factory patch ROM (in `../reference/`),
-analysed with the reproducible pipeline in
+derived from the **v1.11** OS ROM and the factory patch ROM (third-party images,
+not redistributed here — see [sources.md](sources.md)), analysed with the
+reproducible pipeline in
 [disassembly/workflow.md](disassembly/workflow.md). Claims are cited by ROM
 address; genuinely open questions are flagged rather than guessed.
 

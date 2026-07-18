@@ -6,12 +6,14 @@ Our prose is original; the sources below were used for corroboration, hardware
 detail we can't see in code, and the patch parameter model. Where a source's
 licence is restrictive, we cite facts and do not copy text.
 
-## Primary artefacts (in this repo)
+## Primary artefacts (not redistributed here)
 
-- **v1.11 OS ROM** and the **factory patch ROM**, plus other firmware versions —
-  `../reference/extracted/` (see `../reference/extracted/MANIFEST.md`). These are
-  third-party firmware images included for study; they are **not** covered by this
-  project's licence and remain the property of their respective owners.
+- **v1.11 OS ROM** and the **factory patch ROM**, plus other firmware versions.
+  These are third-party firmware images: they are **not** covered by this project's
+  licence, remain the property of their respective owners, and are **not included**
+  in this repository. They were studied locally (kept under a git-ignored
+  `reference/` tree, with an `extracted/MANIFEST.md` recording versions and md5s for
+  provenance); source them yourself from the community links below to reproduce.
 
 ## Hardware
 
@@ -25,17 +27,16 @@ licence is restrictive, we cite facts and do not copy text.
 - **untergeek "Geek's Guide" / "Brain Surgery"** — practical hardware, failure
   modes, the 6809/6309 detail. <https://www.untergeek.de/2014/09/matrix-1000-brain-surgery/>
 - Component datasheets: **MC6809E**, **MC68B50** (ACIA), **AM6012** (DAC),
-  **82C54** (timers), and the **CEM3396** voice chip —
-  `reference/CEM3396-datasheet.pdf` (Curtis, June 1984). The datasheet is the
+  **82C54** (timers), and the **CEM3396** voice chip (Curtis, June 1984). The datasheet is the
   authority for the analog voice and corrected several firmware-side inferences
   (pitch is a digital timer/divider not a CV; ~5 VCAs; high-Z inputs eliminate
   dedicated sample-and-hold buffers). Source: <https://www.deepsonic.ch/deep/docs_manuals/cem_3396_manual.pdf>
 
-## Manuals & patch references (in `reference/`)
+## Manuals & patch references
 
-- **Oberheim Matrix-1000 Owner's Manual** (2nd ed., July 1988, P/N 950071) —
-  `reference/OberheimMatrix1000.pdf`. The official parameter / MIDI / SysEx tables.
-- **Don Solaris — Matrix-1000 patchbook** — `reference/donsolaris-matrix1000.pdf`.
+- **Oberheim Matrix-1000 Owner's Manual** (2nd ed., July 1988, P/N 950071).
+  The official parameter / MIDI / SysEx tables.
+- **Don Solaris — Matrix-1000 patchbook.**
   Human names for all 1000 factory patches by number (the names the M1000 itself
   does not store; see patch-rom/decoding.md). Source: <https://donsolaris.com/m1000/>
 
@@ -51,8 +52,8 @@ licence is restrictive, we cite facts and do not copy text.
 
 - **Tauntek (Bob Grieb)** custom firmware: <https://www.tauntek.com/Matrix1000Firmware.htm>
 - **GliGli** v1.16 ROM-only upgrade (blog) and **Nordcore** v1.13/1.14 bug-fix
-  builds — documented in the `../reference/extracted/` changelogs and community
-  threads (Gearspace / Mod Wiggler "Matrix 1000 firmware hacks").
+  builds — documented in their distribution changelogs and community threads
+  (Gearspace / Mod Wiggler "Matrix 1000 firmware hacks").
 - **Vintage Synth Explorer** — Matrix-1000 overview:
   <https://www.vintagesynth.com/oberheim/matrix-1000>
 
