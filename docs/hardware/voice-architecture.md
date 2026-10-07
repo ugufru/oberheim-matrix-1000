@@ -23,10 +23,10 @@ multiplexed-CV use:
   series at the output. (Earlier revisions of this doc said "2 VCAs" — the chip
   actually has ~five; the Matrix just programs the two audio ones.)
 
-The chip has a single multiplexed **CV input**: the host writes each control
-voltage in turn and an external sample-and-hold array holds them. So "playing a
-voice" is the firmware continuously refreshing its **11 control-voltage inputs**
-(see dac-cv-mux.md).
+The chip has **11 separate high-impedance control inputs**, each holding its
+voltage on its own input capacitance between refreshes, so no external
+sample-and-hold buffers are needed. "Playing a voice" is the firmware
+continuously refreshing them from the multiplexed DAC (see dac-cv-mux.md).
 
 ## What sets pitch — a digital clock, not a CV
 
@@ -60,13 +60,18 @@ that pitch was a DAC CV.
 
 ## What the firmware controls per voice — the 11 DAC control inputs
 
-The datasheet lists **11 control inputs, all high-impedance, 0 to +5 V**, driven
-by the multiplexed DAC (dac-cv-mux.md). Per voice they are: **waveshape A/B**,
-**pulse-width A/B**, **wave-select**, **oscillator balance** (mix), **filter-FM
-(modulation) amount**, **resonance**, **filter frequency**, and the two audio-VCA
-gains (**linear** and **log/exp**). *Pitch is not among them* — it's the timer
-clock above. These map onto the patch model's synthesis parameters (#16),
-computed by the compiled per-voice program each tick (#8/#9).
+The datasheet lists **11 control inputs, all high-impedance, 0 to +5 V**. Per
+voice they are: **waveshape A/B**, **pulse-width A/B**, **wave-select**,
+**oscillator balance** (mix), **filter-FM (modulation) amount**, **resonance**,
+**filter frequency**, and the two audio-VCA gains (**linear** and **log/exp**).
+*Pitch is not among them*; it's the timer clock above.
+
+**Ten of them are on the multiplexed DAC**, one channel each, and every one is
+now mapped to its patch parameter and ROM store address in the
+[channel map](dac-cv-mux.md#per-voice-channel-map). The eleventh, wave-select,
+is a four-level input the datasheet suggests driving from two logic bits; the
+firmware's wave-enable bits go out through `$107E` instead of a DAC channel
+(likely, not yet confirmed against the schematic).
 
 ## Voice feedback — the `$2018+` lines
 

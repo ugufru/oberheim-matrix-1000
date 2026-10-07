@@ -34,10 +34,12 @@ sample-and-hold caps. The `bit-hack` notes describe a high/low byte pair:
 - `$1010` **DAC low byte** — bits 2–7 control S&H enable and DAC channels 0–4. *(provisional)*
 
 Observed in code: a burst of init writes to `$1008/$1018/$1028/$1038/$1048/$1058`
-(stride `$10`, `@$81ef–$81fd`) and `$107E` (`@$9600`). The exact register decode
-within this block (and how it maps to the high/low byte model above) is deferred
-to the **DAC/CV-mux deep-dive (#13)**. **Confidence: medium** for the region,
-**low** for individual bit assignments.
+(stride `$10`, `@$81ef–$81fd`; this is VCA2 set to zero for all six voices) and
+`$107E` (`@$9600`, likely the wave-select bits). Every per-voice channel address
+in this block is now tied to a CEM3396 input: see the
+[channel map](dac-cv-mux.md#per-voice-channel-map). **Confidence: high** for the
+channel-to-parameter map; **low** for how the address bits decode electrically
+(the bit-hack high/low byte model above has not been reconciled with it).
 
 ## MIDI ACIA (MC68B50) — `$1400–$15FF`
 
@@ -84,6 +86,8 @@ the **bank-select** lines:
 
 | Address | Sample site | Likely role |
 |---|---|---|
+| `$1C00–$1C05` | `@$899C` (via voice `+$77`) | **DCO1 range switch**, one per voice: `$00`/`$FF` from the pitch-range flag. Written by the waveshape primitive, see dac-cv-mux.md |
+| `$1C80–$1C85` | `@$8BB0` (via voice `+$7F`) | **DCO2 range switch**, one per voice, as above |
 | `$1C06` | `@$9590` | LED/display latch |
 | `$1C86` | `@$b6cc` | LED/display latch |
 | `$1C07` | `@$8017` | latch |

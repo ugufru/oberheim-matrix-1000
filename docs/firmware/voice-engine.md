@@ -70,13 +70,30 @@ what makes per-voice-different sounds tractable — see the multitimbral note in
 
 ## CV scan-out to the DAC
 
-The computed values are written to the voice's **DAC / sample-and-hold channels**
-at `$1000 + n×$10`, whose addresses are pre-cached in the voice block at
-`+$79, +$7B, +$81, …` (built in `vec_RESET`; see ram-map). The single AM6012 DAC
-is multiplexed, so "writing a CV" is: select the channel (via the cached address)
-and store the value; the hardware sample-and-hold for that parameter/voice holds
-it until the next refresh. Which `+$10 + k` channel is pitch vs PW vs cutoff vs
-VCA is resolved in #13.
+The computed values are written to the voice's **DAC channels**, whose addresses
+are pre-cached in the voice block at `+$79, +$7B, +$81, …` (built in `vec_RESET`;
+see ram-map). The single AM6012 DAC is multiplexed, so "writing a CV" is: select
+the channel (via the cached address) and store the value; the CEM3396's high-Z
+input holds it until the next refresh.
+
+Each compiled program ends its destinations in one of twelve store primitives
+(`$8950`–`$8D1B`), one per CEM3396 control input. The compiler that emits each
+one tags it with the matrix destination code (`$7220`, 1–12):
+
+| Dest | Drives | Channel (voice `n`) |
+|---|---|---|
+| 1 / 4 | DCO1 / DCO2 pitch | 8253 counter (not the DAC) |
+| 3 / 6 | DCO1 / DCO2 waveshape | `$1000` / `$100E` + `n×$10` |
+| 2 / 5 | DCO1 / DCO2 pulse width | `$1006` / `$100A` + `n×$10` (pulse off: `+$80`) |
+| 7 | DCO mix (balance) | `$1160 + 2n` |
+| 8 | VCF FM amount | `$108C + n×$10` |
+| 9 | VCF frequency | `$1102 + n×$10` |
+| 10 | VCF resonance | `$106C + 2n` |
+| 11 / 12 | VCA1 / VCA2 | `$1004` / `$1008` + `n×$10` |
+
+The full derivation (compiler, primitive and store address for each row, and how
+the waveshape and PW CVs are scaled by pitch as the CEM3396 requires) is in
+[dac-cv-mux.md](../hardware/dac-cv-mux.md#per-voice-channel-map).
 
 ## The tick's fast per-voice work — `FUN_85E7`
 
@@ -104,6 +121,5 @@ path.
 
 - Map each of the ~26 element routines (`FUN_9266`…) to its modulation
   source/destination (#9).
-- Map each `$1000 + n×$10 + k` DAC channel to its synth parameter (#13).
 - Confirm exactly when a rebuild (`FUN_8EBA`) is triggered vs. the per-tick
   execute path, and the cost of each.

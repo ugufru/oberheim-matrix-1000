@@ -42,18 +42,26 @@ are relative to the voice base. Built in `vec_RESET`, stepped in `FUN_85e7`.
 | `+$18` | byte | voice flags / gate (bit 7 = trigger/active) | `FUN_85e7` |
 | `+$1B/+$1D/+$1F` | word | computed pitch / CV outputs | `FUN_85e7` |
 | `+$21/+$22/+$23` | byte | envelope sub-state | `FUN_85e7` |
-| `+$30` | byte | per-voice constant from a boot table *(inferred: key/range)* | `vec_RESET` |
+| `+$30` | byte | 8253 control word for this voice's DCO counters (`$36/$76/$B6` = counter 0/1/2, mode 3), from the `$8220` table | `vec_RESET` |
+| `+$31/+$32` | byte | DCO1 / DCO2 pitch-range flag (`$00`/`$FF`, threshold `$3C80`), latched to `+$77`/`+$7F` | `$8765`, `$89F6` |
+| `+$35/+$37` | word | pitch-derived waveshape scale / clamped waveshape value (scratch shared by both DCOs) | `$8765`, `$8950`, `$8B67` |
+| `+$39/+$3B/+$3D/+$3F` | word | per-range DCO pitch offsets (defaults `$3800`/`$4700`) | `$DD88` |
 | `+$33/+$34` | byte | envelope rate / scratch | `FUN_85e7` |
 | `+$71/+$73` | ptr | work pointers into this voice's RAM (`$60xx`) | `vec_RESET` |
-| `+$79,+$7B,+$81,+$83,+$85,+$87,+$8D,+$8F,+$95,+$97` | ptr | **DAC / S&H channel addresses** for this voice (`$1000 + n×$10 + k`) | `vec_RESET` |
-| `+$75,+$77,+$7D,+$7F,+$89,+$8B,+$91,+$93` | ptr | per-parameter routine/table pointers (from the `$8220` boot table) *(inferred)* | `vec_RESET` |
-| `+$A4/+$A5` | byte | modulation output bytes | `vec_RESET`, `FUN_85e7` |
+| `+$79,+$7B,+$81,+$83,+$85,+$87,+$8D,+$8F,+$95,+$97` | ptr | **DAC channel addresses** for this voice (`$1000 + n×$10 + k`): DCO1 shape, DCO1 PW, DCO2 shape, DCO2 PW, VCF freq, VCF FM, VCA1, VCA2, DCO1 PW-off, DCO2 PW-off | `vec_RESET` |
+| `+$89,+$8B` | ptr | DAC channels for **resonance** (`$106C + 2n`) and **mix** (`$1160 + 2n`), from the `$8220` table | `vec_RESET` |
+| `+$75,+$91` / `+$7D,+$93` | ptr | DCO1 / DCO2 8253 counter and control-register addresses, from the `$8220` table | `vec_RESET` |
+| `+$77,+$7F` | ptr | DCO1 / DCO2 range latch (`$1C00 + n` / `$1C80 + n`), from the `$8220` table | `vec_RESET` |
+| `+$A4` | byte | 8253 read-back/latch command for this voice's counters (`$E2/$E4/$E8`), from the `$8220` table | `vec_RESET` |
+| `+$A5` | byte | VCA2 scale factor (used by `$8D1B`) | `FUN_85e7` |
+| `+$2A8` | word | per-voice resonance calibration correction (cleared `$DDAE`) | `$9866`, CALIBRATE |
+| `+$2AA…+$2BA` | word×9 | per-voice VCF-frequency calibration curve (defaults `$0B19`…`$04D9`) | `$8C0A`, `$DD49`, CALIBRATE |
 | `+$22D…` | word×42 | modulation accumulators (zeroed at boot) | `FUN_8206` |
 
 The cached `$1000`-region pointers are what make CV scan-out cheap: the tick
 engine stores computed values straight through these without recomputing
-addresses. Mapping each `+$10 + k` channel to a specific synth parameter (pitch,
-PW, cutoff, VCA…) is the job of the voice-engine + DAC docs (#8/#13).
+addresses. The channel-to-parameter derivation is in
+[dac-cv-mux.md](../hardware/dac-cv-mux.md#per-voice-channel-map).
 
 ## Engine scratch (`$7200–$74FF`)
 
@@ -101,5 +109,4 @@ PW, cutoff, VCA…) is the job of the voice-engine + DAC docs (#8/#13).
 
 ## Open items
 
-- Resolve the `+$10 + k` → synth-parameter mapping in each voice block (#8/#13).
 - Full meaning of the `$79C1` status array and `$7A0D` display shadow (#14).

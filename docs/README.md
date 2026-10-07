@@ -68,5 +68,7 @@ deliberately left open (and noted in-place) rather than asserted without evidenc
 - pass-2 (`$E08B`) emulation for byte-exact matrix-routing decode (core synth
   parameters are exact);
 - the panel-gated `BAD OSC/VCF/RES/WAVE` self-test body;
-- the mod source/destination code enumerations are tabulated; per-channel
-  DAC→parameter mapping is partial.
+- the electrical decode of the DAC address block (the `+$80` pulse-off alias,
+  the stride-2 resonance/mix bank, the `$107E` wave-select write) against the
+  schematic. The per-channel DAC→parameter mapping itself is complete
+  ([dac-cv-mux.md](hardware/dac-cv-mux.md#per-voice-channel-map)).
