@@ -21,6 +21,8 @@ licence is restrictive, we cite facts and do not copy text.
   — the cleanest schematic set (CPU/memory/decode, MIDI, timers, DAC/CV-mux,
   voice, LEDs/switches). Authority for the analog signal path.
   <https://www.untergeek.de/howto/oberheim-matrix-1000/>
+  Held locally since 2026-10-07 (Rev 1.0, 10/12/2015, 7 pages, plus scans of the
+  original); before that, schematic-dependent questions were left open in the docs.
 - **`bit-hack/OberheimMatrix1000`** (GitHub) — a memory map gleaned from the
   schematics and a DASMx listing; used to corroborate our code-derived map.
   <https://github.com/bit-hack/OberheimMatrix1000>
@@ -51,6 +53,8 @@ licence is restrictive, we cite facts and do not copy text.
 ## Firmware lineage / prior art
 
 - **Tauntek (Bob Grieb)** custom firmware: <https://www.tauntek.com/Matrix1000Firmware.htm>
+  The v1.20 image (2016-01-13, md5 `a8092cfa…`) is held locally for comparison
+  against v1.11; not yet analysed.
 - **GliGli** v1.16 ROM-only upgrade (blog) and **Nordcore** v1.13/1.14 bug-fix
   builds — documented in their distribution changelogs and community threads
   (Gearspace / Mod Wiggler "Matrix 1000 firmware hacks").

@@ -88,7 +88,7 @@ This is the per-cycle computation the firmware performs **for all 6 voices**:
 
 There are **two independent custom-firmware lineages**. Don't conflate them.
 
-**Lineage A — Nordcore / GliGli bug-fix builds** (the OS images this analysis was cross-checked
+**Lineage A: Nordcore / GliGli bug-fix builds** (the OS images this analysis was cross-checked
 against):
 
 | Version | Source | Notes |
@@ -98,7 +98,7 @@ against):
 | **v1.14** | **Nordcore** (CFW) | 4 bug fixes incl. NRPN. The Nordcore distribution ships an exact **byte-patch map** (`M1000-firmware_fixes.txt`) — offset, orig→fixed value, and description for each fix. A ready-made set of landmarks into the binary. |
 | **v1.16** | **GliGli** (CFW) | NRPN fix, faster mod-matrix rebuild, and **unison detune** via MIDI CC#94. |
 
-**Lineage B — Tauntek rewrite** (*not* present in our archive):
+**Lineage B: Tauntek rewrite** (v1.20 now held locally for comparison; analysis pending, issue 37):
 
 | Version | Source | Notes |
 |---|---|---|

@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oberheim Matrix-1000 issues</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #fbfaf7; --panel: #fff; --ink: #1b1a17; --dim: #6b6862; --line: #e3ded4;
+  --accent: #8a4b2a; --accent-ink: #fff;
+  --open: #b4541f; --inprog: #8a6d1f; --done: #3f6b3a; --defer: #4a5a75; --wont: #6b6862;
+  --high: #a8322a; --med: #8a6d1f; --low: #6b6862;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16151a; --panel: #1e1d23; --ink: #ece8e1; --dim: #9b968d; --line: #32303a;
+    --accent: #d98a5a; --accent-ink: #16151a;
+    --open: #e08b52; --inprog: #d4b95e; --done: #8fc182; --defer: #93aad6; --wont: #9b968d;
+    --high: #e5776c; --med: #d4b95e; --low: #9b968d;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 15px/1.55 ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+.wrap { max-width: 60rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+h1 { font-size: 1.5rem; margin: 0 0 .2rem; letter-spacing: -.01em; }
+h2 { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--dim); margin: 0 0 .6rem; }
+.lede { color: var(--dim); margin: 0 0 1.5rem; font-size: .9rem; }
+.note { font-size: .8rem; color: var(--dim); background: var(--panel);
+  border: 1px solid var(--line); border-left: 3px solid var(--med);
+  border-radius: 6px; padding: .5rem .7rem; margin: 0 0 1.25rem; }
+.roadmap { margin: 0 0 1.75rem; }
+.plan { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+.step { display: flex; gap: .7rem; padding: .55rem .7rem; border: 1px solid var(--line);
+  border-radius: 8px; background: var(--panel); margin-bottom: .35rem; }
+.step .rank { font-variant-numeric: tabular-nums; color: var(--dim); font-size: .85rem; }
+.step .what { flex: 1; }
+.step a { color: inherit; font-weight: 550; text-decoration: none; }
+.step a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+.step .why { display: block; color: var(--dim); font-size: .84rem; margin-top: .15rem; }
+.step.bad { border-color: var(--high); }
+.step .warn { color: var(--high); font-size: .78rem; }
+.controls {
+  position: sticky; top: 0; z-index: 5; background: var(--bg);
+  padding: .75rem 0; border-bottom: 1px solid var(--line); margin-bottom: 1.25rem;
+}
+#q {
+  width: 100%; padding: .6rem .75rem; font: inherit; color: var(--ink);
+  background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+}
+#q:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.chip.th { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--fg); }
+.morebtn { font-size: .72rem; background: none; color: var(--dim); cursor: pointer;
+  border: 1px dashed var(--line); border-radius: 999px; padding: .2rem .55rem; }
+.morebtn:hover { color: var(--fg); }
+.pills { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .6rem; align-items: center; }
+.pills .label { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--dim); margin-right: .15rem; }
+.pill {
+  font: inherit; font-size: .8rem; padding: .2rem .6rem; cursor: pointer;
+  background: var(--panel); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 999px;
+}
+.pill:hover { border-color: var(--accent); }
+.pill[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.pill .n { opacity: .6; font-variant-numeric: tabular-nums; }
+.bar { display: flex; gap: .75rem; align-items: center; margin-top: .6rem;
+  font-size: .8rem; color: var(--dim); }
+.bar button { font: inherit; background: none; border: 0; color: var(--accent);
+  cursor: pointer; padding: 0; text-decoration: underline; }
+#count { margin-right: auto; font-variant-numeric: tabular-nums; }
+.card { background: var(--panel); border: 1px solid var(--line);
+  border-radius: 10px; margin-bottom: .5rem; overflow: hidden; }
+.card:target { outline: 2px solid var(--accent); }
+.row {
+  width: 100%; display: flex; gap: .7rem; align-items: baseline; text-align: left;
+  font: inherit; color: inherit; background: none; border: 0;
+  padding: .7rem .9rem; cursor: pointer;
+}
+.row:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+.id { color: var(--dim); font-variant-numeric: tabular-nums; font-size: .85rem; min-width: 2.2rem; }
+.summary { flex: 1; font-weight: 550; }
+.chips { display: flex; gap: .3rem; flex-wrap: wrap; }
+.chip { font-size: .7rem; text-transform: uppercase; letter-spacing: .04em;
+  padding: .1rem .45rem; border-radius: 4px; border: 1px solid currentColor; white-space: nowrap; }
+.st-open { color: var(--open); } .st-in-progress { color: var(--inprog); }
+.st-done { color: var(--done); } .st-deferred { color: var(--defer); }
+.st-wontfix { color: var(--wont); }
+.pr-high { color: var(--high); } .pr-medium { color: var(--med); } .pr-low { color: var(--low); }
+.ty { color: var(--dim); }
+.caret { width: .55rem; height: .55rem; border-right: 2px solid var(--dim);
+  border-bottom: 2px solid var(--dim); transform: rotate(45deg); transition: transform .15s; }
+.row[aria-expanded="true"] .caret { transform: rotate(-135deg); }
+.body { padding: 0 .9rem .9rem; border-top: 1px solid var(--line); }
+.desc { max-width: 62ch; }
+.desc p { margin: .8rem 0; }
+code { font: .87em ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  padding: .05em .3em; border-radius: 3px; }
+footer { display: flex; gap: .4rem; flex-wrap: wrap; align-items: center;
+  margin-top: .9rem; padding-top: .7rem; border-top: 1px dashed var(--line); }
+.tag { font-size: .72rem; color: var(--dim); border: 1px solid var(--line);
+  border-radius: 999px; padding: .05rem .45rem; }
+.meta { margin-left: auto; font-size: .75rem; color: var(--dim); }
+.empty { color: var(--dim); padding: 2rem 0; text-align: center; }
+@media (max-width: 40rem) {
+  .row { flex-wrap: wrap; } .summary { flex-basis: 100%; order: 2; }
+  .chips { order: 3; } .meta { margin-left: 0; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Oberheim Matrix-1000 issues</h1>
+<p class="lede" id="lede">Loading...</p>
+<p class="note" id="note" hidden></p>
+
+<section class="roadmap" id="roadmap" hidden>
+  <h2>Roadmap</h2>
+  <ol class="plan" id="plan"></ol>
+</section>
+
+<div class="controls">
+  <input id="q" type="search" placeholder="Search summaries and descriptions..." autocomplete="off">
+  <div class="pills"><span class="label">status</span><span id="f-status"></span></div>
+  <div class="pills"><span class="label">theme</span><span id="f-theme"></span></div>
+  <div class="pills"><span class="label">type</span><span id="f-type"></span></div>
+  <div class="pills"><span class="label">tag</span><span id="f-tag"></span></div>
+  <div class="bar">
+    <span id="count"></span>
+    <button id="expand">expand all</button>
+    <button id="collapse">collapse all</button>
+    <button id="reset">clear filters</button>
+  </div>
+</div>
+
+<main id="list"></main>
+<p class="empty" id="empty" hidden>Nothing matches those filters.</p>
+</div>
+
+<script id="snapshot" type="application/json">{"issues": [{"id": 1, "summary": "Correct README to reflect two-ROM structure and CFW lineage found in reference dumps", "description": "Extracting reference/ revealed: (1) the M1000 has two ROMs: a 32 KB OS ROM (27256) and a separate 64 KB patch ROM (27512), not a 32 KB patch region; (2) the CFW images present are Nordcore (v1.13/1.14) and GliGli (v1.16), a different lineage than the Tauntek v1.20/1.21 the README credits. Update README §4 and §5, the §1 patch-storage row, and reference the organized reference/extracted/ tree and the v1.14 byte-patch map.", "type": "docs", "status": "done", "priority": "high", "file": "README.md", "created": "2026-06-28", "updated": "2026-10-07"}, {"id": 2, "summary": "Initialize git repository and make initial commit", "description": "Make the project a git repo: git init on main, add .gitignore (.DS_Store etc.), and create the initial commit containing README.md, issues.jsonl, and the reference/ material (original zips + organized reference/extracted/ tree).", "type": "chore", "status": "done", "priority": "medium", "file": ".gitignore", "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 3, "summary": "Stand up Ghidra-based 6809 RE pipeline + asm6809 round-trip validation", "description": "Foundation for all firmware docs. Toolchain (user-chosen): Ghidra + a community 6809 SLEIGH processor module as the primary analysis brain (decompiler -> readable pseudocode for the prose docs); asm6809 2.17 (installed) as the byte-identical round-trip correctness gate; emulator/MAME trace reserved for dynamic analysis when control flow is murky. Import the v1.11 OS ROM (reference/extracted/matrix-1000/os-rom/v1.11/M1000-CAT27256P-17_v111.BIN) as raw 6809, base $8000. Seed entry points RESET=$8003, IRQ=$85E3, FIRQ=$84B4 + string-referencing routines; iteratively separate code from data/tables. HARD GATE (already prototyped): an asm6809 source of the image re-assembles byte-identical (md5 3e0280ce) to the ROM; keep this true as data runs become instructions. Document the reproducible pipeline in docs/disassembly/workflow.md.", "type": "tooling", "track": "foundation", "status": "done", "priority": "high", "depends_on": [], "files": ["docs/disassembly/workflow.md", "tools/ghidra/analyze.sh", "tools/ghidra/M1kSeed.java", "tools/ghidra/M1kStats.java", "tools/gen_asm_baseline.py", "tools/roundtrip_check.sh"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 4, "summary": "Hardware: memory map + I/O map, verified against code", "description": "Document the 6809 64K memory map (RAM, OS ROM $8000-$FFFF, patch ROM, I/O decode region, vector table) and the I/O map (68B50 ACIA, AM6012 DAC, mux latches, 8254-class timer, panel ports) with addresses and per-register bit meanings. Derive from Bob Grieb's redrawn schematics + bit-hack/OberheimMatrix1000 memory map + datasheets, then CONFIRM every I/O address against actual load/store operands in the disassembly. Discrepancies noted, not hidden. Every firmware doc depends on this.", "type": "docs", "track": "hardware", "status": "done", "priority": "high", "depends_on": [3], "files": ["docs/hardware/memory-map.md", "docs/hardware/io-map.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 5, "summary": "Firmware macro-architecture overview (flagship doc)", "description": "The centerpiece deliverable. Prose explanation of how the firmware operates at a macro level: boot/init -> foreground main loop -> the IRQ-driven ~50 Hz scheduler that runs the voice engine, mod-matrix evaluation, and DAC/mux scan-out; plus where MIDI, patch load/save, autotune and self-test sit. High-level map that the subsystem docs (#6-#12) drill into. Prose + small diagrams/pseudocode, citing addresses.", "type": "docs", "track": "firmware", "status": "done", "priority": "high", "depends_on": [3, 4], "files": ["docs/firmware/overview.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 6, "summary": "Firmware: boot/init path + RAM (zero-page/work) map", "description": "Trace the RESET=$8003 path: RAM clear/init, zero-page variable layout, hardware init (ACIA, timer, DAC/mux, panel), jump into the main loop. Produce docs/firmware/boot-init.md and docs/firmware/ram-map.md (the firmware's variable map), which later subsystem docs reference by name.", "type": "docs", "track": "firmware", "status": "done", "priority": "medium", "depends_on": [3, 4], "files": ["docs/firmware/boot-init.md", "docs/firmware/ram-map.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 7, "summary": "Firmware: main loop & IRQ/FIRQ scheduler (the 50 Hz tick)", "description": "Document the split between the foreground loop and the interrupt handlers (IRQ=$85E3, FIRQ=$84B4): what the 8254-class timer tick drives, the ~50 Hz/20 ms update cadence, and how work is dispatched each tick. This is the heartbeat the voice engine and mod-matrix hang off of.", "type": "docs", "track": "firmware", "status": "done", "priority": "medium", "depends_on": [3, 4], "files": ["docs/firmware/main-loop-and-irq.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 8, "summary": "Firmware: voice engine (per-tick CV computation + DAC/mux scan-out)", "description": "How the firmware computes per-voice control values each tick and scans them out to the six CEM3396 voices through the single AM6012 DAC + 4051/4053 multiplexers + sample-and-hold. The core real-time CV delivery routine.", "type": "docs", "track": "firmware", "status": "done", "priority": "medium", "depends_on": [3, 4, 7], "files": ["docs/firmware/voice-engine.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 9, "summary": "Firmware: modulation matrix storage + evaluation", "description": "How patch modulation routings are stored, when/how the matrix is rebuilt (the GliGli speed-up touched this), and how sources->destinations are evaluated each tick to feed the voice engine. 20 user routings, ~20 sources, ~32 destinations.", "type": "docs", "track": "firmware", "status": "done", "priority": "medium", "depends_on": [3, 8], "files": ["docs/firmware/mod-matrix.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 10, "summary": "Firmware: MIDI handling (68B50 ACIA RX/TX, SysEx, NRPN/CC edit)", "description": "Document the ACIA-driven MIDI path: receive/transmit, running status, note/voice assignment, SysEx (patch dump/request, the 80<->134-byte transfer), and real-time NRPN/CC parameter edit. The MIDI-under-load bottleneck and what the buffering looks like.", "type": "docs", "track": "firmware", "status": "done", "priority": "medium", "depends_on": [3, 4], "files": ["docs/firmware/midi-handling.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 11, "summary": "Firmware: patch storage + the 80<->134-byte pack/unpack routine", "description": "RAM patch buffer, patch load/save (user RAM and from patch ROM), and crucially the pack/unpack routine that maps the packed ~80-byte stored record to the 134-byte internal patch format. This routine is the authoritative key for the patch-ROM decoding track (#15-#18).", "type": "docs", "track": "firmware", "status": "done", "priority": "medium", "depends_on": [3], "files": ["docs/firmware/patch-storage.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 12, "summary": "Firmware: autotune / calibrate / power-on self-test", "description": "Document CALIBRATE and FINE TUNE routines (oscillator/filter CV calibration against the pitch reference) and the power-on self-test behind the BAD OSC/BAD VCF/BAD RES/BAD WAVE strings (~$B1C4): what it measures and how it flags bad voices.", "type": "docs", "track": "firmware", "status": "done", "priority": "medium", "depends_on": [3, 4], "files": ["docs/firmware/autotune-selftest.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 13, "summary": "Hardware deep-dive: DAC/CV-mux + voice architecture", "description": "The CV delivery engine in hardware detail: AM6012 DAC, 4051/4053 analog mux tree, sample-and-hold per parameter/voice, and the CEM3396 voice (2 DCOs + waveshaper + multimode VCF + 2 VCAs) and how CV/gate reach each of the 6 voices. Pairs with firmware #8.", "type": "docs", "track": "hardware", "status": "done", "priority": "medium", "depends_on": [4], "files": ["docs/hardware/dac-cv-mux.md", "docs/hardware/voice-architecture.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 14, "summary": "Hardware deep-dive: MIDI/ACIA + clocks/timing + panel/display", "description": "Supporting hardware docs: 68B50 ACIA wiring/baud/IRQ; crystal, 6809 E-clock, DCO clock dividers and the 50 Hz tick source; front-panel switches, LEDs and the display. Confirm part numbers and mapped addresses from schematics + code.", "type": "docs", "track": "hardware", "status": "done", "priority": "low", "depends_on": [4], "files": ["docs/hardware/midi-acia.md", "docs/hardware/timing-clocks.md", "docs/hardware/panel-display.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 15, "summary": "Patch ROM: packed record format (the ~80-byte ROM layout)", "description": "Side track. Determine the exact packed record size and byte layout of the factory patch ROM (reference/extracted/matrix-1000/patch-rom/M1000-PatchROM_27512_C2DB.BIN, 64 KB, ~800 patches). Derive authoritatively from the firmware unpack routine (#11) and cross-check empirically (name strides etc.).", "type": "docs", "track": "patch-rom", "status": "done", "priority": "medium", "depends_on": [11], "files": ["docs/patch-rom/format.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 16, "summary": "Patch ROM: 134-byte internal parameter map", "description": "Document the full ordered 134-byte internal patch parameter map (DCO1/2, VCF, VCA, 3 DADSR envelopes, 2 LFOs, 2 ramps, tracking generator, 10 matrix-mod buses) with value ranges. Cross-reference CMU m6-patch table and the youngmonkey Matrix-1000 SysEx doc; ground-truth against firmware usage.", "type": "docs", "track": "patch-rom", "status": "done", "priority": "medium", "depends_on": [], "files": ["docs/patch-rom/parameter-map.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 17, "summary": "Patch ROM: reproducible decoder + decode all 800 factory patches", "description": "A reproducible recipe/script (byte offsets -> human-readable patch) that decodes every factory patch from the patch ROM. Validate by confirming patch names and a few parameter values against an existing editor / known patch list; the pack/unpack round-trips.", "type": "docs", "track": "patch-rom", "status": "done", "priority": "medium", "depends_on": [15, 16], "files": ["docs/patch-rom/decoding.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 18, "summary": "Patch ROM: sound-design notes/statistics across the 800 factory patches", "description": "The side-goal payoff: mine the decoded factory set for sound-design insight (common envelope/LFO settings, filter usage, matrix-routing idioms, oscillator setups) and write it up so others can learn from the factory programmers.", "type": "docs", "track": "patch-rom", "status": "done", "priority": "low", "depends_on": [17], "files": ["docs/patch-rom/sound-design-notes.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 20, "summary": "Add a Roadmap section to the README", "description": "Add a Roadmap to README.md summarizing the documentation goal (human-readable technical docs derived from disassembly + patch-ROM mining), the planned docs/ tree, and the prioritized issue tracks (foundation -> hardware -> firmware subsystems; parallel patch-rom track). Point readers at issues.jsonl as the live backlog.", "type": "docs", "track": "meta", "status": "done", "priority": "high", "depends_on": [], "files": ["README.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 19, "summary": "Docs index, sources/licensing, and open license for the docs", "description": "docs/README.md (index + reading order), docs/sources.md (references + per-source license terms; cite prior art, keep our prose original), and choose/apply an open license for the documentation (proposing CC BY 4.0) so anyone can reuse. Link docs/ from the top-level README.", "type": "docs", "track": "meta", "status": "done", "priority": "medium", "depends_on": [], "files": ["docs/README.md", "docs/sources.md"], "created": "2026-06-28", "updated": "2026-06-28"}, {"id": 21, "summary": "Holistic architecture: SVG diagrams (system + memory map) and a tying-it-together doc", "description": "Add a single holistic view of the whole machine: an SVG system/data-flow diagram (CPU, memory, I/O, the two interrupt paths, the DAC/mux/S&H -> CEM3396 voice chain, DCO clocks, MIDI, panel) and a visual memory-map SVG, plus docs/architecture.md narrative tying the subsystems together and a firmware-rewrite/Forth-feasibility note. Link from docs/README.md.", "type": "docs", "track": "meta", "status": "done", "priority": "medium", "depends_on": [5], "files": ["docs/diagrams/architecture.svg", "docs/diagrams/memory-map.svg", "docs/architecture.md"], "created": "2026-06-29", "updated": "2026-06-29"}, {"id": 22, "summary": "Wire patchbook names into the patch decoder and analysis", "description": "Parse the Don Solaris patchbook into names-by-number (tools/patch_names.py), join into decode_patches.py (record r = patch r+200) so the bulk CSV is named+labelled, and surface named exemplars in analyze_patches.py / sound-design-notes.md.", "type": "docs", "track": "patch-rom", "status": "done", "priority": "low", "depends_on": [17, 18], "files": ["tools/patch_names.py", "tools/decode_patches.py", "tools/analyze_patches.py", "docs/patch-rom/sound-design-notes.md"], "created": "2026-06-29", "updated": "2026-06-29"}, {"id": 23, "summary": "Force-directed factory patch map SVG (brightness x register, by genre)", "description": "Visualize all factory patches in a brightness x register space from decoded parameters, coloured by heuristic genre from names. tools/patch_genre.py (classifier), tools/patch_map_svg.py (rank-normalize + force relaxation + SVG), docs/diagrams/patch-map.svg. Report dominant genres.", "type": "docs", "track": "patch-rom", "status": "done", "priority": "low", "depends_on": [17, 22], "files": ["tools/patch_genre.py", "tools/patch_map_svg.py", "docs/diagrams/patch-map.svg"], "created": "2026-06-29", "updated": "2026-06-29"}, {"id": 24, "summary": "Weave Owner's Manual context into the reverse-engineered docs", "description": "Add short 'what the user sees <-> what the firmware does' bridges citing manual pages: Ext. Funct (functions 0-7) into boot-init/main-loop; CALIBRATE/Fine Tune into autotune-selftest (#12); Data Dump into midi-handling/patch-storage; Group Mode (Units); MIDI implementation chart cross-check. Manual is reference/OberheimMatrix1000.pdf.", "type": "docs", "track": "meta", "status": "done", "priority": "medium", "depends_on": [12], "files": ["docs/firmware/autotune-selftest.md", "docs/firmware/midi-handling.md", "docs/firmware/boot-init.md"], "created": "2026-07-02", "updated": "2026-07-02"}, {"id": 25, "summary": "Add CEM3396 datasheet to references and correct analog docs against it", "description": "Download the CEM3396 datasheet into reference/, cite in sources.md, and improve accuracy of voice-architecture.md and dac-cv-mux.md (VCA inventory, VCF modes/poles, and crucially the chip's microprocessor CV control interface - internal S&H/addressing vs external 4051/4053, which our DAC/mux doc may have wrong).", "type": "docs", "track": "hardware", "status": "done", "priority": "medium", "depends_on": [13], "files": ["reference/CEM3396-datasheet.pdf", "docs/hardware/voice-architecture.md", "docs/hardware/dac-cv-mux.md", "docs/sources.md"], "created": "2026-07-03", "updated": "2026-07-03"}, {"id": 26, "summary": "Sync top-level README '(to confirm)' flags with resolved deep docs", "description": "The flagship README still hedges on facts the deeper docs already confirm from code. §1 MIDI row says 'likely a 6850-class ACIA, to confirm', but midi-acia.md/sources.md confirm MC68B50. §4 says 'Exact user/factory bank split: to confirm', but sources.md confirms the 200/800 split from code. Update README.md §1, §4, the accuracy note (§intro), and the closing '(to confirm)' footnote so the public front page matches the settled, code-cited findings.", "type": "docs", "track": "meta", "status": "done", "priority": "high", "depends_on": [], "files": ["README.md"], "created": "2026-07-17", "updated": "2026-10-07"}, {"id": 27, "summary": "Fix stale reference/ links inside docs/ now that reference/ is not published", "description": "reference/ was removed from the repo (kept local, git-ignored) when the repo went public. Docs still point at it: docs/README.md:5 ('in ../reference/'), several paths in docs/sources.md (../reference, reference/CEM3396-datasheet.pdf, etc.), and the ROM input paths in docs/disassembly/workflow.md. Reword these the way the top-level README was reworded: the third-party material is referenced/for-provenance, not redistributed; workflow paths are 'place your own dump here' conventions.", "type": "docs", "track": "meta", "status": "done", "priority": "high", "depends_on": [], "files": ["docs/README.md", "docs/sources.md", "docs/disassembly/workflow.md"], "created": "2026-07-17", "updated": "2026-07-17"}, {"id": 28, "summary": "Complete the per-channel DAC->parameter mapping (voice engine)", "description": "DONE (reviewed 2026-10-07): all ten DAC-driven CEM3396 inputs mapped to patch parameter, compiler, store primitive, voice-block pointer and channel address. Method: each element compiler ($95AB..$992F) stores a matrix destination code 1-12 in $7220, reads its patch parameter from the active patch ($7218=$7A19, indexed by parameter number) and emits one store primitive ($8950..$8D1B); each primitive does LDX <ptr to a channel cached at boot ($80D8-$8146, plus the 18-byte-per-voice $8220 table). Map: DCO1 shape $1000, DCO1 PW $1006, DCO2 shape $100E, DCO2 PW $100A, VCA1 $1004, VCA2 $1008, VCF FM $108C, VCF freq $1102 (all +n*$10), resonance $106C+2n, mix $1160+2n; pulse-off variants write PW offset +$80. Pitch (dest 1/4) is the 8253 path. Cross-checked against the CEM3396 datasheet: wave-select (pin 6) is a logic-driven input, leaving exactly 10 DAC CVs; waveshape CV is scaled by a pitch factor and PW by the waveshape CV, as the datasheet requires; the $3C80 pitch-range flag drives per-DCO Rt range latches $1C00+n/$1C80+n. Also found: boot write of raw $8000 to $1008+n*$10 is VCA2=0 (mute), not a mid-scale settle; VCF freq and resonance use per-voice calibration data at voice +$2AA (9-point curve) and +$2A8. Written into docs/hardware/dac-cv-mux.md (Per-voice channel map), voice-engine.md, ram-map.md, io-map.md, voice-architecture.md, docs/README.md. NOT done (filed as #35): electrical decode of the address bits, DCO1=converter-A and VCA1=linear-pin confirmation, $107E wave-select. These need the schematic.", "type": "docs", "track": "firmware", "status": "done", "priority": "high", "depends_on": [], "files": ["docs/hardware/dac-cv-mux.md", "docs/firmware/voice-engine.md", "docs/firmware/ram-map.md", "docs/hardware/io-map.md", "docs/hardware/voice-architecture.md", "docs/README.md"], "created": "2026-07-17", "updated": "2026-10-07"}, {"id": 29, "summary": "Pass-2 ($E08B) matrix-routing decode for byte-exact patch fidelity", "description": "Patch decode gets core synth parameters exact, but the matrix-routing decode is not byte-exact because pass-2 emulation ($E08B) is not modelled. Trace the $E08B pass and extend decode_patches.py / decoding.md so matrix routings round-trip byte-identically for the factory set. Validate against the pack/unpack round-trip already established in patch-storage.md.", "type": "docs", "track": "patch-rom", "status": "open", "priority": "medium", "depends_on": [], "files": ["docs/patch-rom/decoding.md", "tools/decode_patches.py"], "created": "2026-07-17", "updated": "2026-07-17"}, {"id": 30, "summary": "Promote io-map 'provisional' bits to confirmed; resolve poly-aftertouch semantics", "description": "Two smaller code-derived confirmations. (1) io-map.md marks some register bit meanings 'provisional' (from datasheets/schematic notes, not yet confirmed against code); confirm them against actual load/store operands and drop the provisional flag where verified. (2) midi-handling.md:70 leaves poly aftertouch ($A0, $C860) as 'likely applied as the mono Pressure mod source rather than true per-note, to confirm'; trace the mode flag at $8561/$857E/$85C3 and settle it.", "type": "docs", "track": "firmware", "status": "open", "priority": "medium", "depends_on": [], "files": ["docs/hardware/io-map.md", "docs/firmware/midi-handling.md"], "created": "2026-07-17", "updated": "2026-10-07"}, {"id": 31, "summary": "Voice-status/comparator ($2018+) + DCO-timer-vs-DAC-pitch role (schematic-blocked)", "description": "Two open threads flagged as needing the hardware schematic: the exact $2018+ voice-status/comparator read semantics, and the precise role of the 12 fixed DCO timer clocks vs the DAC-generated pitch CV. Blocked until a schematic is sourced; capture the code-side observations now and finish once the schematic is available.", "type": "docs", "track": "hardware", "status": "open", "priority": "low", "depends_on": [], "files": ["docs/hardware/io-map.md", "docs/hardware/timing-clocks.md", "docs/hardware/voice-architecture.md"], "created": "2026-07-17", "updated": "2026-07-17"}, {"id": 32, "summary": "Document the panel-gated BAD OSC/VCF/RES/WAVE self-test body", "description": "autotune-selftest.md documents the self-test entry and the BAD OSC/BAD VCF/BAD RES/BAD WAVE strings (~$B1C4) but not the measurement body, which is gated behind a panel key combo. Needs a dynamic/emulator trace (MAME) to observe what each stage measures and how it flags a bad voice. Reserve for the dynamic-analysis track.", "type": "docs", "track": "firmware", "status": "open", "priority": "low", "depends_on": [], "files": ["docs/firmware/autotune-selftest.md"], "created": "2026-07-17", "updated": "2026-07-17"}, {"id": 33, "summary": "Symbol-naming pass: replace raw Ghidra FUN_/DAT_ names in the prose", "description": "~20 raw Ghidra placeholders (FUN_875A, FUN_8765, FUN_85E7, DAT_7202/7218, FUN_9958, etc.) still leak into the docs, hurting readability. Give the identified routines/vars meaningful names (keeping the $hex address alongside on first mention), update the Ghidra seed script where useful, and sweep docs/. Pure readability polish; no new findings required.", "type": "docs", "track": "meta", "status": "open", "priority": "low", "depends_on": [], "files": ["docs/firmware/ram-map.md", "docs/firmware/voice-engine.md", "docs/firmware/mod-matrix.md", "tools/ghidra/M1kSeed.java"], "created": "2026-07-17", "updated": "2026-07-17"}, {"id": 34, "summary": "Evaluate/acquire One ROM as the firmware dev rig (removes the reburn bottleneck)", "description": "Working note filed at notes/2026-08-31-one-rom-dev-rig.md. One ROM (RP2350, Retro Hack Shack) is a drop-in 28-pin replacement covering both our EPROMs: the 32 KB 27C256 OS ROM at $8000 and the 64 KB 27C512 patch ROM. Two properties matter: in-circuit reflash in ~10s from a browser (kills README S6's 'no in-field update path' limitation), and multiple stored images with jumper select + on-the-fly bank switching (gives an A/B rig: stock v1.11 vs our build through the same analog voices). BLOCKER TO RESOLVE FIRST: access time is unpublished on the product page, GitHub README and onerom.org -- ask Piers for a figure in ns. Expected comfortable at the 6809's 2 MHz E-clock; margin roughly halves if the 6309 @ ~4 MHz upgrade is ever fitted. Also check 1U vertical clearance above the ROM sockets. Plan: buy 2x 28-pin USB 'Fire' ($10-32 each). Note that this fixes the burn loop, not the debug loop -- pair with a software 6809 harness (build/v111_baseline.s + tools/roundtrip_check.sh already exist) and SysEx-over-MIDI as printf via the 68B50.", "type": "tooling", "track": "foundation", "status": "open", "priority": "medium", "depends_on": [], "files": ["notes/2026-08-31-one-rom-dev-rig.md"], "created": "2026-08-31", "updated": "2026-08-31"}, {"id": 35, "summary": "Schematic-confirm the DAC address decode, pin assignments and $107E wave-select path", "description": "Remainder of #28. The channel->parameter map in docs/hardware/dac-cv-mux.md (Per-voice channel map) is code-derived and complete; what is left needs the schematic (Bob Grieb redrawn set). (1) Address decode of the $1000 block: why pulse-off writes go to PW offset +$80 ($1086/$108A, primitives $89AF/$8BC3 with a ~20-loop settle delay), hypothesis an A7 negative-offset path matching the datasheet's 'Vpw slightly negative' advice; why resonance ($106C+2n) and mix ($1160+2n) use stride 2; reconcile with the bit-hack high/low byte model in io-map.md. (2) Confirm DCO1 = converter A (pins 2/5) and VCA1 = linear gain pin 22 / VCA2 = log gain pin 1; the code shows neither directly. (3) Confirm $107E (written at $9600/$9728 from $7213/$7214, low or high 3 bits chosen by $79BA) is the wave-select logic latch. Related but separate: #31 ($2018+ voice-status lines).", "type": "docs", "track": "hardware", "status": "open", "priority": "low", "depends_on": [28], "files": ["docs/hardware/dac-cv-mux.md", "docs/hardware/io-map.md", "docs/hardware/voice-architecture.md"], "created": "2026-10-07", "updated": "2026-10-07"}, {"id": 36, "summary": "Source the Matrix-1000 schematic and import it into reference/", "description": "Gate for #31 and #35, which were blocked on the hardware schematic; until now the only schematic in reference/ was the Oberheim XK keyboard's. DONE (awaiting confirmation): the user downloaded Bob Grieb's redrawn set (MATRIX1KSCH). Verified it is the M1000: title block 'ECC-Oberheim, Matrix 1000 CPU, Mem, Decode, Page 1 of 7, Rev 1.0, 10/12/2015', PDF author 'Bob', drawn in ExpressSCH. Imported to reference/extracted/schematics/matrix-1000/ (git-ignored, not redistributed): MATRIX1KSCHPG1-7.pdf (PG5 revised 2016-04-24) plus matrix1kschscan1.pdf (12 pp) and matrix1kschscan2.pdf (2 pp), scans of the original. All are image-only PDFs with no text layer, so reading them means viewing pages, not grepping. Provenance recorded in reference/extracted/MANIFEST.md (local) and docs/sources.md (Hardware section). Not done: no schematic content has been transcribed into the docs yet; that is the work of #35 and #31.", "type": "chore", "track": "hardware", "status": "in-progress", "priority": "high", "depends_on": [], "files": ["docs/sources.md", "reference/extracted/MANIFEST.md"], "created": "2026-10-07", "updated": "2026-10-07"}, {"id": 37, "summary": "Analyse Tauntek v1.20 against v1.11: what the MIDI speed-ups changed", "description": "Tauntek (Bob Grieb) v1.20 is the most relevant prior art for the README section 6 'MIDI under load' limitation, and it was previously absent from our archive. Now held locally at reference/extracted/matrix-1000/os-rom/v1.20/mtrx1kv120.bin (md5 a8092cfa56189c5bb7c1775e7b4ca09b, dated 2016-01-13) with its ReadmeM1K.txt. Verified: 16-bit sum $21EC matches the readme; reset/IRQ/FIRQ vectors identical to v1.11 ($8003/$85E3/$84B4); 6552 of 32768 bytes differ from v1.11. Readme claims: MIDI parameter-change speed-ups, GliGli's detune code (with permission), parameter values written to the display on MIDI edit, NRPN inc/dec fix. Plan: diff against v1.11 at the routine level (changed byte runs mapped onto v1.11 labels in build/v111_full.asm), identify which routines were rewritten vs relocated, and document the MIDI-path changes against docs/firmware/midi-handling.md and the rebuild path in voice-engine.md / mod-matrix.md. Cross-check the detune piece against v1.16. Constraint: the image is third-party and not licensed for redistribution; describe its changes and cite addresses, do not copy code or bundle the binary.", "type": "docs", "track": "firmware", "status": "open", "priority": "medium", "depends_on": [], "files": ["docs/firmware/midi-handling.md", "docs/sources.md"], "created": "2026-10-07", "updated": "2026-10-07"}], "roadmap": [{"rank": 1, "id": 35, "why": "Schematic now in hand (#36). Finishes the CV-delivery story #28 just mapped from code: the +$80 pulse-off alias, the stride-2 resonance/mix bank, $107E wave select, and which pins VCA1/VCA2 and DCO1/DCO2 really reach. Context is fresh, so it is cheapest now.", "added": "2026-10-07"}, {"rank": 2, "id": 31, "why": "Also unblocked by the schematic. The $2018+ voice-status lines are the last unexplained hardware feedback path, and CALIBRATE (autotune-selftest.md) depends on what they mean. The DCO-timer half is largely settled by the CEM3396 datasheet, so this is mostly the $2018+ read.", "added": "2026-10-07"}, {"rank": 3, "id": 34, "why": "Gates testing any modified firmware on hardware without reburning EPROMs. The blocker is an external reply (One ROM access time), so ask now even though it is not code: the lead time runs in parallel with 1 and 2.", "added": "2026-10-07"}, {"rank": 4, "id": 30, "why": "Code-only confirmations. Doing it after #35 means the provisional io-map bits can be checked from both the code and the schematic in one pass, and it settles poly aftertouch, a user-visible behaviour.", "added": "2026-10-07"}, {"rank": 5, "id": 37, "why": "v1.20 is the best prior art for the MIDI-under-load limitation, the main reason anyone would rewrite this firmware. Ranked after the open hardware questions because it builds on the docs those finish, not the other way round.", "added": "2026-10-07"}, {"rank": 6, "id": 29, "why": "Self-contained bulk work that closes the patch-ROM track. It unblocks nothing else, so it goes last.", "added": "2026-10-07"}]}</script>
+<script>
+(function () {
+  var STATUS_ORDER = ['open', 'in-progress', 'done', 'deferred', 'wontfix'];
+  var PRIORITY_ORDER = ['high', 'medium', 'low'];
+  var TAG_PILL_LIMIT = 20;   // the rest hide behind a "+N more" toggle
+  // Themes are the coarse grouping: one per issue, from a fixed vocabulary,
+  // unlike the free-form tags. Order is the order they are worked in.
+  var THEME_ORDER = ['trust', 'kit', 'input', 'experience', 'platform', 'storage', 'devices'];
+  var LIVE = ['open', 'in-progress'];
+  var KEY = 'issues-view:' + location.pathname;
+  // Longest alternative first: "jsonl" must win over "json".
+  var PATH_RE = /\b((?:[\w.-]+\/)*[\w.-]+\.(?:jsonl|json|md|html|css|js|ts|tsx|jsx|py|rb|go|rs|java|c|h|cpp|sh|toml|ya?ml|cfg|ini|txt|bas|dsk|png))(:\d+(?:-\d+)?)?/g;
+
+  var issues = [];
+  var active = { status: [], type: [], tag: [], theme: [] };
+  var q = document.getElementById('q');
+  var list = document.getElementById('list');
+  var count = document.getElementById('count');
+  var empty = document.getElementById('empty');
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function rank(v, order) {
+    var i = order.indexOf(v);
+    return i === -1 ? order.length : i;
+  }
+
+  function markup(text) {
+    return String(text).split('\n\n').map(function (para) {
+      return '<p>' + esc(para).replace(PATH_RE, '<code>$&</code>').replace(/\n/g, '<br>') + '</p>';
+    }).join('');
+  }
+
+  function summaryOf(i) { return i.summary || i.title || '(untitled)'; }
+  function tagsOf(i) { return i.tags || i.labels || []; }
+
+  function card(i) {
+    var status = i.status || '?', priority = i.priority || '?', type = i.type || '?';
+    var el = document.createElement('article');
+    el.className = 'card';
+    el.id = 'i' + i.id;
+    el.dataset.status = status;
+    el.dataset.type = type;
+    el.dataset.tags = tagsOf(i).join(' ');
+    el.dataset.theme = i.theme || '';
+    el.innerHTML =
+      '<header><button class="row" aria-expanded="false">' +
+      '<span class="id">#' + esc(i.id) + '</span>' +
+      '<span class="summary">' + esc(summaryOf(i)) + '</span>' +
+      '<span class="chips">' +
+        '<span class="chip st-' + esc(status) + '">' + esc(status) + '</span>' +
+        '<span class="chip pr-' + esc(priority) + '">' + esc(priority) + '</span>' +
+        '<span class="chip ty">' + esc(type) + '</span>' +
+        (i.theme ? '<span class="chip th">' + esc(i.theme) + '</span>' : '') +
+      '</span><span class="caret" aria-hidden="true"></span></button></header>' +
+      '<div class="body" hidden><div class="desc">' +
+      markup(i.description || '(no description)') + '</div><footer>' +
+      tagsOf(i).map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('') +
+      '<span class="meta"><code>' + esc(i.file || '-') + '</code> &middot; created ' +
+      esc(i.created || '?') + ' &middot; updated ' + esc(i.updated || '?') +
+      '</span></footer></div>';
+    el.querySelector('.row').addEventListener('click', function () {
+      setOpen(el, el.querySelector('.body').hidden);
+    });
+    return el;
+  }
+
+  function setOpen(el, open) {
+    el.querySelector('.row').setAttribute('aria-expanded', open);
+    el.querySelector('.body').hidden = !open;
+  }
+
+  // The roadmap stores only rank, id and why. Everything shown here is joined
+  // from the tracker, so an entry pointing at a missing or finished issue is
+  // visibly wrong rather than quietly stale.
+  function drawRoadmap(plan, byId) {
+    if (!plan.length) return;
+    var host = document.getElementById('plan');
+    plan.slice().sort(function (a, b) { return (a.rank || 0) - (b.rank || 0); })
+      .forEach(function (e) {
+        var issue = byId[e.id];
+        var li = document.createElement('li');
+        li.className = 'step';
+        var head, warn = '';
+        if (!issue) {
+          head = '#' + esc(e.id) + ' is not in the tracker';
+          warn = 'no such issue';
+          li.className += ' bad';
+        } else {
+          head = '<a href="#i' + esc(e.id) + '">#' + esc(e.id) + ' ' +
+                 esc(summaryOf(issue)) + '</a> <span class="chip st-' +
+                 esc(issue.status) + '">' + esc(issue.status) + '</span>';
+          if (LIVE.indexOf(issue.status) === -1) {
+            warn = 'already ' + issue.status + ', take it off the roadmap';
+            li.className += ' bad';
+          }
+        }
+        li.innerHTML = '<span class="rank">' + esc(e.rank || '?') + '.</span>' +
+          '<span class="what">' + head +
+          '<span class="why">' + esc(e.why || '') + '</span>' +
+          (warn ? '<span class="warn">' + esc(warn) + '</span>' : '') + '</span>';
+        var link = li.querySelector('a');
+        if (link) {
+          link.addEventListener('click', function () {
+            var target = document.getElementById('i' + e.id);
+            if (target) { target.hidden = false; setOpen(target, true); }
+          });
+        }
+        host.appendChild(li);
+      });
+    document.getElementById('roadmap').hidden = false;
+  }
+
+  function pills(host, filter, values, counts, limit) {
+    var hidden = (limit && values.length > limit) ? values.length - limit : 0;
+    document.getElementById(host).innerHTML = values.map(function (v, idx) {
+      var extra = hidden && idx >= limit;
+      return '<button class="pill' + (extra ? ' extra' : '') + '"' +
+        (extra ? ' hidden' : '') +
+        ' data-filter="' + filter + '" data-value="' + esc(v) + '">' +
+        esc(v) + (counts ? ' <span class="n">' + counts[v] + '</span>' : '') + '</button>';
+    }).join('') + (hidden
+      ? '<button class="morebtn" data-host="' + host + '">+' + hidden + ' more</button>'
+      : '');
+  }
+
+  function save() {
+    try {
+      localStorage.setItem(KEY, JSON.stringify({ active: active, q: q.value }));
+    } catch (e) {}
+  }
+
+  function apply() {
+    var needle = q.value.trim().toLowerCase();
+    var shown = 0;
+    [].forEach.call(list.children, function (el) {
+      var ok =
+        (!active.status.length || active.status.indexOf(el.dataset.status) !== -1) &&
+        (!active.type.length || active.type.indexOf(el.dataset.type) !== -1) &&
+        (!active.theme.length || active.theme.indexOf(el.dataset.theme) !== -1) &&
+        (!active.tag.length || active.tag.some(function (t) {
+          return el.dataset.tags.split(' ').indexOf(t) !== -1;
+        })) &&
+        (!needle || el.textContent.toLowerCase().indexOf(needle) !== -1);
+      el.hidden = !ok;
+      if (ok) shown++;
+    });
+    empty.hidden = shown !== 0;
+    count.textContent = shown + ' of ' + issues.length + ' shown';
+    [].forEach.call(document.querySelectorAll('.pill'), function (p) {
+      p.setAttribute('aria-pressed', active[p.dataset.filter].indexOf(p.dataset.value) !== -1);
+    });
+    save();
+  }
+
+  function draw(data, plan, note) {
+    issues = data.slice().sort(function (a, b) {
+      return rank(a.status, STATUS_ORDER) - rank(b.status, STATUS_ORDER) ||
+             rank(a.priority, PRIORITY_ORDER) - rank(b.priority, PRIORITY_ORDER) ||
+             (a.id || 0) - (b.id || 0);
+    });
+
+    var counts = {}, byId = {};
+    STATUS_ORDER.forEach(function (s) { counts[s] = 0; });
+    issues.forEach(function (i) {
+      counts[i.status] = (counts[i.status] || 0) + 1;
+      byId[i.id] = i;
+    });
+
+    list.innerHTML = '';
+    issues.forEach(function (i) { list.appendChild(card(i)); });
+    drawRoadmap(plan || [], byId);
+
+    pills('f-status', 'status', STATUS_ORDER.filter(function (s) { return counts[s]; }), counts);
+    pills('f-type', 'type', unique(issues.map(function (i) { return i.type || '?'; })));
+
+    var themeCounts = {};
+    issues.forEach(function (i) {
+      if (i.theme) themeCounts[i.theme] = (themeCounts[i.theme] || 0) + 1;
+    });
+    var themes = THEME_ORDER.filter(function (t) { return themeCounts[t]; })
+      .concat(Object.keys(themeCounts).filter(function (t) {
+        return THEME_ORDER.indexOf(t) === -1;
+      }).sort());
+    document.getElementById('f-theme').parentNode.hidden = !themes.length;
+    pills('f-theme', 'theme', themes, themeCounts);
+    // A project can accumulate hundreds of tags, most of them used once.
+    // Showing every one buries the results, so lead with the most used and
+    // keep the long tail behind a toggle.
+    var tagCounts = {};
+    issues.forEach(function (i) {
+      tagsOf(i).forEach(function (t) { tagCounts[t] = (tagCounts[t] || 0) + 1; });
+    });
+    var tagNames = Object.keys(tagCounts).sort(function (a, b) {
+      return tagCounts[b] - tagCounts[a] || (a < b ? -1 : a > b ? 1 : 0);
+    });
+    pills('f-tag', 'tag', tagNames, tagCounts, TAG_PILL_LIMIT);
+
+    [].forEach.call(document.querySelectorAll('.pill'), function (p) {
+      p.addEventListener('click', function () {
+        var l = active[p.dataset.filter], i = l.indexOf(p.dataset.value);
+        if (i === -1) l.push(p.dataset.value); else l.splice(i, 1);
+        apply();
+      });
+    });
+
+    [].forEach.call(document.querySelectorAll('.morebtn'), function (b) {
+      b.addEventListener('click', function () {
+        var host = document.getElementById(b.dataset.host);
+        var extras = host.querySelectorAll('.pill.extra');
+        var show = extras.length && extras[0].hidden;
+        [].forEach.call(extras, function (p) { p.hidden = !show; });
+        b.textContent = show ? 'fewer' : '+' + extras.length + ' more';
+      });
+    });
+
+    var open = (counts.open || 0) + (counts['in-progress'] || 0);
+    document.getElementById('lede').innerHTML =
+      issues.length + ' issues, ' + open + ' of them still open' +
+      ((plan && plan.length) ? ', ' + plan.length + ' on the roadmap' : '') +
+      '. Read from <code>issues.jsonl</code>.';
+    if (note) {
+      var n = document.getElementById('note');
+      n.textContent = note;
+      n.hidden = false;
+    }
+
+    try {
+      var s = JSON.parse(localStorage.getItem(KEY) || '{}');
+      if (s.active) active = s.active;
+      if (s.q) q.value = s.q;
+    } catch (e) {}
+
+    apply();
+
+    if (location.hash) {
+      var target = document.querySelector(location.hash);
+      if (target && target.classList.contains('card')) {
+        target.hidden = false;
+        setOpen(target, true);
+        target.scrollIntoView();
+      }
+    }
+  }
+
+  function unique(a) {
+    return a.filter(function (v, i) { return a.indexOf(v) === i; }).sort();
+  }
+
+  q.addEventListener('input', apply);
+  document.getElementById('reset').addEventListener('click', function () {
+    active = { status: [], type: [], tag: [], theme: [] };
+    q.value = '';
+    apply();
+  });
+  document.getElementById('expand').addEventListener('click', function () {
+    [].forEach.call(list.children, function (c) { if (!c.hidden) setOpen(c, true); });
+  });
+  document.getElementById('collapse').addEventListener('click', function () {
+    [].forEach.call(list.children, function (c) { setOpen(c, false); });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === '/' && document.activeElement !== q) { e.preventDefault(); q.focus(); }
+    if (e.key === 'Escape' && document.activeElement === q) { q.value = ''; apply(); }
+  });
+
+  function lines(text) {
+    return text.split('\n').filter(function (l) { return l.trim(); }).map(JSON.parse);
+  }
+
+  function grab(name) {
+    return fetch(name, { cache: 'no-store' }).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    }).then(lines);
+  }
+
+  // The live files first. Browsers refuse a file:// fetch, so fall back to the
+  // snapshot baked in at build time and say which one is on screen. A missing
+  // roadmap.jsonl is not an error: the section just stays hidden.
+  grab('issues.jsonl')
+    .then(function (data) {
+      grab('roadmap.jsonl')
+        .catch(function () { return []; })
+        .then(function (plan) { draw(data, plan); });
+    })
+    .catch(function () {
+      var snap = JSON.parse(document.getElementById('snapshot').textContent);
+      draw(snap.issues, snap.roadmap,
+        'Showing the snapshot saved when this page was last built, because the browser would ' +
+        'not read the .jsonl files from disk. To see them live, serve the directory ' +
+        '(python3 -m http.server) and open it over http, or rebuild this page.');
+    });
+})();
+</script>
+</body>
+</html>
