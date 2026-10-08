@@ -27,14 +27,16 @@ reached — flagged honestly). From the **v1.11** ROM.
 - indexes the **`$A652` note→divider table** so the note→frequency mapping is exact
   (crystal-derived).
 
-The per-voice **oscillator comparators** appear at `$2018 + n×$300` (bit 7),
-polled by the foreground loop `$8302` (#7). These are the hardware feedback the
-tuning uses to know where each oscillator actually is.
+The hardware feedback is a single comparator on the summed voice output,
+`PULSE`, read as ACIA status bit 3 (CTS) at `$1406`. With the output muted
+(`$1D00` bit 1 set; `$1D00 = $2E` at `$B6D4`), CALIBRATE starts `$1600` counter 1 from `$FFFF` at 2 MHz, waits
+for a set number of `PULSE` transitions (`$B30C–$B32F`, each with a timeout of
+`$2710` polls), then latches and reads the counter (`$B331–$B33D`): the elapsed
+time for N cycles of the voice's output. See voice-architecture.md.
 
-> The `$2018+` lines sit in the patch-ROM window address range; whether they are
-> tuning comparators, an oscillator sync/zero-cross strobe, or both is the open
-> question carried to the DAC/voice hardware doc (#13). The run-time correction
-> in `FUN_8765` is firm; the precise feedback semantics are not.
+(Earlier revisions named per-voice "oscillator comparators" at `$2018 + n×$300`.
+Those addresses are patch ROM in the M1000, a leftover from the Matrix-6; see
+main-loop-and-irq.md.)
 
 ## Calibration modes (panel "extended functions")
 
@@ -88,4 +90,3 @@ disassembled from the vector-seeded analysis, but the entry (Ext. Funct. 7 →
 
 - Trace the CALIBRATE measurement loop and how `+$A0/$A2` references are produced.
 - Find and trace the `BAD OSC/VCF/RES/WAVE` self-test driver (panel-gated code).
-- Resolve the `$2018+` comparator/strobe semantics with the schematic (#13).

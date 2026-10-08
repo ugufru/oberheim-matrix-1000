@@ -40,7 +40,7 @@ are relative to the voice base. Built in `vec_RESET`, stepped in `FUN_85e7`.
 | `+$14` | byte | envelope/phase state (compared, `-0x0C`) *(inferred)* | `FUN_85e7` |
 | `+$15` | word | pitch/target → copied to `+$1B` | `FUN_85e7` |
 | `+$17` | word | source for the `+$1D/+$1F` CV pair | `FUN_85e7` |
-| `+$18` | byte | voice flags / gate (bit 7 = trigger/active) | `FUN_85e7` |
+| `+$18` | byte | bit 7 = **service this voice now**: set on note assignment (`$D570`, `$D5F6`) and envelope-stage change (`$864C`), cleared after the voice's program runs (`$8734`). The foreground poll meant to read it uses Matrix-6 addresses (main-loop-and-irq.md) | `FUN_85e7` |
 | `+$1B/+$1D/+$1F` | word | computed pitch / CV outputs | `FUN_85e7` |
 | `+$21/+$22/+$23` | byte | envelope sub-state | `FUN_85e7` |
 | `+$30` | byte | 8253 control word for this voice's DCO counters (`$36/$76/$B6` = counter 0/1/2, mode 3), from the `$8220` table | `vec_RESET` |

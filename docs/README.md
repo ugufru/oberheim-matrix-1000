@@ -63,8 +63,6 @@ a one-page mental model with two diagrams ([system](diagrams/architecture.svg),
 The documented subsystems are complete and cross-checked. A few items are
 deliberately left open (and noted in-place) rather than asserted without evidence:
 
-- the exact `$2018+` voice-status/comparator semantics (needs the schematic);
-- the precise role of the 12 fixed DCO timer clocks vs the DAC pitch CV;
 - pass-2 (`$E08B`) emulation for byte-exact matrix-routing decode (core synth
   parameters are exact);
 - the panel-gated `BAD OSC/VCF/RES/WAVE` self-test body;

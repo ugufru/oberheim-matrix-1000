@@ -287,4 +287,3 @@ wrong on some voices points at U701/U702.
   resistor network.
 - Explain the `$107E` write and the `STA $1800` in `$8991`.
 - Confirm the AM6012 part marking on a real board.
-- Resolve the `$2018+` voice-status lines (see voice-architecture.md, #31).

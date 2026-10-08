@@ -19,7 +19,7 @@ comes back. Everything from here is one of three paths into the engine.
 ## The foreground loop — `$8302`
 
 ```
-8302  LDA $2018 ; BMI $8322     ; voice 0 service flag (bit 7)?
+8302  LDA $2018 ; BMI $8322     ; meant: voice 0 "service now" flag (bit 7)
 8307  LDA $2318 ; BMI $8322     ; voice 1   ($2018 + n*$300)
 830c  LDA $2618 ; BMI $8322     ; voice 2
 8311  LDA $2918 ; BMI $8322     ; voice 3
@@ -28,10 +28,38 @@ comes back. Everything from here is one of three paths into the engine.
 8320  BRA $8302                 ; otherwise spin
 ```
 
-The foreground is a **polling dispatcher**: it spins reading six per-voice status
-bytes and, the moment any voice raises bit 7, services it via the engine. There
-is no other foreground work in this loop — all heavy lifting is in the engine and
-the MIDI ISR.
+The foreground is a **polling dispatcher** inherited from the Matrix-6, and in
+the M1000 it is **broken**: it never dispatches.
+
+The six addresses are each voice block's `+$18` flag byte, **as laid out in the
+Matrix-6**, whose voice blocks start at `$2000` (its code sets DP to `$20`–`$2F`;
+the M1000's uses `$60`–`$6F`). In both machines bit 7 of `+$18` means "service
+this voice now": the voice-assignment code sets it to `$80` when a note is
+assigned (`$D570`, `$D5F6`), the engine sets it when an envelope stage changes
+(`$864C`), and the engine clears it after running the voice's program (`$8734`).
+So in the Matrix-6 this loop runs the engine **as soon as a note arrives**,
+instead of waiting for the next timer tick.
+
+When the code moved to the M1000, the voice blocks moved to `$6000 + n×$300`
+because `$2000–$3FFF` became the patch-ROM window (schematic page 1: U815 decodes
+that range only to the patch ROM). The DP setups were updated; these six absolute
+addresses were not. So the loop reads **patch-ROM bytes** in whatever bank `$1D80`
+selects. Boot sets bank 0 (`$8047`) and the banked patch reads restore it
+(`$BCD3`, `$BD15`), and in bank 0 the six bytes are `4C 42 44 1A 7E 3F`, none
+with bit 7 set. The loop spins forever, and every voice update waits for the
+50 Hz timer tick (up to 20 ms after a note-on).
+
+| Version | Loop reads | Dispatches? |
+|---|---|---|
+| Matrix-6 v2.13, Matrix-6R v2.11 | `$2018…` (its voice RAM) | yes |
+| M1000 v1.03, v1.11 (Oberheim) | `$2018…` (patch ROM) | **no** |
+| v1.13, v1.14 (Nordcore), v1.16 (GliGli) | `$2018…` | **no** |
+| v1.20 (Tauntek) | `$6018…` | yes: fixed |
+
+Bob Grieb's v1.20 changes exactly these six operands, which independently
+confirms the diagnosis. For a firmware rewrite or a patch to v1.11, it is a
+six-byte fix (`$8303`, `$8308`, `$830D`, `$8312`, `$8317`, `$831C`: high byte
+`$2x` → `$6x`).
 
 ### How it calls the engine — a synthesized IRQ frame
 
@@ -44,32 +72,28 @@ the MIDI ISR.
 832d  JMP  $85E3      ; = the IRQ handler entry
 ```
 
-Rather than busy-call a subroutine, the loop **fakes a fast (non-`E`) IRQ stack
-frame** — return PC `$8302` plus a CC with the `E` bit clear — and jumps to the
-IRQ vector target `$85E3`. The engine runs and ends in `RTI`, which (because
-`E=0`) pulls just CC + PC and lands back at `$8302`. The poll resumes. Net
-effect: the foreground "raises" the tick engine on demand, reusing the exact same
-handler the hardware timer uses.
+When it does fire (Matrix-6, v1.20), rather than busy-call a subroutine the loop
+**fakes a fast (non-`E`) IRQ stack frame**: return PC `$8302` plus a CC with
+the `E` bit clear. It jumps to the IRQ vector target `$85E3`; the engine runs and
+ends in `RTI`, which (because `E=0`) pulls just CC + PC and lands back at
+`$8302`, and the poll resumes. So the foreground raises the tick engine on demand,
+reusing the exact handler the hardware timer uses.
 
-> Open question: the polled bytes `$2018 + n×$300` sit inside the nominal patch-
-> ROM window (`$2000–$3FFF`). They are clearly **per-voice status inputs** here,
-> not ROM — so either a finer address decode or a bank state exposes voice
-> service/timing lines in this region. Resolving this belongs to the DAC/voice
-> hardware deep-dive (#13); flagged, not guessed.
 
 ## The three paths into the engine
 
 ```
    FIRQ ($84B4) ──▶ MIDI ACIA byte ISR         (highest priority, per byte)
    IRQ  ($85E3) ──▶ JMP [$79F9] ──▶ $85E7       (hardware $1600 tick timer)
-   foreground   ──▶ fake frame ──▶ JMP $85E3 ──▶ $85E7   (on voice request)
+   foreground   ──▶ fake frame ──▶ JMP $85E3 ──▶ $85E7   (on voice request; dead in v1.11)
 ```
 
 - **FIRQ** is independent and fastest: it only shuttles MIDI bytes in/out of the
   ring buffers (see midi-handling.md, #10). It can interrupt the IRQ engine.
 - **IRQ** and the **foreground** both converge on `$85E7`, the tick engine. The
-  `$1600` timer provides a periodic floor; the poll loop adds on-demand servicing
-  between timer ticks.
+  `$1600` timer provides a periodic floor; the poll loop was meant to add
+  on-demand servicing between ticks, but in v1.11 it never fires (above), so the
+  timer is the only path.
 
 ## The tick engine `$85E7` (recap) and its dispatch
 
@@ -97,17 +121,13 @@ vector table (#12).
 
 ## Tick cadence
 
-The periodic IRQ is paced by the `$1600` timer, reloaded each tick (`$1602=0x9C`,
-control `$1603=0xB6`, 8254 mode 3). The **exact frequency** depends on that
-timer's input clock, which isn't yet confirmed from the schematic — so rather
-than state a number we trust the external "~50 Hz / 20 ms CV update" figure for
-now and leave the precise calculation to the timing/clocks hardware doc (#14).
-Note that on-demand foreground servicing means the effective CV-refresh rate is
-not the timer rate alone.
+The periodic IRQ is `$1600` counter 2, clocked by E (2 MHz, schematic page 3)
+with a count of `$9C40` = 40,000 in mode 3: **exactly 50 Hz, 20 ms**. The IRQ
+entry reprograms the counter on every engine run, so the period restarts from
+each run (timing-clocks.md). With the foreground dispatch dead, v1.11 refreshes
+CVs at exactly that rate; in the Matrix-6 and v1.20, a note-on runs the engine
+early and restarts the 20 ms clock.
 
 ## Open items
 
-- Identity of the `$2018+n×$300` voice service lines vs the patch-ROM window (#13).
-- Confirm whether the `$1600` timer IRQ is the sole periodic source or works
-  together with the poll loop; measure the real tick rate (#14).
 - Enumerate the `$753F` continuation targets (the mode dispatch) (#12).

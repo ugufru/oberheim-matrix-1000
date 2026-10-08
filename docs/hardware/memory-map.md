@@ -23,7 +23,7 @@ i.e. the entry is **verified against code**, not just the schematic.
 | `$1600–$17FF` | 512 B | **System tick timer** (generates the periodic IRQ) | 8254-class | **code** — reloaded every tick by the IRQ engine (`$1602=0x9C`, `$1603=0xB6`) `@$85e7`; **high** |
 | `$1800–$1BFF` | 1 KB | **Front-panel switch inputs** (read-only) | switch matrix | **code** — reads `$1800/$1801` `@$8178/$818e`; **high** |
 | `$1C00–$1FFF` | 1 KB | **Output latches** — LEDs, display, and the **VA13–15 bank-select** latch | latches | **code** — write-only `$1C06/$1C86/$1D00/$1D80/$1F80`; `$1D80` written at reset `@$8003`; **med** |
-| `$2000–$3FFF` | 8 KB | **Patch ROM window** (banked; see below) | 27512 | **code** — reads `$2018…$2F18` `@$8302–$831b`; **high** |
+| `$2000–$3FFF` | 8 KB | **Patch ROM window** (banked; see below) | 27512 | **code** and schematic (U815 → U803). The reads of `$2018…$2F18` `@$8302–$831b` are a Matrix-6 leftover, not hardware (main-loop-and-irq.md); **high** |
 | `$4000–$5FFF` | 8 KB | **Expansion ROM** socket (optional, often empty) | 27512 (U802) | schematic only — no code refs observed; **low** |
 | `$6000–$7FFF` | 8 KB | **Battery-backed RAM window** (banked; patch edit buffer + work RAM) | 43256 SRAM | **code** — heavy R/W across `$60xx–$7Fxx`; **high** |
 | `$8000–$FFFF` | 32 KB | **OS / code ROM** (the firmware) | 27256 | execution; vectors at `$FFF0–$FFFF`; **high** |

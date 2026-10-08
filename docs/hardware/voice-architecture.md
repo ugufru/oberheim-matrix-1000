@@ -80,15 +80,25 @@ Sync and noise are global too. So the sloped-wave enables, sync and noise are
 always the same on every voice: the hardware is single-timbral in those
 respects, whatever the firmware does with the per-voice CVs.
 
-## Voice feedback — the `$2018+` lines
+## Voice feedback: the output comparator, not `$2018+`
 
-The six per-voice status bytes at `$2018 + n×$300` (bit 7), polled by the
-foreground (#7) and used by the run-time calibration (#12), are the hardware
-feedback from each voice. Since the **oscillators are clock-locked and need no
-tuning**, any comparator here is on the **analog side** (filter/VCA calibration)
-or a per-voice service/timing strobe — *not* oscillator tuning. Its exact
-electrical meaning (and why it decodes in the patch-ROM window address range) is
-the one voice-side question still open against the schematic.
+Earlier revisions described six per-voice status inputs at `$2018 + n×$300`.
+**There are none.** The schematic decodes `$2000–$3FFF` only to the patch ROM
+(U815 → U803, page 1), so those reads return patch-ROM bytes. They are a
+leftover from the Matrix-6, whose voice blocks sit at `$2000`; see
+[main-loop-and-irq.md](../firmware/main-loop-and-irq.md#the-foreground-loop--8302).
+
+The real feedback path is one comparator on the **summed output of all six
+voices** (page 6): the voice outputs join at a CD4053 (U3) which `MUTE` (`$1D00`
+bit 1) switches between the audio output stage and an LM311 comparator (U4).
+The comparator output, **`PULSE`**, goes to the ACIA's CTS input (status bit 3 of
+`$1406`, page 2) and to counter 0 of the `$1600` timer (page 3). The calibration
+code sets `MUTE` (`$1D00 = $2E` at `$B6D4`, with noise cleared just before) and
+times a number of `PULSE` edges against counter 1 at 2 MHz (`$B304–$B33C`): a
+period measurement of the summed output. Because there is one comparator for all
+six voices, a per-voice measurement needs only that voice sounding; the code that
+arranges this was not traced. Since the oscillators are clock-locked, this is for the
+analog side (the per-voice filter tables, dac-cv-mux.md).
 
 ## Known failure points (maintenance)
 

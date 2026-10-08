@@ -109,13 +109,15 @@ evaluated and where the analog voices actually get their voltages. Subsystems
 
 ### Foreground
 
-After enabling interrupts (`ANDCC #$0E`) the boot path jumps to `$8302`, a tight
-**polling dispatcher**: it spins reading six per-voice service flags
-(`$2018 + n×$300`, bit 7) and, when one is raised, synthesizes a fast-IRQ stack
-frame and jumps into the tick engine, which `RTI`s back to the poll. So the
-foreground itself does no slow housekeeping — it exists only to raise the engine
-on demand, alongside the periodic `$1600` timer IRQ. Full detail (and the three
-converging paths into the engine) is in `main-loop-and-irq.md` (#7).
+After enabling interrupts (`ANDCC #$0E`) the boot path jumps to `$8302`, a
+**polling dispatcher** inherited from the Matrix-6. It was meant to spin on the
+six voices' "service now" flags and run the engine at once when a note arrives,
+but in the M1000 it reads the wrong addresses (`$2018 + n×$300`, which is patch
+ROM here; the voice flags moved to `$6018 + n×$300`). So in every Oberheim and
+Nordcore/GliGli version it **never dispatches**: the foreground is an idle spin,
+and all engine work runs from the 50 Hz `$1600` timer IRQ and the MIDI FIRQ.
+Tauntek v1.20 corrects the addresses. Full detail is in `main-loop-and-irq.md`
+(#7).
 
 ## The voice state model
 
