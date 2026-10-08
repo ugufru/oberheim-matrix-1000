@@ -29,7 +29,7 @@ These are the entry hooks for the self-test / calibration covered in #12.
 
 | # | Code | What it does |
 |---|---|---|
-| 1 | `$1C87/$1C07/$1D00 ← 0xFF` | drive output latches (LED/lamp reset) |
+| 1 | `$1C87/$1C07/$1D00 ← 0xFF` | set `$1D00` (global voice control) all-high, which asserts `MUTE` while the voices initialise (see dac-cv-mux.md) |
 | 2 | `FUN_81e4` | write mid-scale `0x8000` to the six DAC channels `$1008…$1058`, 50× (DAC/voice settle) |
 | 3 | `FUN_d06e` | clear display/LED shadow state (`$7A0D–$7A10`, `$79EB`) |
 | 4 | `FUN_d26a` / `FUN_d295` | initialise the `$79C1` status/flag array (copy with bit6 masked / set bit6) |
@@ -50,7 +50,7 @@ These are the entry hooks for the self-test / calibration covered in #12.
 | `FUN_d2b5`, `FUN_d2bb` | **patch → voice & modulation-matrix setup** (reads the active patch buffer `$7A19`, builds per-voice routing) |
 | `FUN_8eba` | a per-voice processing pass over the six blocks (`$6000` step `$300`, selected by mask `$7217`) |
 | `FUN_8ebd(3)` | engine enable |
-| `$1D00 ← $7235 & 0xFD` | clear a bit in the output latch (enable) |
+| `$1D00 ← $7235 & 0xFD` | clear bit 1 = release `MUTE`: the voices become audible |
 | `FUN_8302` | drop into the runtime |
 
 From here the instrument is interrupt-driven (FIRQ MIDI, IRQ tick engine); see

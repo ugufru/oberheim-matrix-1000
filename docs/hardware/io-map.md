@@ -26,20 +26,24 @@ pending the timing/clocks deep-dive, #14).
 
 ## DAC + CV sample-and-hold — `$1000–$13FF`
 
-The single system DAC (AM6012, 12-bit per earlier research) is time-multiplexed
-to every voice parameter through 4051/4053 analog muxes and per-target
-sample-and-hold caps. The `bit-hack` notes describe a high/low byte pair:
+The single system DAC (AM6012, 12-bit) is time-multiplexed to every voice
+parameter through CD4051 muxes and per-target hold capacitors. The address of a
+write is itself the route (schematic page 4, confirmed against the code):
 
-- `$1000` **DAC high byte** — bits 0–6 select DAC channels 5–11; bit 7 = `FASTX`. *(provisional)*
-- `$1010` **DAC low byte** — bits 2–7 control S&H enable and DAC channels 0–4. *(provisional)*
+- **Even address** (high byte): data bits 6–0 → DAC D1–D7, bit 7 → `FASTb`
+  (active low). The same write latches A1–A3 (mux channel), A4–A6 (which mux:
+  voices 1–6, then the shared resonance/mix muxes) and A7/A8 (`RANGE1`/`RANGE2`,
+  the output range).
+- **Odd address** (low byte): bits 7–3 → DAC D8–D12, bit 2 → `ENS&Hb` (0 = mux
+  connected).
 
-Observed in code: a burst of init writes to `$1008/$1018/$1028/$1038/$1048/$1058`
-(stride `$10`, `@$81ef–$81fd`; this is VCA2 set to zero for all six voices) and
-`$107E` (`@$9600`, likely the wave-select bits). Every per-voice channel address
-in this block is now tied to a CEM3396 input: see the
-[channel map](dac-cv-mux.md#per-voice-channel-map). **Confidence: high** for the
-channel-to-parameter map; **low** for how the address bits decode electrically
-(the bit-hack high/low byte model above has not been reconciled with it).
+This replaces the `bit-hack` model ("`$1000` high byte: bits 0–6 select DAC
+channels 5–11, bit 7 = FASTX; `$1010` low byte: S&H enable + channels 0–4"),
+which had the FAST bit and S&H enable but not the address-as-route decode.
+Full detail, the per-channel map and the init write (`$1008 + n×$10` = VCA2 = 0,
+`@$81ef–$81fd`) are in [dac-cv-mux.md](dac-cv-mux.md). `$107E` (`@$9600`)
+decodes to an unconnected mux channel; its purpose is unknown. **Confidence:
+high.**
 
 ## MIDI ACIA (MC68B50) — `$1400–$15FF`
 
@@ -74,10 +78,11 @@ Inputs: `$1800` (`@$818e`) and `$1801` (`@$8178`) return panel switch/encoder
 state (scanned against the output latches). **Confidence: high** for "panel
 input"; exact row/column mapping deferred to the panel deep-dive (#14).
 
-> Refinement: `$1800` is also **written** — the DAC-CV output primitives
-> (`$8991…$8D41`, see dac-cv-mux.md) do `STA $1800` to **select the mux / S&H
-> channel** for the value being scanned out. So this address is a write-latch
-> (DAC mux select) *and* a read-buffer (panel), a common overlapping decode.
+> `$1800` is written once, at `$8995` inside the DCO1 waveshape primitive.
+> An earlier revision read that as a DAC mux-select strobe. The schematic shows
+> `$1800` decodes only to `SWb`, the enable of the panel switch read buffers
+> (74HC240s), and the DAC route is latched from the DAC write address. So that
+> store has no documented effect; its purpose is unexplained.
 
 ## Output latches — `$1C00–$1FFF` (write)
 
@@ -86,13 +91,13 @@ the **bank-select** lines:
 
 | Address | Sample site | Likely role |
 |---|---|---|
-| `$1C00–$1C05` | `@$899C` (via voice `+$77`) | **DCO1 range switch**, one per voice: `$00`/`$FF` from the pitch-range flag. Written by the waveshape primitive, see dac-cv-mux.md |
-| `$1C80–$1C85` | `@$8BB0` (via voice `+$7F`) | **DCO2 range switch**, one per voice, as above |
-| `$1C06` | `@$9590` | LED/display latch |
+| `$1C00–$1C05` | `@$899C` (via voice `+$77`) | **DCO1 range switch** `RA1–RA6`, one per voice. `$1C00` is a 74HC259 addressable latch (U703): A0–A2 pick the bit, BD0 is the data. Schematic-confirmed; see dac-cv-mux.md |
+| `$1C80–$1C85` | `@$8BB0` (via voice `+$7F`) | **DCO2 range switch** `RB1–RB6` (U704, 74HC259), as above |
+| `$1C06` | `@$9590` | **Noise enable** `NOI` (U703 Q6), global to all voices |
 | `$1C86` | `@$b6cc` | LED/display latch |
 | `$1C07` | `@$8017` | latch |
 | `$1C87` | `@$8014` | latch |
-| `$1D00` | `@$801a` | latch (init) |
+| `$1D00` | `@$801a`, `@$9587` | **Global voice control** (U705, 74HC174): bit 1 `MUTE`, bit 2 `SYNC2`, bit 3 `SYNC1`, bits 4–5 **wave select** (one line to every voice's CEM3396 pin 6). Shadow `$7235`. See dac-cv-mux.md |
 | `$1D80` | `@$8003`, `@$bcce` | **bank-select latch** — supplies the high address lines (VA13–15) that page the `$2000` patch-ROM and `$6000` RAM windows; toggled per byte during banked patch reads (FIRQ-masked). Confirmed in #11 |
 | `$1F80` | `@$d08c` | latch |
 

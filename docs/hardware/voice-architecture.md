@@ -16,17 +16,21 @@ multiplexed-CV use:
 - a **waveshaper** (saw + variable-width pulse),
 - a **multimode VCF** (the Matrix-1000 uses it as a 4-pole low-pass),
 - **several VCAs**: two oscillator **balance VCAs** (the Osc-1/Osc-2 mix), a
-  **VCF-modulation VCA** (filter-FM amount), and **two audio output VCAs — one
-  linear, one exponential**. The two audio VCAs are what the patch model exposes
-  as **VCA1** (linear, default velocity-scaled — param 31/92) and **VCA2**
-  (exponential, the loudness envelope, default Env 2 — dest 12 / param 93), in
-  series at the output. (Earlier revisions of this doc said "2 VCAs" — the chip
-  actually has ~five; the Matrix just programs the two audio ones.)
+  **VCF-modulation VCA** (filter-FM amount), and **two audio output VCAs**, one
+  with a log (audio-taper) control input (pin 1) and one linear (pin 22), in
+  series at the output. The patch model's **VCA1** (param 31, velocity-scaled by
+  default via param 92) drives the **log** input, and **VCA2** (the loudness
+  envelope, default Env 2 via dest 12 / param 93) drives the **linear** input.
+  That is traced from the firmware's channel addresses through the schematic
+  (dac-cv-mux.md). Oberheim's own schematic labels pin 22 "VCA1 (LIN)" and pin 1
+  "VCA2 (EXP)", so the chip-level and patch-level names are crossed. (Earlier
+  revisions of this doc had VCA1 = linear, and before that said "2 VCAs"; the
+  chip has about five, and the Matrix programs the two audio ones.)
 
-The chip has **11 separate high-impedance control inputs**, each holding its
-voltage on its own input capacitance between refreshes, so no external
-sample-and-hold buffers are needed. "Playing a voice" is the firmware
-continuously refreshing them from the multiplexed DAC (see dac-cv-mux.md).
+The chip has **11 high-impedance control inputs**, so no sample-and-hold
+*buffers* are needed: each CV is held on a 0.033 µF capacitor and smoothed by a
+1 MΩ / 0.0068 µF RC into the pin. "Playing a voice" is the firmware continuously
+refreshing them from the multiplexed DAC (see dac-cv-mux.md).
 
 ## What sets pitch — a digital clock, not a CV
 
@@ -67,11 +71,14 @@ voice they are: **waveshape A/B**, **pulse-width A/B**, **wave-select**,
 *Pitch is not among them*; it's the timer clock above.
 
 **Ten of them are on the multiplexed DAC**, one channel each, and every one is
-now mapped to its patch parameter and ROM store address in the
-[channel map](dac-cv-mux.md#per-voice-channel-map). The eleventh, wave-select,
-is a four-level input the datasheet suggests driving from two logic bits; the
-firmware's wave-enable bits go out through `$107E` instead of a DAC channel
-(likely, not yet confirmed against the schematic).
+mapped to its patch parameter, ROM store address and mux channel in the
+[channel map](dac-cv-mux.md#per-voice-channel-map). The eleventh, wave select,
+is **one line shared by all six voices**, driven from two bits of the `$1D00`
+latch through a transistor network (dac-cv-mux.md,
+[Wave select, sync and mute](dac-cv-mux.md#wave-select-sync-and-mute-global-at-1d00)).
+Sync and noise are global too. So the sloped-wave enables, sync and noise are
+always the same on every voice: the hardware is single-timbral in those
+respects, whatever the firmware does with the per-voice CVs.
 
 ## Voice feedback — the `$2018+` lines
 

@@ -25,8 +25,9 @@ from code:
 
 | Address | Role |
 |---|---|
-| `$1C06/$1C07/$1C86/$1C87` | LED / display latches |
-| `$1D00` | control latch (engine enable bit cleared at boot) |
+| `$1C06` | not a panel latch: the global **noise enable** (U703 Q6; see [dac-cv-mux.md](dac-cv-mux.md)) |
+| `$1C07/$1C86/$1C87` | spare outputs of the voice range latches U703/U704 (Q7, Q6, Q7), unconnected on the schematic; written by the firmware anyway |
+| `$1D00` | not a panel latch: global voice control (`MUTE`, sync, wave select; see [dac-cv-mux.md](dac-cv-mux.md)). The bit cleared at boot is `MUTE` |
 | `$1D80` | **bank-select latch** (VA13–15) for patch ROM / RAM paging (#11) |
 | `$1F80` | display/LED latch (`~$7A0D` shadow) |
 

@@ -36,6 +36,7 @@ are relative to the voice base. Built in `vec_RESET`, stepped in `FUN_85e7`.
 | Offset | Size | Role | Source |
 |---|---|---|---|
 | `+$0C/+$0E/+$10` | word | modulator output slots (written each tick from the global mod tables) | `FUN_85e7` |
+| `+$0B` | byte | **fast-write flag**: set by modulation sources that just jumped (`$9D9D`, `$9DB7`, `$9DED`…), ORed into DAC bit 7 (`FASTb`) so the CV bypasses the RC smoothing; cleared by most destination primitives | `$9D9D`, `$8984`… |
 | `+$14` | byte | envelope/phase state (compared, `-0x0C`) *(inferred)* | `FUN_85e7` |
 | `+$15` | word | pitch/target → copied to `+$1B` | `FUN_85e7` |
 | `+$17` | word | source for the `+$1D/+$1F` CV pair | `FUN_85e7` |
@@ -73,7 +74,7 @@ addresses. The channel-to-parameter derivation is in
 | `$7217` | voice-select bitmask (`0x3F`) |
 | `$7222` | reused loop counter |
 | `$7228` | round-robin pointer into the voice-allocation list |
-| `$7235` | shadow of output latch `$1D00` |
+| `$7235` | shadow of `$1D00` (global voice control: `MUTE`, sync, wave select) |
 | `$7490/$7491/$74A8` | portamento / glide control flags *(inferred)* |
 
 ## Voice allocation (`$7531–$753F`)

@@ -2,26 +2,83 @@
 
 How one DAC feeds every control voltage of all six voices. This is the analog
 side of the firmware [voice engine](../firmware/voice-engine.md) (#8). Addresses
-and the write protocol below are from the **v1.11** ROM; the analog detail is the
-schematic's authority (Bob Grieb redrawn set; `bit-hack`).
+and the write protocol are from the **v1.11** ROM. The circuit detail is from the
+schematic: Bob Grieb's redrawn set (Rev 1.0, 2015; page 4 "DAC, S&H", page 5
+"Voice Circuitry") cross-checked against Oberheim's own sheets (document 2457
+Rev B, 1988: sheet 3 "DAC", sheet 11 "Voice 6"). Sheet and part references below
+use those drawings.
 
 ## The scheme
 
-There is **one system DAC** (an Analog Devices **AM6012**, 12-bit, per the
-schematic notes) in the `$1000–$13FF` I/O block. It is **time-multiplexed**: the
-CPU writes a value and steers it through **CD4051/4053** analog multiplexers to
-one specific **control input of one specific voice**. The firmware cycles through
-all inputs × voices continuously so each is refreshed before it droops.
+There is **one system DAC**, an **AM6012** 12-bit DAC (U711), in the `$1000–$13FF`
+I/O block. It is **time-multiplexed**: the CPU writes a value, and CD4051
+multiplexers steer the DAC output (`ANG`) to one **control input of one voice**.
+The firmware cycles through all inputs × voices so each is refreshed before it
+droops.
 
-Each CEM3396 has **11 separate control inputs** (not one multiplexed input). The
-key design point, from the datasheet: those inputs are **high-impedance, 0 to +5 V,
-for "direct interface to a CMOS multiplexer from the system DAC" — a feature that
-"eliminates the usual Sample & Hold Buffers in a multiplexed DAC system."** In
-other words there are **no dedicated per-parameter S&H buffer chips**: the mux
-output drives the high-Z pin directly, and the pin's own input capacitance holds
-the value between refresh passes. So the topology is **DAC → 4051/4053 mux tree
-(selects voice + input) → CEM3396 high-Z pin (self-holding)**, fanning one DAC out
-to 11 CVs × 6 voices.
+The CEM3396's control inputs are **high-impedance, 0 to +5 V**, so no buffer
+amplifiers are needed (the datasheet: "eliminates the usual Sample & Hold Buffers
+in a multiplexed DAC system"). The hold is passive. Every CV has a **0.033 µF
+hold capacitor** on the mux output, then a **1 MΩ / 0.0068 µF** RC into the CEM3396
+pin, which smooths the step on each refresh. So the topology is **DAC → output
+amplifier (with range switching) → CD4051 → hold cap → RC → CEM3396 pin**, fanning
+one DAC out to 10 CVs × 6 voices.
+
+## How an address becomes a route
+
+The channel address the firmware writes to *is* the routing. On every write to
+an **even** address in the block, U709 (74HCT374) latches **address lines**, not
+data, into the mux selects (page 4):
+
+| Address bit | Latched as | Meaning |
+|---|---|---|
+| A1, A2, A3 | `SHA`, `SHB`, `SHC` | mux channel 0–7 (`(addr >> 1) & 7`) |
+| A4, A5, A6 | U715 (74HC138) select | which of 8 muxes: `SH1`–`SH6` = voices 1–6, `SH7` = U701, `SH8` = U702 |
+| A7 | `RANGE1` | DAC output range switch (see below) |
+| A8 | `RANGE2` | DAC output range switch |
+
+The same even-address write clocks the DAC's **high data byte** into U712. An
+**odd**-address write clocks the **low byte** into U713. Data bits (page 4):
+
+| Byte | Bit(s) | Goes to |
+|---|---|---|
+| even (high) | 6–0 | DAC D1 (MSB) … D7 |
+| even (high) | 7 | `FASTb` (active low, see [The fast path](#the-fast-path)) |
+| odd (low) | 7–3 | DAC D8 … D12 (LSB) |
+| odd (low) | 2 | `ENS&Hb`: enables U715, so **0 = mux connected** |
+
+## The write sequence
+
+The per-parameter DAC write is done by **twelve destination primitives at
+`$8950`–`$8D1B`** (ten CVs plus two pulse-off variants). Each loads a cached
+channel pointer from the voice block and writes the value. E.g. `$8984`:
+
+```
+8984  ASLB / ROLA ×2   ; 13-bit value << 2: value bits 12..1 land on D1..D12
+8988  ORA <$0B         ; per-voice "fast" flag into bit 7
+898D  EORA #$80        ; bit 7 is FASTb, active low
+898F  ORB #$04         ; low byte with ENS&Hb = 1 (mux off)
+8991  LDX <$79         ; this voice's channel address ($1000 + n*$10)
+8993  STB 1,X          ; odd write: low data, mux disconnected
+8998  STA ,X+          ; even write: high data + latch the route from the address
+899A  ANDB #$FB        ; ENS&Hb = 0
+...   STB ,X           ; odd write again: mux connected, DAC drives the hold cap
+...   PULU PC          ; next primitive
+```
+
+So each CV is: **disconnect, set value and route, connect**. The mux stays
+connected until the next primitive's first write disconnects it, so the DAC
+charges the hold cap for the whole interval. Most primitives add a short
+`PSHS/PULS` delay before connecting, to let the DAC settle. The value is clamped to
+`$1FFF` (13 bits) and shifted left two places, so the 12-bit DAC gets value bits
+12..1 and bit 0 is overwritten by the `ENS&Hb` strobe.
+
+(Earlier revisions said `EORA #$80` converted a signed value to offset binary.
+The schematic shows bit 7 is not a data bit at all: it is `FASTb`. They also
+called `STA $1800` at `$8995` a "mux select strobe". `$1800` decodes to `SWb`, the
+panel switch *read* buffers (page 1, page 7), and the route is latched from the
+address, so that store has no documented effect. It appears only in this one
+primitive.)
 
 ## Per-voice channel map
 
@@ -31,10 +88,10 @@ arithmetic. Eight pointers are built as a constant plus `$7207` (which steps by
 `$10` per voice); two more, plus the pitch and range-latch addresses, come from
 the 18-byte-per-voice **`$8220` boot table**. Voice `n` = 0…5.
 
-Each row below is grounded three ways: the **compiler** that emits the primitive
-(it stores the matrix destination code in `$7220` and reads the named patch
-parameter from the active patch at `$7218`), the **primitive** that does the
-store, and the **pointer** it loads.
+Each row is grounded three ways in the code (the **compiler** that emits the
+primitive, which stores the matrix destination code in `$7220` and reads the
+patch parameter from the active patch at `$7218`; the **primitive** that does the
+store; the **pointer** it loads) and then by the schematic route.
 
 The compilers index the active patch (`$7218` = `$7A19`) by **parameter number**:
 `+$0A` is param 10, `+$1F` is param 31. The unpacked parameters therefore start
@@ -43,43 +100,80 @@ output ([decoding.md](../patch-rom/decoding.md)). The reads only make sense this
 way. For example, the DCO2 PW compiler tests bits 0 and 2 of `+$12`, and param 18
 is the 3-bit DCO2 noise/wave/pulse enable.
 
-| Dest code (`$7220`) | Parameter (patch #) | Compiler | Primitive (store) | Voice-block ptr | Channel address | CEM3396 input (pin) |
-|---|---|---|---|---|---|---|
-| 3 | DCO1 waveshape (10) | `$9633` | `$8950` (`$8993`) | `+$79` | `$1000 + n×$10` | Waveshape A (2) |
-| 2 | DCO1 pulse width (11) | `$9660` | `$89B8` (`$89E0`) | `+$7B` | `$1006 + n×$10` | Pulse width A (5) |
-| 2, pulse off | (DCO1 pulse disabled) | `$9660` | `$89AF` (`$89E0`) | `+$95` | `$1086 + n×$10` | see note below |
-| 6 | DCO2 waveshape (15) | `$975B` | `$8B67` (`$8BAA`) | `+$81` | `$100E + n×$10` | Waveshape B (10) |
-| 5 | DCO2 pulse width (16) | `$9788` | `$8BCC` (`$8BF4`) | `+$83` | `$100A + n×$10` | Pulse width B (7) |
-| 5, pulse off | (DCO2 pulse disabled) | `$9788` | `$8BC3` (`$8BF4`) | `+$97` | `$108A + n×$10` | see note below |
-| 7 | DCO mix (20) | `$98E5` | `$8CD6` (`$8CDE`) | `+$8B` | `$1160 + n×2` | Balance (14) |
-| 8 | VCF FM amount (30) | `$9846` | `$8C95` (`$8C9D`) | `+$87` | `$108C + n×$10` | Modulation amount (11) |
-| 9 | VCF frequency (26) | `$97D7` | `$8C0A` (`$8C70`) | `+$85` | `$1102 + n×$10` | Filter frequency (20) |
-| 10 | VCF resonance (27) | `$9866` | `$8CB5` (`$8CBD`) | `+$89` | `$106C + n×2` | Resonance (15) |
-| 11 | VCA1 (31) | `$9907` | `$8CFA` (`$8D02`) | `+$8D` | `$1004 + n×$10` | Linear gain (22) *(inferred)* |
-| 12 | VCA2 (envelope; no static param) | `$992F` | `$8D1B` (`$8D45`) | `+$8F` | `$1008 + n×$10` | Log gain (1) *(inferred)* |
+| Dest (`$7220`) | Parameter (patch #) | Compiler | Primitive (store) | Ptr | Channel address | Mux, ch | Range | CEM3396 pin |
+|---|---|---|---|---|---|---|---|---|
+| 3 | DCO1 waveshape (10) | `$9633` | `$8950` (`$8993`) | `+$79` | `$1000 + n×$10` | voice, 0 | | Wave A (2) |
+| 9 | VCF frequency (26) | `$97D7` | `$8C0A` (`$8C70`) | `+$85` | `$1102 + n×$10` | voice, 1 | 2 | Filter freq (20) |
+| 11 | VCA1 (31) | `$9907` | `$8CFA` (`$8D02`) | `+$8D` | `$1004 + n×$10` | voice, 2 | | Log gain (1) |
+| 2 | DCO1 pulse width (11) | `$9660` | `$89B8` (`$89E0`) | `+$7B` | `$1006 + n×$10` | voice, 3 | | Pulse A (5) |
+| 2, off | (DCO1 pulse disabled) | `$9660` | `$89AF` (`$89E0`) | `+$95` | `$1086 + n×$10` | voice, 3 | 1 | Pulse A (5) |
+| 12 | VCA2 (envelope) | `$992F` | `$8D1B` (`$8D45`) | `+$8F` | `$1008 + n×$10` | voice, 4 | | Linear gain (22) |
+| 5 | DCO2 pulse width (16) | `$9788` | `$8BCC` (`$8BF4`) | `+$83` | `$100A + n×$10` | voice, 5 | | Pulse B (7) |
+| 5, off | (DCO2 pulse disabled) | `$9788` | `$8BC3` (`$8BF4`) | `+$97` | `$108A + n×$10` | voice, 5 | 1 | Pulse B (7) |
+| 8 | VCF FM amount (30) | `$9846` | `$8C95` (`$8C9D`) | `+$87` | `$108C + n×$10` | voice, 6 | 1 | Filter mod (11) |
+| 6 | DCO2 waveshape (15) | `$975B` | `$8B67` (`$8BAA`) | `+$81` | `$100E + n×$10` | voice, 7 | | Wave B (10) |
+| 7 | DCO mix (20) | `$98E5` | `$8CD6` (`$8CDE`) | `+$8B` | `$1160 + 2n` | U701, `n` | 2 | Balance (14) |
+| 10 | VCF resonance (27) | `$9866` | `$8CB5` (`$8CBD`) | `+$89` | `$106C + 2n` | U701 ch 6–7 (n = 0–1), U702 ch 0–3 (n = 2–5) | | Resonance (15) |
+
+"voice" is that voice's own CD4051 (`UX03` on page 5; U603 on Oberheim's voice 6
+sheet), selected by `SH(n+1)`. The shared muxes on page 4 carry `BAL1–6` and
+`RES1–2` (U701) and `RES3–6` (U702), exactly the stride-2 addresses above.
+
+The schematic route agrees with the code on every channel where the parameter
+alone fixes the pin (waveshape, PW, cutoff, FM, mix, resonance). It also settles
+the two questions the code could not:
+
+- **DCO1 = converter A.** Channel 0 and 3 run to Wave A and Pulse A. The
+  wave-select table (below) independently agrees.
+- **The VCA names are crossed.** The patch's **VCA1** (param 31, velocity by
+  default) reaches pin 1, the CEM3396's **log/audio-taper** gain. The patch's
+  **VCA2** (the Env 2 loudness destination) reaches pin 22, the **linear** gain.
+  Oberheim's own sheet labels the chip pins "VCA1 (LIN)" (22) and "VCA2 (EXP)"
+  (1), so chip-level and patch-level names are swapped. Earlier revisions had
+  VCA1 = linear.
 
 Pitch (dest 1, DCO1: compiler `$95AB` → `$8765`; dest 4, DCO2: compiler `$96A5`
 → `$89F6`) does not use the DAC; it loads the voice's 8253 counters (`+$75`/`+$91`
 for DCO1, `+$7D`/`+$93` for DCO2, from the `$8220` table). See
 [voice-architecture.md](voice-architecture.md).
 
-That accounts for **all ten DAC-driven CEM3396 inputs**. The chip's eleventh
-control input, **wave select** (pin 6), is a four-level input that the datasheet
-suggests driving from two logic bits (its Figure 2); it is not on any of these
-channels. The firmware's per-DCO wave-enable bits are accumulated into
-`$7213`/`$7214` and written to `$107E` (`$9600`, `$9728`), the likely path, not
-yet confirmed against the schematic.
+## Output ranges (`RANGE1`, `RANGE2`)
 
-How the parameter-to-pin column was established:
+U710 (CD4053) switches resistors into the summing node of the DAC output
+amplifier U706, shifting the output window for that write (page 4): `RANGE1`
+(A7) switches in a 182 kΩ resistor, `RANGE2` (A8) swaps 133 kΩ (R726) for 20 kΩ
+(R724). The firmware uses them per parameter, which matches what the datasheet
+asks of each input:
 
-- **Waveshape, PW, mix, FM, cutoff, resonance** are each the only input with that
-  function, so the patch parameter fixes the pin. DCO1 = converter A and DCO2 =
-  converter B is the natural reading, not yet checked against the schematic.
-- **VCA1 vs VCA2 → linear vs log** follows voice-architecture.md; the code shows
-  only that VCA2 (`$8D1B`) is scaled by `+$A5` and capped at `+$A7`, not which
-  taper it drives.
+| Range | Used for | Datasheet need |
+|---|---|---|
+| none | waveshapes, PW, VCAs, resonance | 0 to +5 V |
+| `RANGE1` (`+$80`) | **pulse off**, VCF FM amount | pulse off wants Vpw slightly **negative** (−50 to −500 mV); FM amount is ~1% at 0 V |
+| `RANGE2` (`+$100`) | VCF frequency, mix | frequency CV spans −2.5 to +5 V; mix is bipolar (≈ −2 to +2 V) |
 
-### What the primitives' arithmetic confirms
+This resolves the "pulse off writes to PW + `$80`" puzzle: it is the **same mux
+channel and pin** as normal PW, written through `RANGE1` so a zero value lands
+below 0 V. The `$89AF`/`$8BC3` primitives also wait ~20 loops first, giving the
+output amplifier time to swing. The exact voltages of each range were not
+computed here.
+
+## The fast path
+
+Each voice has a **second CD4051** (`UX02` on page 5; U602 on Oberheim's sheet)
+on the same channel selects, wired to the **pin side** of each 1 MΩ smoothing
+resistor. It is enabled only when the voice is selected **and** `FASTb` is low
+(an OR gate, `UX04`). So a normal write charges the hold cap and the pin follows
+through the RC; a fast write drives the pin directly and the CV **steps
+immediately**.
+
+The firmware sets `FASTb` from the per-voice flag `<$0B`, which is ORed into bit
+7 before the `EORA #$80`. The modulation source heads set it: `$9D9D` (keyboard
+tracking, from voice `+$23`), `$9DB7` (portamento, from `+$25`), and the matrix
+source taps from `$9DED` on, which OR in their own flags. Most destination
+primitives then clear it. So a destination whose source just **jumped** (a new
+note) is written fast, and everything else is slewed.
+
+## What the primitives' arithmetic confirms
 
 The datasheet (application hints, pp. 6–9) says the waveshape CV must scale
 **in proportion to frequency** (`Vwf = F·Rt·Ct·5/12·Vcc·α`), that the pulse-width
@@ -94,12 +188,56 @@ CV must scale **with the waveshape CV**, and that the timing resistor should be
   So **PW tracks the waveshape CV**.
 - Each pitch primitive compares the note against `$3C80` and keeps a range flag
   (`+$31` DCO1, `+$32` DCO2, `$00` or `$FF`). The waveshape primitive writes that
-  flag to a per-DCO latch, **`$1C00 + n` (DCO1, `+$77`)** and **`$1C80 + n`
-  (DCO2, `+$7F`)**, ordered before or after the DAC strobe depending on the
-  direction of the switch. That is the datasheet's Rt range switch. The per-range
-  pitch offsets are `+$39/+$3B` and `+$3D/+$3F`, defaulted at `$DD88`.
+  flag to **`$1C00 + n`** (DCO1, `+$77`) or **`$1C80 + n`** (DCO2, `+$7F`), ordered
+  before or after the DAC write depending on the direction of the switch. The
+  per-range pitch offsets are `+$39/+$3B` and `+$3D/+$3F`, defaulted at `$DD88`.
 
-### Per-voice calibration tables (cutoff and resonance)
+The schematic confirms those latches (Oberheim sheet 3). `$1C00` (`L1`) and
+`$1C80` (`L2`) are **74HC259 addressable latches** (U703, U704): `A0–A2` pick the
+output and `BD0` is the data, so `$1C00 + n` sets one bit. U703's outputs are
+`RA1–RA6` and U704's are `RB1–RB6`, the per-voice transistors that switch each
+converter's timing resistor (page 5: `RAX`/`RBX` turn on `QX02`/`QX04`, which put
+36 kΩ in parallel with the 510 kΩ `R_T` for the high range, the datasheet's
+recommended method). U703's Q6 is `NOI`, the global **noise** enable, so `$1C06` is the
+noise switch, not an LED latch.
+
+## Wave select, sync and mute: global, at `$1D00`
+
+The CEM3396's eleventh input, **wave select** (pin 6), is not on the DAC. Every
+voice's pin 6 is wired to one shared `WAVE` line, driven the way the datasheet's
+Figure 2 suggests: two logic bits into a transistor and resistor network
+(Oberheim sheet 3: Q701, R716 82 kΩ, R717 43 kΩ, to −5 V). Those bits come from
+`$1D00` (`L3`), a 74HC174 (U705) that also carries the other global voice
+controls:
+
+| `$1D00` bit | U705 output |
+|---|---|
+| 0 | Q3 (unlabelled) |
+| 1 | `MUTE` |
+| 2 | `SYNC2` |
+| 3 | `SYNC1` |
+| 4, 5 | `WAVE` network |
+
+The firmware builds this byte at `$9529`–`$9587` from the patch and keeps a shadow
+in `$7235`. The two sloped-wave enables (bit 1 of param 13, bit 1 of param 18)
+index the table at **`$9594`**: `$20` (neither), `$30` (DCO1 only), `$10` (DCO2
+only), `$00` (both). In order of voltage those are the datasheet's four levels
+(both on, B only, none, A only), so `$30` = "A only" for DCO1 is a second
+confirmation that DCO1 is converter A. DCO sync (param 25) goes into bits 2–3;
+bits 0–1 are kept from the shadow. Boot clears bit 1 (`$81D7`) after
+initialising, which releases `MUTE`.
+
+Because these lines are shared, **wave selection, sync and noise are per patch,
+not per voice**: all six voices always have the same sloped-wave enables, sync
+mode and noise state. Everything else is per voice.
+
+`$107E`, which an earlier revision proposed as the wave-select path, decodes to
+channel 7 of U702, which is unconnected on both schematics. The firmware writes
+`$7213`/`$7214` there with a single even-address store (`$9600`, `$9728`), which
+re-latches the route without the connect strobe. Its purpose is still unknown;
+it does not drive wave select.
+
+## Per-voice calibration tables (cutoff and resonance)
 
 Cutoff and resonance are the two channels the firmware **corrects per voice**:
 
@@ -114,78 +252,39 @@ Cutoff and resonance are the two channels the firmware **corrects per voice**:
 This is the "filter/VCF calibration" side of CALIBRATE (autotune-selftest.md):
 the oscillators need no tuning, but the analog filter does.
 
-### Notes on the address layout
+## The boot write mutes the voices
 
-- Eight channels sit at **`$1000 + n×$10`** offsets `0, 4, 6, 8, A, E` and
-  `$80 + 6, A, C`. Cutoff is at `$1100 + n×$10 + 2`. Resonance and mix use a
-  **stride of 2** (`$106C + 2n`, `$1160 + 2n`) and live in the `$8220` table rather
-  than the `$7207` arithmetic. So they sit on a different mux bank from the
-  other eight.
-- **Pulse off uses a different address.** When a DCO's pulse is disabled, the
-  compiler emits a zero-value primitive (`$89AF`/`$8BC3`) that waits about 20 loops
-  and writes to the PW offset **+`$80`** (`$1086`/`$108A`) instead of the normal PW
-  channel. The datasheet recommends a slightly *negative* Vpw (−50 to −500 mV)
-  to guarantee the pulse is off. That suggests the A7 alias reaches the same
-  pin through a negative offset, but the schematic would have to confirm it.
-- **The boot write to `$1008` mutes the voices.** `FUN_81e4` writes raw
-  `$8000` to `$1008 + n×$10`, repeating 50 times (`$7222 = $32`). Every primitive
-  flips the top bit (`EORA #$80`) before storing, so raw `$8000` is computed value
-  **0**. The channel is VCA2, so this sets all six voices' output VCAs to zero at
-  power-up (an earlier revision called it a "mid-scale settle").
+`FUN_81e4` writes raw `$8000` to `$1008 + n×$10` for all six voices, repeating 50
+times (`$7222 = $32`). With bit 7 = `FASTb` high (normal path) and data 0, that is
+**VCA2 = 0** on every voice, so all output VCAs start closed. (An earlier revision
+called it a "mid-scale settle".)
 
 ## Correction: `FUN_8765` is the *timer* write, not the DAC
 
-An earlier revision documented a "DAC write protocol" using `FUN_8765` — writing
-two bytes to the **same** address then toggling `+$91`. That turned out to be the
-**8253 pitch write**, not a DAC write: writing LSB-then-MSB to one address is the
-8253 counter-load, `+$75`/`+$91` are the voice's timer counter/control (from the
-`$8220` table), and it's driven by the `$A652` note→divider table
-(voice-architecture.md / timing-clocks.md). So that sequence belongs to *pitch*,
-not the DAC.
+An earlier revision documented a "DAC write protocol" using `FUN_8765`, writing
+two bytes to the **same** address then toggling `+$91`. That is the **8253 pitch
+write**: writing LSB-then-MSB to one address is the 8253 counter load, `+$75`/`+$91`
+are the voice's timer counter/control (from the `$8220` table), and it is driven
+by the `$A652` note→divider table (voice-architecture.md / timing-clocks.md).
 
-Note the `$8220` table caches **both** kinds of target per voice: the two 8253
-counters (`$0000`-region, pitch) *and* DAC channels (`$106x`/`$116x`), alongside
-panel latch addresses.
-
-## The DAC-CV write — isolated
-
-The per-parameter DAC write is done by a **family of twelve destination primitives
-at `$8950`–`$8D1B`** (ten CVs plus the two pulse-off variants), the analog-CV
-siblings of the pitch primitive `FUN_8765`. Each one loads a different **cached
-channel pointer** from the voice block (`LDX <$79`, `<$7B`, `<$81`, `<$83`,
-`<$85`, `<$87`, `<$89`, `<$8B`, `<$8D`, `<$8F`, `<$95`, `<$97`, set at boot,
-`$80D8–$8146`) and writes the computed value to
-that channel, strobing **`$1800`** to select the mux / S&H target, then threads on
-(`PULU PC`). E.g. `$8991`:
-
-```
-8991  LDX <$79        ; this voice's DAC channel pointer ($1000 + n*$10 + k)
-8993  STB 1,X         ; value bytes to the channel
-8995  STA $1800       ; strobe the mux / S&H channel select
-8998  STA ,X+
-...   PULU PC         ; next primitive
-```
-
-So the write is **value → channel + `$1800` mux-select strobe** (unlike the pitch
-path, which loads the 8253 counter). Each primitive writes the value twice, low
-byte with bit 2 set and then with bit 2 clear, so bit 2 of the low byte acts as
-a strobe. The value is shifted left two places and its top bit is flipped
-(`EORA #$80`), which converts a signed computed value into the DAC's offset-binary
-input. Which primitive drives which parameter is the table in
-[Per-voice channel map](#per-voice-channel-map). Note `$1800` is thus **written**
-(mux select) here as well as **read** (panel) elsewhere, a refinement to the I/O
-map.
+The `$8220` table caches **both** kinds of target per voice: the two 8253
+counters (`$0000` region, pitch) *and* DAC channels (`$106x`/`$116x`), alongside
+the `$1C00`/`$1C80` range-latch addresses.
 
 ## Failure points
 
 The DAC, the **4053** next to it, and the pair of **4051s** behind each voice are
-the classic field failures (one stuck/wandering parameter or voice). The CEM3396s
-themselves are usually fine. (Community/service literature.)
+the classic field failures (one stuck or wandering parameter or voice). The
+CEM3396s themselves are usually fine. (Community/service literature.) With the
+map above, a symptom can be traced to its part: a whole voice wrong points at
+that voice's `UX03`; one parameter wrong on every voice points at the DAC
+output stage or U710 range switch (if it is a ranged parameter); resonance or mix
+wrong on some voices points at U701/U702.
 
 ## Open items
 
-- Confirm the AM6012 part and the exact `$1000`-block register decode against the
-  schematic: the address-bit meaning of the `+$80` pulse-off alias, the stride-2
-  resonance/mix bank, and the `$107E` wave-select write.
-- Confirm DCO1 = converter A and VCA1 = linear-gain pin against the schematic.
-- Resolve the `$2018+` voice-status lines (see voice-architecture.md).
+- Compute the actual output voltage window for each `RANGE` setting from the U706
+  resistor network.
+- Explain the `$107E` write and the `STA $1800` in `$8991`.
+- Confirm the AM6012 part marking on a real board.
+- Resolve the `$2018+` voice-status lines (see voice-architecture.md, #31).
